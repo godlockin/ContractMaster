@@ -1,0 +1,1291 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>公开合同 · 人类专家复核台</title><style>
+body{max-width:1100px;margin:35px auto;padding:0 22px;font:16px/1.65 system-ui;color:#172638;background:#f5f7fa}h1,h2,h3{line-height:1.35}section,header{background:white;padding:24px;margin:24px 0;border-radius:12px}article{border-top:2px solid #dbe3ec;padding:20px 0}blockquote{border-left:4px solid #527ba4;margin:12px 0;padding:12px;background:#f1f5fa;white-space:pre-wrap}small{display:block;color:#53677d}label{display:block;margin:12px 0}textarea{display:block;width:98%;min-height:85px}select,input,button{font:inherit;padding:7px}button{cursor:pointer;background:#173f6c;color:white;border:0;border-radius:6px}.status{color:#875114}code{word-break:break-all}a{color:#174f8b}
+</style><header><h1>公开合同 · 人类专家复核台</h1>
+<p>AI 初评待专业裁定。公开示范文本不自动构成适合当前交易的完整合同；空白和待选项不应一律判为缺陷。请核对原件、我方立场、适用日期和附件。</p>
+<p>本页离线运行，不向服务器发送数据。编辑内容只保留在当前页面内存，刷新前请导出。可先独立审阅原件，再阅读 AI 意见，减少锚定偏差。</p>
+<label>复核人代号 <input id="reviewer" placeholder="不必填写真实姓名"></label><button id="export">导出人工裁定 JSON</button>
+<p>建议两位专家分别导出，随后仲裁分歧。未填项保持未裁定；页面不会自动计算法律准确率。</p></header><nav>跳转合同：<a href="#P01">P01 劳动用工</a> · <a href="#P02">P02 货物采购</a> · <a href="#P03">P03 公共服务采购</a> · <a href="#P04">P04 建设工程</a> · <a href="#P05">P05 研发与知识产权</a> · <a href="#P06">P06 设计咨询与保险</a> · <a href="#P07">P07 保密与科研合作</a> · <a href="#P08">P08 住房租赁</a></nav><section id="P01"><h2>P01 — 济宁市劳动合同示范文本（2019版）</h2>
+<p>劳动用工 · zh-CN · 中国山东；空白劳动合同，含劳务派遣分支；历史版本用于核验适用时点</p>
+<p><a href="../originals/P01.pdf">原始公开文件</a> · <a href="../sanitized/P01.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>5ded7d47c318a15fdb5ed552a6f49c37101bc3331eb59f93b18e80dbe3c17521</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：已逐页读完脱敏全文，Python字符区间[0,5639)，共5639字符；含正文、签约须知/协议书、签署及附表。非六角色四轮；未读原件或他人findings。</p><article data-finding="P01-A-001" data-case="P01">
+<h3>P01-A-001 · high · 法务 / 合规</h3>
+<p>第一条三类期限共用试用期栏，缺少适用条件分支。</p><blockquote>（ 三 ） 以 完 成 工 作 任 务 为 期 限 。<small>脱敏文本字符 [1170, 1197)</small></blockquote><blockquote>其中试用期自     年  月  日起至     年  月  日止<small>脱敏文本字符 [1269, 1302)</small></blockquote>
+<p><b>影响：</b>若选择任务期限、不满三个月期限或重复试用仍填写试用期，可能触及禁止约定情形；目前空白并不证明实际违法。</p>
+<p><b>修改方向：</b>加入条件提示：任务期限及不足三个月不设试用期；其他期限匹配法定上限；核对既往同单位试用记录。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;中国政府网：试用期应该有多久？&quot;, &quot;url&quot;: &quot;https://app.www.gov.cn/govdata/gov/202203/01/482315/article.html&quot;, &quot;article&quot;: &quot;劳动合同法第十九条&quot;, &quot;summary&quot;: &quot;任务期限及不足三个月合同不得约定试用期；同一单位与同一劳动者只能约定一次；其他期限分档限制。&quot;, &quot;verified_on&quot;: &quot;2026-09-07&quot;}]</p>
+<p><b>事实问题：</b>[&quot;拟选何种期限？同单位是否已约定过试用期？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P01-A-002" data-case="P01">
+<h3>P01-A-002 · medium · 业务 / 法务 / 语言</h3>
+<p>不胜任调岗与岗位变更协商签署条款衔接不明。</p><blockquote>第五条  甲方按工作标准，经 考核考评确认乙方不胜任本岗位工
+作，可以调整乙方工作岗位。<small>脱敏文本字符 [1544, 1588)</small></blockquote><blockquote>第三十八条  劳动合同约定的工作地点、岗位、工资等内容发生变
+更的，经甲乙双方协商一致<small>脱敏文本字符 [4376, 4419)</small></blockquote>
+<p><b>影响：</b>第五条允许考核后调岗，第三十八条又要求岗位变更协商一致并签协议；若直接执行调岗，双方可能对程序和薪酬后果产生争议。</p>
+<p><b>修改方向：</b>明确不胜任认定依据、告知复核程序，以及第五条调岗与第三十八条的关系；分别约定地点、工资是否变化，不将调岗直接等同降薪。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;岗位考核标准是否已告知？是否涉及异地或降薪？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P01-A-003" data-case="P01">
+<h3>P01-A-003 · high · 财务 / 合规</h3>
+<p>加班工资与补休并列表述可能被理解为任意替代，且未单列法定休假日。</p><blockquote>第二十条 甲方安排乙方延长工作时间或者在休息日工作的， 按照
+国家相关规定向乙方支付加班工资或者依法安排乙方补休。<small>脱敏文本字符 [2807, 2864)</small></blockquote><blockquote>经政府行政部
+门批准，可以实行综合计算工时或不定时工时制<small>脱敏文本字符 [1944, 1972)</small></blockquote>
+<p><b>影响：</b>若标准工时人员平日延时或法定节假日加班均以补休替代，可能少付应付加班工资；原文已有“依法”限定，不能直接认定条款违法。</p>
+<p><b>修改方向：</b>按适用工时分别列明延时、休息日、法定休假日的核算；标准工时下仅休息日加班依法安排补休时适用替代。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;人力资源社会保障部：中华人民共和国劳动法&quot;, &quot;url&quot;: &quot;https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/zcfg/fl/202011/t20201102_394625.html?eqid=f1b9e5060003232100000006643e3165&quot;, &quot;article&quot;: &quot;第四十四条&quot;, &quot;summary&quot;: &quot;延长工时、休息日无法补休及法定休假日分别适用相应工资支付规则；需结合实际工时制度。&quot;, &quot;verified_on&quot;: &quot;2026-09-07&quot;}]</p>
+<p><b>事实问题：</b>[&quot;实际工时制及批准范围是什么？加班基数、审批与记录如何确定？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P01-A-004" data-case="P01">
+<h3>P01-A-004 · high · 争议 / 财务</h3>
+<p>紧急联系人在笼统联系障碍下获得和解及收款等全权代理。</p><blockquote>乙方同意，在其处于联系障碍状态（包括但不限于疾
+病、 发生意外事故、 丧失人身自由等情况） 时<small>脱敏文本字符 [4999, 5046)</small></blockquote><blockquote>权代理处理本合同项下所涉一切问题的权限，包括但不限于与甲方进行
+协商谈判、和解、代为收付有关款项及代为收发有关文书等权限。<small>脱敏文本字符 [5178, 5239)</small></blockquote>
+<p><b>影响：</b>普通疾病也可能被纳入触发条件；若未限定确认程序，联系人可能处分劳动者重大权益或代收款项，双方事后面临授权与支付证据争议。</p>
+<p><b>修改方向：</b>将紧急联络与代理授权分开；限定触发证据、事项、期限、金额和撤回方式；和解、收款等逐项另行明确授权。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;劳动者是否确实拟授予和解和代收款权限？如何核实无法联系及恢复联系？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P01-A-005" data-case="P01">
+<h3>P01-A-005 · medium · 争议 / 语言</h3>
+<p>退件或拒收一律视为送达，未区分未通知改址与寄送错误等退件原因。</p><blockquote>如乙方变更地址的，应及时书面通知甲方。未能通
+知的， 甲方可按原地址送达。 送达后如发生退件或拒收， 视为已经送达。<small>脱敏文本字符 [4932, 4990)</small></blockquote>
+<p><b>影响：</b>重要通知可能未实际到达；寄送和退件记录不足时，双方对期限起算产生争议。不得据此推定司法/仲裁送达规则已被替代。</p>
+<p><b>修改方向：</b>限定用于合同履行通知；明确正确地址、邮寄凭证、退件原因核实、电子补充通知与视为到达日期；司法及仲裁文书另依适用规则。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;双方采用哪些可留痕渠道？重要通知是否要求多渠道核实？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P01-A-006" data-case="P01">
+<h3>P01-A-006 · medium · 财务 / 业务</h3>
+<p>经济效益调整工资的概括授权与后文协商程序需要衔接。</p><blockquote>第十二条  甲方应建立正常的工资调整机制，根据经济效益情况调
+整乙方工资。<small>脱敏文本字符 [2252, 2289)</small></blockquote><blockquote>经平等协商、达成一致，公示或告知乙方后进行调整。<small>脱敏文本字符 [3176, 3200)</small></blockquote>
+<p><b>影响：</b>第十二条单独使用可能被当作单方减薪依据，但第二十四条要求达成一致；薪资预算与个人工资期待可能不一致。</p>
+<p><b>修改方向：</b>明确第十二条调整必须遵循第二十四条及个人合同变更程序；区分固定工资与浮动绩效的公式、周期和最低保障。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;工资组成、绩效计算方式及集体协议范围是什么？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P01"></textarea></label></section><section id="P02"><h2>P02 — 政府采购合同示范文本（货物）</h2>
+<p>货物采购 · zh-CN · 中国；政府采购货物及通用/专用条款</p>
+<p><a href="../originals/P02.pdf">原始公开文件</a> · <a href="../sanitized/P02.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>29ada752f2d000151fe7f0afdc21788847454098dd7ef96b6e291751a30d7f68</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：已逐页读完脱敏全文，Python字符区间[0,6908)，共6908字符；含正文、签约须知/协议书、签署及附表。非六角色四轮；未读原件或他人findings。</p><article data-finding="P02-A-001" data-case="P02">
+<h3>P02-A-001 · high · 合规 / 业务 / 财务</h3>
+<p>无异议视为验收通过与正式履约验收、付款衔接不清。</p><blockquote>1.4 甲方应当按照合同约定及时对交付的货物进行验收，未
+在代理填写日内对乙方履约提出任何异议或者向乙方作出任何
+说明的，视为验收通过。<small>脱敏文本字符 [2034, 2102)</small></blockquote><blockquote>各期支付条件应与分期履约验收情况挂钩<small>脱敏文本字符 [611, 629)</small></blockquote>
+<p><b>影响：</b>甲方沉默可能触发合同验收效果及付款争议，但政府采购验收还需组织验收并出具验收书；潜在缺陷也不宜被概括沉默规则吞并。</p>
+<p><b>修改方向：</b>明确起算需货物、技术资料及申请齐备；区分收货、外观数量检查、正式验收及质保；保留法定验收书程序，明确催验责任和付款衔接。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;财政部：中华人民共和国政府采购法实施条例&quot;, &quot;url&quot;: &quot;https://jdjc.mof.gov.cn/fgzd/202202/t20220225_3790482.htm&quot;, &quot;article&quot;: &quot;第四十五条&quot;, &quot;summary&quot;: &quot;采购人或代理机构按合同技术、服务、安全标准组织验收并出具包含逐项履约情况的验收书。&quot;, &quot;verified_on&quot;: &quot;2026-09-07&quot;}]</p>
+<p><b>事实问题：</b>[&quot;是否需安装试运行或第三方测试？默示条款拟覆盖哪一层验收？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P02-A-002" data-case="P02">
+<h3>P02-A-002 · high · 财务 / 法务</h3>
+<p>任意违约即不退履约保证金，与扣除赔偿及追加责任并行，结算规则不清。</p><blockquote>10.2 如果乙方出现违反合同约定情形的，履约保证金不予
+退还；如果乙方未能按合同约定全面履行义务，甲方有权从履约
+保证金中取得补偿或赔偿<small>脱敏文本字符 [4253, 4322)</small></blockquote><blockquote>甲方有权从货款中扣除误期赔偿费而不影响合同项下的其他
+补救方法<small>脱敏文本字符 [5031, 5062)</small></blockquote>
+<p><b>影响：</b>轻微可补正违约也可能被主张没收全额；同一损失下保证金、误期费及赔偿如何抵扣不明确，容易形成重复索赔争议。</p>
+<p><b>修改方向：</b>区分违约程度及补正期；保证金按可证明且合同约定的责任扣收，列明通知、异议、抵扣及余额返还；明确同一损失各救济间关系。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;是否收取保证金？违约金、实际损失与保证金如何结算？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P02-A-003" data-case="P02">
+<h3>P02-A-003 · medium · 业务 / 财务</h3>
+<p>寿命期性能保证与质量保证期免费维修的责任边界不明。</p><blockquote>件下，在其使用寿命期内具备合同约定的性能。<small>脱敏文本字符 [3385, 3406)</small></blockquote><blockquote>（3）乙方收到通知后，应在代理填写内免费维修或更换有
+缺陷的货物或部件。<small>脱敏文本字符 [3453, 3489)</small></blockquote><blockquote>11.2 乙方提供的售后服务的费用已包含在合同价款中，甲
+方不再另行支付。<small>脱敏文本字符 [4702, 4739)</small></blockquote>
+<p><b>影响：</b>供应商承诺使用寿命内性能，但免费维修仅明确质保期；质保后发生性能下降时，双方可能对责任、费用及证据标准分歧。</p>
+<p><b>修改方向：</b>定义寿命期和质保期起算、正常使用条件、质保后性能承诺及维修收费；与售后服务期限、报价清单共同确认。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;设备预期寿命多长？质保后性能责任和运维预算由谁承担？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P02-A-004" data-case="P02">
+<h3>P02-A-004 · medium · 争议 / 语言</h3>
+<p>仲裁与诉讼并列，仲裁机构仅以甲方所在地表述。</p><blockquote>可以通过仲裁或诉讼的方式解决
+争议。<small>脱敏文本字符 [6330, 6348)</small></blockquote><blockquote>16.2 选择仲裁的，应通过甲方所在地的仲裁机构；通过诉
+讼方式解决的，应通过甲所所在地具有管辖权的人民法院。<small>脱敏文本字符 [6349, 6404)</small></blockquote>
+<p><b>影响：</b>发生争议后可能先就解决路径及机构识别产生争论；“甲所所在地”还存在文字错误。本试审未核验适用仲裁法下具体效力，不能断言无效。</p>
+<p><b>修改方向：</b>签署前选定一种争议解决路径；选择仲裁时准确写明机构，选择诉讼时确认约定法院关联与管辖规则，修正错字。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;双方选择仲裁还是诉讼？甲方所在地及候选机构是什么？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P02-A-005" data-case="P02">
+<h3>P02-A-005 · medium · 争议 / 业务</h3>
+<p>通知允许数据电文与要求传真/快递签收两套渠道未衔接。</p><blockquote>18.1 本合同任何一方向对方发出的通知、信件、数据电文
+等<small>脱敏文本字符 [6601, 6631)</small></blockquote><blockquote>18.3 本合同一方给另一方的通知均应采用书面形式，传真
+或快递送到本合同中规定的对方的地址和办理签收手续。<small>脱敏文本字符 [6758, 6812)</small></blockquote>
+<p><b>影响：</b>邮件发出的迟延交货、缺陷或不可抗力通知可能被一方认可，另一方以未传真/快递签收否认，影响及时通知证据。</p>
+<p><b>修改方向：</b>明确电子邮件是否独立有效、指定账号和到达证明；列出需快递原件的例外，并统一通知生效时间。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;项目日常使用邮件还是纸面通知？无人签收如何处理？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P02-A-006" data-case="P02">
+<h3>P02-A-006 · medium · 法务 / 语言</h3>
+<p>可另填生效条件与固定盖章生效句并存。</p><blockquote>6.合同生效
+本合同自 代理填写 生效。<small>脱敏文本字符 [1241, 1261)</small></blockquote><blockquote>本合同自甲乙双方加盖公章之日起生效。<small>脱敏文本字符 [1344, 1362)</small></blockquote>
+<p><b>影响：</b>若在第6项填入审批、履约担保等生效条件，会与后句盖章即生效产生起点冲突，影响供货和付款义务是否启动。空白本身不构成风险。</p>
+<p><b>修改方向：</b>确认是否仅盖章生效；如有附加条件则统一改写两处并明确全部条件满足的日期及未满足后果。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;仅依据合同原文进行交易及文字分析；未作条款法律效力结论，适用事实和法律须另行核实。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;双方是否拟设置盖章以外的生效条件？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P02"></textarea></label></section><section id="P03"><h2>P03 — 政府采购合同示范文本（服务）</h2>
+<p>公共服务采购 · zh-CN · 中国；政府采购服务及通用/专用条款</p>
+<p><a href="../originals/P03.pdf">原始公开文件</a> · <a href="../sanitized/P03.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>5f70e417ff7b62fa5532a4d98c1d16f1ef0b5cb693dcbcbf2233530552bafa0e</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：已阅读全文6页的提取文本；法务/财务/业务/争议/数据视角试审。未取得招标文件、投标文件及具体交易条件，未完成六专家四轮或原件逐页视觉验收。</p><article data-finding="P03-M-001" data-case="P03">
+<h3>P03-M-001 · medium · legal/language</h3>
+<p>模板仍以《合同法》作为未尽事宜依据。如用于2021年后的新交易，应更新法源指引；这不意味着整份合同自动无效。若审历史交易，应先确认时间适用。</p><blockquote>5.其它未尽事宜，以《合同法》和《政府采购法》等有关法律法规规定为准，
+无相关规定的，双方协商解决。<small>脱敏文本字符 [2468, 2518)</small></blockquote>
+<p><b>影响：</b>沿用旧法名称可能误导审核、解释和后续修改，网站近期发布也不能证明正文已更新。</p>
+<p><b>修改方向：</b>按拟签署及履行日期更新引用并复核相关条款，不做全局机械替换后即判合规。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;中华人民共和国民法典&quot;, &quot;article&quot;: &quot;第一千二百六十条&quot;, &quot;url&quot;: &quot;https://www.cac.gov.cn/2020-06/01/c_15925617772683196.htm&quot;, &quot;checked_at&quot;: &quot;2026-09-07&quot;, &quot;applicability&quot;: &quot;核验合同法于2021年1月1日同时废止；本样本实际交易日期未知，历史事实时间适用另核。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;用于新签合同还是历史合同审计？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P03-M-002" data-case="P03">
+<h3>P03-M-002 · high · finance/business/dispute</h3>
+<p>付款依赖甲方审核材料及双方签署验收，验收分歧仅约定协商。若招标文件未另定审核时限和争议处理节点，验收争议可持续阻塞付款；模板空白本身不构成违约。</p><blockquote>2.乙方向甲方提交下列文件材料，经甲方审核无误后支付采购资金：<small>脱敏文本字符 [894, 925)</small></blockquote><blockquote>（2）经甲乙双方确认签署的《验收报告》（或按项目进度阶段性《验收报告》）；<small>脱敏文本字符 [939, 976)</small></blockquote><blockquote>分歧应通过
+协商解决。<small>脱敏文本字符 [1784, 1795)</small></blockquote>
+<p><b>影响：</b>供应商难以判断应收款何时到期，采购人也缺少明确的异议和整改闭环。</p>
+<p><b>修改方向：</b>取得被引用采购文件后，统一验收期限、书面异议、补正次数、材料封闭清单、付款到期日及无争议部分处理规则。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;招标文件是否已规定验收、材料审核与付款期限？&quot;, &quot;供应商是否属于适用专项付款保护规则的企业？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P03-M-003" data-case="P03">
+<h3>P03-M-003 · medium · legal/business/language</h3>
+<p>多份文件具有同等效力，清单又采用开放式列举；当前提取文本未规定冲突解释顺序。实际附件若出现服务范围或价格不同，需要结合采购规则和文件形成过程判断，不能随意认定后文件优先。</p><blockquote>下列与本次采购活动有关的文件及附件是本合同不可分割的组成部分，与本
+合同具有同等法律效力，这些文件包括但不限于：<small>脱敏文本字符 [200, 256)</small></blockquote><blockquote>二：合同要求（应为乙方投标文件的服务要求及投标承诺）<small>脱敏文本字符 [355, 381)</small></blockquote>
+<p><b>影响：</b>履约标准、费用和验收依据可能出现不同解释。</p>
+<p><b>修改方向：</b>签署时固定文件名称、版本和附件清单；说明合法范围内的解释顺序及冲突处理机制，不以补充协议规避采购要求。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;全部采购、投标、澄清和补充文件是否齐备且一致？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P03-M-004" data-case="P03">
+<h3>P03-M-004 · medium · compliance/security/business</h3>
+<p>保密条款限制资料提供对象和必要范围，但如果实际服务涉及个人信息或重要业务数据，仅此不能确定处理目的、权限、事件协作、留存删除和分包方义务已完整约定。不能因其为普通服务模板就默认存在数据处理。</p><blockquote>即使向履行本合同有关的人员提供，也应注意保密并限于履行合同的必需
+范围内。<small>脱敏文本字符 [682, 719)</small></blockquote><blockquote>除招标采购文件事先说明、且经甲方事先书面同意外，乙方不得分包、转包
+其应履行的合同义务。<small>脱敏文本字符 [1919, 1963)</small></blockquote>
+<p><b>影响：</b>有数据处理时，保密承诺可能无法落实为可验收的安全责任；没有数据处理则本项可不适用。</p>
+<p><b>修改方向：</b>先绘制数据流；有数据处理再补专项附件并与分包审批、终止交接相联，不强制所有服务合同使用相同技术指标。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;处理什么数据、在哪里处理、谁可以访问？&quot;, &quot;是否已有数据或安全附件？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P03-M-005" data-case="P03">
+<h3>P03-M-005 · medium · finance/compliance</h3>
+<p>第三条费用变化表述容易被脱离上下文理解为只要增加不超10%即可；第十五条已经援引政府采购法第49条，具有纠偏作用。执行时仍需按全部补充合同累计、相同标的及其他条件共同检查。</p><blockquote>但因此而增加的服务费用不得超过原中标金额的 10%。<small>脱敏文本字符 [531, 557)</small></blockquote><blockquote>符合《政府采购法》第 49 条规定的，经双方协商，办理政府采购手续后，
+可签订补充合同，所签订的补充合同与本合同具有同等法律效力。<small>脱敏文本字符 [2935, 3000)</small></blockquote>
+<p><b>影响：</b>若只执行数额上限而忽略适用条件，可能错误扩大变更权限；本项不是断言模板整体遗漏第49条。</p>
+<p><b>修改方向：</b>在费用变更条款中明确回指第十五条与适用条件，建立补充合同累计台账。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;财政部政府采购法第四十九条咨询回复&quot;, &quot;article&quot;: &quot;第四十九条适用说明&quot;, &quot;url&quot;: &quot;https://www.mof.gov.cn/bd/mhwzzxly/tfs/202308/t20230811_3901900.htm&quot;, &quot;checked_at&quot;: &quot;2026-09-07&quot;, &quot;applicability&quot;: &quot;已核验相同标的、不改变其他条款及所有补充合同金额累计条件；本项目是否满足需事实复核。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;是否已有其他补充合同？&quot;, &quot;工作量变化是否伴随标的或其他条款变化？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P03"></textarea></label></section><section id="P04"><h2>P04 — 建设工程施工合同示范文本</h2>
+<p>建设工程 · zh-CN · 中国；长合同、协议书/通用/专用/附件优先关系</p>
+<p><a href="../originals/P04.pdf">原始公开文件</a> · <a href="../sanitized/P04.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>a2ee2a1c308c4f5c5977f28cd5b8176cdbd536e2e19f2ed5a22d744739c2545a</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：全文文字层已按连续字符分段阅读[0,61415)，覆盖PAGE 1至133：协议书、通用条款1至20、专用条款1至20。非六角色四轮，不是关键词抽样。首次输出截断处已补读[6500,9600)。</p><article data-finding="P04-A-001" data-case="P04">
+<h3>P04-A-001 · high · 法务 / 财务 / 语言</h3>
+<p>缺陷责任期定义与专门条款使用不同起算日期。</p><blockquote>期限，自工程实际竣工日期起计算。<small>脱敏文本字符 [3463, 3479)</small></blockquote><blockquote>15.2.1 缺陷责任期从工程通过竣工验收之日起计算<small>脱敏文本字符 [44050, 44076)</small></blockquote><blockquote>工程经竣工验收合格的，以承包人提交竣工验收申请报告之
+日为实际竣工日期<small>脱敏文本字符 [39863, 39898)</small></blockquote>
+<p><b>影响：</b>1.1.4.4以实际竣工日期起算，15.2.1以通过竣工验收起算；13.2.3又可将实际竣工日期回溯至申请报告日。两日期间隔将影响缺陷责任届满、担保有效期及质量保证金返还。</p>
+<p><b>修改方向：</b>统一定义与15.2.1的起算规则，明确通常验收、发包人迟延验收、擅自使用和单位工程提前交付的分支；保修期单独记录。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;双方计划如何记录实际竣工日、验收日及单位工程交付日？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：support</h4><p>定义与15.2.1的通常起算确有文字差异；13.2.3允许申请日作为实际竣工日，因此不是纯同义表达。但15.2.1已详细规定迟延、擅用、单位工程分支，原报告建议应引用这些既存规则而非表现为需要从零建立。</p><p>修正建议：保留起算规则对齐问题；列出15.2.1既有分支并与定义统一，不声称文本完全没有异常情形规则。法律适用尚未独立核验。</p><blockquote>单位工程先于全部工程进行验收，经验收合格并交付使用
+的，该单位工程缺陷责任期自单位工程验收合格之日起算。因承
+包人原因导致工程无法按合同约定期限进行竣工验收的，缺陷责
+任期从实际通过竣工验收之日起计算。因发包人原因导致工程无
+法按合同约定期限进行竣工验收的，在承包人提交竣工验收报告
+90 天后，工程自动进入缺陷责任期；发包人未经竣工验收擅自
+使用工程的，缺陷责任期自工程转移占有之日起开始计算。
+<small>反证 [44122, 44321)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-002" data-case="P04">
+<h3>P04-A-002 · medium · 业务 / 争议 / 语言</h3>
+<p>开工通知的合同节点存在“前7天”与“之日起7天内”不同表述。</p><blockquote>监理人应在计
+划开工日期 7 天前向承包人发出开工通知<small>脱敏文本字符 [21410, 21437)</small></blockquote><blockquote>（4）发包人未能在计划开工日期之日起 7 天内同意下达开
+工通知的；<small>脱敏文本字符 [22199, 22233)</small></blockquote><blockquote>（1）因发包人原因未能在计划开工日期前 7 天内下达开工
+通知的；<small>脱敏文本字符 [46607, 46640)</small></blockquote>
+<p><b>影响：</b>7.3.2要求提前7天通知，7.5.1列为计划开工日起7天内未同意下达，16.1.1另写计划开工前7天内未下达；开工通知已迟发但尚未到计划日起7天时，费用/工期及违约触发容易分歧。</p>
+<p><b>修改方向：</b>把发包人批准、监理人发出、通知载明的开工日分别定义；统一迟延触发时间，并确认90天价格调整/解除机制不替代此前迟延补偿。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;项目是否已具备开工许可和现场条件？通知流程需几个审批层级？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：support</h4><p>三个不同通知表述可以造成审批/下达节点解释分歧，具备跨条款证据。反面是7.5.1末段及16.1.2已提供一般工期和费用补偿，不能推定“计划日后7天前”当然没有任何救济。</p><p>修正建议：保留节点统一建议，把影响收窄到认定与通知证据争议；明确一般违约补偿及顺延条款仍存在，90天机制不是唯一救济。</p><blockquote>因发包人原因未按计划开工日期开工的，发包人应按实际开
+工日期顺延竣工日期，确保实际工期不低于合同约定的工期总日
+历天数。因发包人原因导致工期延误需要修订施工进度计划的，
+按照第 7.2.2 项〔施工进度计划的修订〕执行。
+<small>反证 [22314, 22425)</small></blockquote><blockquote>16.1.2 发包人违约的责任
+发包人应承担因其违约给承包人增加的费用和（或）延误的
+工期，并支付承包人合理的利润。此外，合同当事人可在专用合
+同条款中另行约定发包人违约责任的承担方式和计算方法。
+<small>反证 [47014, 47113)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-003" data-case="P04">
+<h3>P04-A-003 · high · 争议 / 财务</h3>
+<p>日常28天索赔通知、竣工款7天异议及接收证书后索赔截止形成多重程序风险。</p><blockquote>承
+包人未在前述 28 天内发出索赔意向通知书的，丧失要求追加付
+款和（或）延长工期的权利；<small>脱敏文本字符 [51397, 51443)</small></blockquote><blockquote>发包人未在前述 28 天内发
+出索赔意向通知书的，丧失要求赔付金额和（或）延长缺陷责任
+期的权利。<small>脱敏文本字符 [52065, 52114)</small></blockquote><blockquote>承包人逾期未提出异议的，视为认可发包人的审批结果。<small>脱敏文本字符 [43214, 43239)</small></blockquote><blockquote>承包人按第 14.2 款〔竣工结算审核〕约定接收竣工付
+款证书后，应被视为已无权再提出在工程接收证书颁发前所发生
+的任何索赔。<small>脱敏文本字符 [52426, 52489)</small></blockquote>
+<p><b>影响：</b>双方均可能因未及时发意向而丧失合同所述索赔权；承包人即使拟在最终结清处理，也可能因接收竣工付款证书受到19.5的前期索赔截止限制。条款约定后果不等于已核验个案效力。</p>
+<p><b>修改方向：</b>建立事件通知和持续索赔清单；竣工付款证书逐项列出已提出未决索赔及保留事项，明确“接收”是否仅签收及待决索赔是否继续处理；不要等最终结清首次申报前期事项。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;双方谁管理通知期限？结算时未决变更、工期和费用索赔如何保留？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>程序管理风险成立，但“接收证书后截止”针对再提出索赔，不直接说明及时提出且未决的索赔全部消灭；14.2(3)明确允许异议与无争议部分先付，19.2/19.4又有迟延答复视为认可。不能把三层期限叠加推断为已申报索赔当然被放弃。</p><p>修正建议：区分新提出、持续申报及已提出未决索赔；保留期限台账建议，补充双方答复和默示认可机制。将已提出未决事项效力列为解释待确认，避免既成失权表述。</p><blockquote>（3）承包人对发包人签认的竣工付款证书有异议的，对于
+有异议部分应在收到发包人签认的竣工付款证书后 7 天内提出
+异议，并由合同当事人按照专用合同条款约定的方式和程序进行
+复核，或按照第 20 条〔争议解决〕约定处理。对于无异议部分，
+发包人应签发临时竣工付款证书，并按本款第（2）项完成付款。
+承包人逾期未提出异议的，视为认可发包人的审批结果。
+<small>反证 [43066, 43240)</small></blockquote><blockquote>（2）发包人应在监理人收到索赔报告或有关索赔的进一步
+证明材料后的 28 天内，由监理人向承包人出具经发包人签认的
+索赔处理结果。发包人逾期答复的，则视为认可承包人的索赔要
+求；
+<small>反证 [51794, 51884)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-004" data-case="P04">
+<h3>P04-A-004 · medium · 财务 / 业务</h3>
+<p>质量担保的默认保函路径与默认逐期扣款路径需明确衔接。</p><blockquote>质量保证金原则上采用上述第
+（1）种方式。<small>脱敏文本字符 [45032, 45053)</small></blockquote><blockquote>质量保证金的扣留原则上采用
+上述第（1）种方式。<small>脱敏文本字符 [45196, 45220)</small></blockquote><blockquote>在工程项目竣工前，承包人已经提供履约担保的，发包人不
+得同时预留工程质量保证金。<small>脱敏文本字符 [44888, 44928)</small></blockquote><blockquote>如承包人在发包人签发竣工付款证书后 28 天内提交质量
+保证金保函，发包人应同时退还扣留的作为质量保证金的工程价
+款<small>脱敏文本字符 [45252, 45310)</small></blockquote>
+<p><b>影响：</b>15.3.1默认保函，15.3.2却默认进度款逐次扣留，并允许竣工付款证书后28天内换函退款。若机械同时采用，可能出现担保与现金双占；15.3已有竣工前履约担保不得同时预留质量保证金的限制，不应忽略。</p>
+<p><b>修改方向：</b>在专用条款一次选定保函或现金及转换流程；列明履约担保终止、质量保函生效、现金扣留和返还节点，形成唯一担保余额台账。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;拟用保函还是现金？履约保函期限与质量保函何时交接？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>两处默认分别服务于担保方式与发生现金扣留时的路径，不能单凭默认并列认定必须双重提供；15.3总则先要求协商一致且专用明确，15.3.2明确换函同时退款和利息。原文已经引用部分保护，但风险仍容易被误读为模板自行导致双占。</p><p>修正建议：归类为低/中级配置与执行提示，前提为双方选择现金扣留或转换时未协调；说明不是当然重叠义务，补充3%及退款付息的现有保护。</p><blockquote>经合同当事人协商一致扣留质量保证金的，应在专用合同条
+款中予以明确。
+在工程项目竣工前，承包人已经提供履约担保的，发包人不
+得同时预留工程质量保证金。
+<small>反证 [44853, 44929)</small></blockquote><blockquote>发包人累计扣留的质量保证金不得超过工程价款结算总额
+的 3%。如承包人在发包人签发竣工付款证书后 28 天内提交质量
+保证金保函，发包人应同时退还扣留的作为质量保证金的工程价
+款；保函金额不得超过工程价款结算总额的 3%。
+发包人在退还质量保证金的同时按照中国人民银行发布的
+同期同类贷款基准利率支付利息。
+<small>反证 [45221, 45375)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-005" data-case="P04">
+<h3>P04-A-005 · high · 财务 / 业务</h3>
+<p>总价风险、清单错误修正和市场调价是三个相互关联的选择，不能仅填写“固定总价”概括全部。</p><blockquote>（1）工程量清单存在缺项、漏项的；<small>脱敏文本字符 [8300, 8317)</small></blockquote><blockquote>在约定的范围内合同总价不作调整。<small>脱敏文本字符 [34891, 34907)</small></blockquote><blockquote>其中因市场价
+格波动引起的调整按第 11.1 款〔市场价格波动引起的调整〕<small>脱敏文本字符 [34965, 35002)</small></blockquote><blockquote>未经发包人事先核对，
+承包人自行采购材料的，发包人有权不予调整合同价格。<small>脱敏文本字符 [34093, 34129)</small></blockquote>
+<p><b>影响：</b>通用1.13原则上修正清单缺漏，12.1总价仅约定范围内不调，11.1另设调价路径；若专用条款一处写总价包干、一处保留调价或漏项修正，结算预期可能相反。当前选项空白本身不是缺陷。</p>
+<p><b>修改方向：</b>按图纸范围、清单缺漏、工程量偏差、材料波动及法律变化分别配置风险和例外；同步修改1.13、11.1、12.1，确认基础价格及采购前报审流程。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;图纸是否稳定？清单由谁编制？材料波动拟由谁承担，采购报审能否执行？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>应同步配置范围的建议合理，但本模板12.1本身已经明示总价的约定风险范围和11.1/11.2调整，并无现成“所有情况固定不调”的冲突。报告影响以未来错误填写为条件，不能计作已经存在的高风险冲突。</p><p>修正建议：降为配置检查项，填写后才评价实际高风险；补充采购报审5日不答视为认可及业主同意仍可调整，避免把未预先核对理解成绝对不得调价。</p><blockquote>2．总价合同
+总价合同是指合同当事人约定以施工图、已标价工程量清单
+或预算书及有关条件进行合同价格计算、调整和确认的建设工程
+施工合同，在约定的范围内合同总价不作调整。合同当事人应在
+专用合同条款中约定总价包含的风险范围和风险费用的计算方
+法，并约定风险范围以外的合同价格的调整方法，其中因市场价
+格波动引起的调整按第 11.1 款〔市场价格波动引起的调整〕、
+
+[PAGE 71]
+因法律变化引起的调整按第 11.2 款〔法律变化引起的调整〕约
+定执行。
+<small>反证 [34823, 35052)</small></blockquote><blockquote>发包人在收到承包人报送的确认资料后 5 天内不予答
+复的视为认可，作为调整合同价格的依据。未经发包人事先核对，
+承包人自行采购材料的，发包人有权不予调整合同价格。发包人
+同意的，可以调整合同价格。
+<small>反证 [34048, 34147)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-006" data-case="P04">
+<h3>P04-A-006 · medium · 业务 / 争议</h3>
+<p>紧急口头监理指示与变更须发包人签认的程序，需要为同一事件确定转换路径。</p><blockquote>该指示与书面形式的指示具有同等法律效力，但必须在
+发出口头指示后 24 小时内补发书面监理指示<small>脱敏文本字符 [14422, 14469)</small></blockquote><blockquote>承包人收到经发
+包人签认的变更指示后，方可实施变更。<small>脱敏文本字符 [29161, 29187)</small></blockquote><blockquote>但监理人无权修改合同<small>脱敏文本字符 [14053, 14063)</small></blockquote>
+<p><b>影响：</b>4.3赋予紧急口头指示与书面指示同等合同效果并要求24小时补发；10.2要求收到发包人签认的变更指示后方可实施，监理人又无权修改合同。紧急处置若涉及新增工作，执行和费用确认可能脱节。</p>
+<p><b>修改方向：</b>保留必要安全处置权限；明确紧急新增工作记录、24小时补发和发包人追认时限，以及未及时追认的计价/争议处理；将安全事实、工程量与费用主张分别留痕。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;哪些现场人员有紧急指示和变更签认权限？费用通知能否同步发出？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>紧急新增工作与正式变更确有协调需求，但4.3口头指示被明确限定安全/避免工程受损并已有24小时书面化、错误指示责任和48小时异议处理。4.1无权修改合同与获授权办理变更不必然冲突。</p><p>修正建议：描述为紧急处置超出既有范围时的授权和计价衔接，不判定条款相互否定；先使用已存在的补发、异议和责任机制，再建议项目补充紧急计量证据。</p><blockquote>因监理人未能按合同约定发出指示、指示延误或
+发出了错误指示而导致承包人费用增加和（或）工期延误的，由
+发包人承担相应责任。除专用合同条款另有约定外，总监理工程
+师不应将第 4.4 款〔商定或确定〕约定应由总监理工程师作出确
+定的权力授权或委托给其他监理人员。
+承包人对监理人发出的指示有疑问的，应向监理人提出书面
+异议，监理人应在 48 小时内对该指示予以确认、更改或撤销，
+监理人逾期未回复的，承包人有权拒绝执行上述指示。
+<small>反证 [14523, 14736)</small></blockquote><blockquote>10.3.3 变更执行
+承包人收到监理人下达的变更指示后，认为不能执行，应立
+即提出不能执行该变更指示的理由。承包人认为可以执行变更
+的，应当书面说明实施该变更指示对合同价格和工期的影响，且
+
+[PAGE 61]
+合同当事人应当按照第 10.4 款〔变更估价〕约定确定变更估价。
+<small>反证 [29497, 29637)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-007" data-case="P04">
+<h3>P04-A-007 · medium · 业务 / 财务</h3>
+<p>现场查勘风险与不可预见物质条件补偿，需要项目证据界线。</p><blockquote>因承包人未能充分查勘、了解前述情况或未
+能充分估计前述情况所可能产生后果的，承包人承担由此增加的
+费用和（或）延误的工期。<small>脱敏文本字符 [12510, 12571)</small></blockquote><blockquote>但因基础资料存在错
+误、遗漏导致承包人解释或推断失实的，由发包人承担责任。<small>脱敏文本字符 [12407, 12444)</small></blockquote><blockquote>通知应载明不利
+物质条件的内容以及承包人认为不可预见的理由。<small>脱敏文本字符 [22695, 22725)</small></blockquote>
+<p><b>影响：</b>3.4将未充分查勘及估计后果风险交承包人，7.6将有经验承包人不可预见条件的合理措施费用交发包人；2.4.3资料真实性又归发包人。地下障碍出现后若无基准资料，容易争执属于哪条。</p>
+<p><b>修改方向：</b>建立现场交付与勘察资料版本清单，记录可进入范围、未开放区域和已知障碍；对异常立即通知并保存位置、状态、措施及关键路径影响，区分资料错误与合理不可预见。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;地下管线和地勘资料齐备吗？投标前哪些区域可以实际查勘？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>现场证据管理建议成立，但3.4已经保留基础资料错漏由发包人承担，7.6也明确合理措施费用/工期由发包人承担。这是分工边界，未发现文字矛盾或将全部地质风险无条件转给承包人；未知现场事实不足以证明已有中风险条款缺陷。</p><p>修正建议：作为履约证据与尽调提示；在实际地勘缺失、限制查勘或风险重写证据出现后再定实质风险等级，不把常规风险分类本身计为缺陷。</p><blockquote>承包人遇到不利物质条件时，应采取克服不利物质条件的合
+理措施继续施工，并及时通知发包人和监理人。通知应载明不利
+物质条件的内容以及承包人认为不可预见的理由。监理人经发包
+人同意后应当及时发出指示，指示构成变更的，按第 10 条〔变
+更〕约定执行。承包人因采取合理措施而增加的费用和（或）延
+误的工期由发包人承担。
+<small>反证 [22647, 22804)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-008" data-case="P04">
+<h3>P04-A-008 · medium · 业务 / 争议</h3>
+<p>照管至颁发接收证书与证书后7天移交之间，需要确定实际占有过渡责任。</p><blockquote>直到颁发工程接收证书之日止。<small>脱敏文本字符 [13404, 13418)</small></blockquote><blockquote>合同当事人应当在颁发工程接
+
+[PAGE 81]
+收证书后 7 天内完成工程的移交。<small>脱敏文本字符 [40225, 40267)</small></blockquote><blockquote>自验收合格后第 15 天起视为已颁发工程接收证书。<small>脱敏文本字符 [39485, 39510)</small></blockquote>
+<p><b>影响：</b>3.6以颁证结束承包人照管，13.2.5允许颁证后7天移交并配置无正当理由迟延接收/移交费用；正常7天交接期间谁掌管钥匙、安保、材料及事故记录未具体展开，且存在视为颁证情形。</p>
+<p><b>修改方向：</b>用交接清单明确颁证、视为颁证、实际占有和分区移交四类节点；指定过渡期间照管主体、费用及保险通知，避免把证书日期直接当作实际交接。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;工程是否分区提前使用？交接期间安保和保险由谁负责？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：partial</h4><p>3.6和13.2.5的日期差客观存在，但照管终点与实物交接办理期限不同不必然意味着无人负责；13.2.5已经规定迟延双方的费用责任，专用3.6及13.2.5还提供时间配置入口。正常交接期的实际占有安排值得确认，无法单靠这两条确认法律上的责任真空。</p><p>修正建议：维持过渡交接安排提示，避免“必然照管空档”推论；结合实际占有、钥匙安保、专用时间和保险条款决定等级。</p><blockquote>发包人无正当理由不接收工程的，发包人自应当接收工程之
+日起，承担工程照管、成品保护、保管等与工程有关的各项费用，
+合同当事人可以在专用合同条款中另行约定发包人逾期接收工
+程的违约责任。
+承包人无正当理由不移交工程的，承包人应承担工程照管、
+成品保护、保管等与工程有关的各项费用，合同当事人可以在专
+用合同条款中另行约定承包人无正当理由不移交工程的违约责
+任。
+<small>反证 [40268, 40448)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P04-A-009" data-case="P04">
+<h3>P04-A-009 · medium · 法务 / 语言</h3>
+<p>协议书可填生效条件与固定盖章生效句并存。</p><blockquote>十二、合同生效
+本合同自 生效。<small>脱敏文本字符 [1147, 1163)</small></blockquote><blockquote>本合同自甲乙双方加盖公章之日起生效。<small>脱敏文本字符 [1206, 1224)</small></blockquote>
+<p><b>影响：</b>若填入审批、担保等条件，两处可能产生不同生效节点；不是因生效栏未填写而判风险。</p>
+<p><b>修改方向：</b>统一改写生效句；如存在附加条件，列出满足标准、确认日期与未满足处理，并核对工期准备义务起点。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;note&quot;: &quot;依据脱敏文字及跨条款关系进行条件化分析；未核验现行法律、地方规则或个案效力，不认定示范条款违法或无效。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;是否拟设置盖章以外的生效条件？&quot;]</p>
+<aside><h4>独立 AI 交叉质询：support</h4><p>协议书内同时存在可填生效节点及固定盖章生效句，确有填写后可能冲突；1.5文件优先顺序不能直接解决同一协议书内这两句话的关系。不过本模板尚无另一已填入条件，当前只是条件化一致性风险。</p><p>修正建议：保留，并明确只有另填不同条件时才形成实际冲突；若填写的就是双方盖章生效，两句仅重复，应去重而非升级风险。</p><blockquote>十二、合同生效
+本合同自 生效。
+十三、合同份数
+本合同一式 份，均具有同等法律效力，发包人执 份，
+承包人执 份。
+本合同自甲乙双方加盖公章之日起生效。
+<small>反证 [1147, 1225)</small></blockquote><details><summary>本轮范围及限制</summary>独立第二agent针对原报告全部9项质询；阅读对应正文、例外、一般救济及专用配置上下文，不声称本轮重新完整审核61415字符。明确完成窗口：[0,4300)、[4800,5700)、[8100,8500)、[10400,11000)、[12100,12650)、[13300,15450)、[21300,23000)、[28850,29800)、[32900,35100)、[38900,41300)、[42600,45900)、[46450,47200)、[51200,52900)、[53000,61415)。初次大段输出截断未计作全文覆盖。未核验原PDF、外部附件及现行法，结论仅是文本质询。真实两agent交叉试验，非六专家四轮、非人类律师裁定。</details></aside>
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P04"></textarea></label></section><section id="P05"><h2>P05 — 科技部技术合同示范文本汇编（2001）</h2>
+<p>研发与知识产权 · zh-CN · 中国；104页8类模板汇编，委托/合作开发、专利申请权/专利权/实施许可/技术秘密转让、咨询、服务；不是单份已签合同；历史合同法引用需时效核验</p>
+<p><a href="../originals/P05.pdf">原始公开文件</a> · <a href="../sanitized/P05.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>cb27536313403678005ee977efd1606a7e123303ba7d5bb714c8e496021c6688</code></p>
+<p class="status">审核模式：independent_single_agent_public_template_continuation · 覆盖声明：SINGLE_AGENT_CONTINUATION_TEXT_READ；本批实际全文读取19–104页，1–18页已在原batch-tech-nda.json独立记录。104页尾部只有合同编号，按资料尾页保留，不推定另有完整合同。原记录PARTIAL_AUDIT不修改。合并只表明文字层104页实际读过，非逐字风险证明、六专家四轮、全量PDF版面验证或法律验收。；本批已读页：19–104；与前批累计已读页：1–104</p><article data-finding="P05-C01" data-case="P05">
+<h3>P05-C01 · medium · 技术风险/法务/多方关系</h3>
+<p>合作研发失败认定条件只写乙方无过错，未明确其他合作方角色</p><blockquote>第九条  在本合同履行中，因出现在现有技术水平和条件下难以克服的技
+术困难，导致研究开发失败或部分失败，并造成合作一方或多方损失的，合作各
+方约定按以下方式承担风险损失：<small>脱敏文本字符 [21837, 21922)</small></blockquote><blockquote>2． 乙方在主观上无过错且经认定研究开发失败为合理的失败。<small>脱敏文本字符 [22286, 22315)</small></blockquote>
+<p><b>影响：</b>第九条开头面向合作一方或多方损失，但无过错条件仅点名乙方。若失败发生在甲方或丙方承担的工作，可能出现适用对象及证明标准争议；不是认定其他方自动免责。</p>
+<p><b>修改方向：</b>按第二条工作分工明确发生失败的任务、责任主体、合理失败证明及独立评估方式；统一第九条对各方的适用对象，并与第十九条过错违约责任区分。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;乙方是否实际承担全部研发？甲方、丙方参与任务失败时按什么条件认定？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C02" data-case="P05">
+<h3>P05-C02 · high · 知识产权/技术集成/业务</h3>
+<p>阶段成果、最终成果和后续改进归属需补足相互实施权限</p><blockquote>第十五条：合作各方确定， 因履行本合同所产生、 并由合作各方分别独立
+完成的阶段性技术成果及其相关知识产权权利归属，按第 
+      种方式处理： 
+     1．          （完成方、合作各方）方享有申请专利的权利。   
+    专利权取得后的使用和有关利益分配方式如下：              
+                                                            
+                                                         。 
+     2． 按技术秘密方式处理。 有关使用和转让的权利归属及由此产生的利益按
+以下约定处理： 
+    （1）技术秘密的使用权：                                 
+    （2）技术秘密的转让权：                                 
+    （3）相关利益的分配办法：                              ； 
+    合作各方对因履行本合同所产生、 并由合作各方分别独立完成的阶段性技术
+成果及其相关知识产权权利归属，特别约定如下：     
+                                                             
+                                                        。 
+    第十六条：合作各方确定<small>脱敏文本字符 [25542, 26224)</small></blockquote><blockquote>第二十条：合作各方确定，任何一方有权利用本合同项目研究开发所完成
+的技术成果， 进行后续改进。由此产生的具有实质性或创造性技术进步特征的新
+的技术成果，归         （完成方、合作各方）方所有。具体相关利益的分配
+办法如下：                                  
+                                                                          
+                                                         。 
+    第二十一条<small>脱敏文本字符 [28266, 28560)</small></blockquote>
+<p><b>影响：</b>第十五条允许独立阶段成果由完成方享权，第十六条另定最终成果，第20条允许各方后续改进。勾选归属本身不解决最终成果实施所需的其他方背景/阶段成果许可、退出和改进后的兼容问题。</p>
+<p><b>修改方向：</b>列出背景、阶段、集成最终、后续成果依赖关系；分别约定实施/修改/许可范围、维护费、许可期限、退出后存续及共有决策。明确协作义务与保密边界，避免把所有权等同于完整实施权。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;最终成果是否必须使用某一方独有模块？该方退出后其他方能否维护、销售或继续研发？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C03" data-case="P05">
+<h3>P05-C03 · high · 财务/知识产权/申请程序</h3>
+<p>申请被驳回不退已付款，需区分商业申请风险与让与方违约</p><blockquote>第八条：双方确定，本合同生效后，甲方专利申请被国家专利行政主管机关
+驳回的，乙方不退还已收取的转让费用：尚未收取的，按以下方式处理：                                           
+                                                         。 
+     双方对专利申请被驳回的特别约定如下：                                    
+                                                         。 
+    第九条：双方确定<small>脱敏文本字符 [35271, 35573)</small></blockquote><blockquote>第六条：乙方应当保证其专利申请权不侵犯任何第三人的合法权益。 如发生
+第三人指控甲方侵权的，乙方应当                  
+                                                         。     
+    第七条<small>脱敏文本字符 [34491, 34631)</small></blockquote>
+<p><b>影响：</b>第八条默认已收款不退，未收部分和特别约定待填写；第六条另有权利不侵害第三人的保证。若驳回因权属资料、提前公开或程序协作问题引起，仅采用默认不退费会产生过宽风险转移的争议。</p>
+<p><b>修改方向：</b>区分诚实披露后的正常不授权风险、让与方虚假资料/权属瑕疵/不配合的责任；约定审查进度报告、答复期限、复审控制、分期节点和对应退款/赔偿，不假定第八条覆盖所有过错。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;受让价款是否以未来授权为核心？目前审查意见、优先权和期限是否完整披露？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C04" data-case="P05">
+<h3>P05-C04 · high · 业务/财务/既有合同承接</h3>
+<p>原技术转让合同权利义务整体承接需要逐份确定</p><blockquote>第二条：乙方在本合同签署前实施或转让本项发明创造的状况如下： 
+     1．乙方实施本发明创造的状况（时间、地点、方式和规模） ：                                                       
+                                                            
+                                                         。 
+     2．乙方许可他人使用本发明创造的状况（时间、地点、方式和规模） ：                                                   
+                                                        。 
+     3． 本合同生效后， 乙方有义务在      日内将本发明创造专利申请权转让
+的状况告知被许可使用本发明创造的当事人。 
+    第三条：甲方应在本合同生效后，保证原技术转让合同的履行。乙方在原技
+术转让合同中享有的权利和义务，自本合同生效之日起，由甲方承受。乙方应当
+在      日内通知并协助原技术转让合同的让与人与甲方办理合同变更事项。 
+    第四条：为保证甲方申请专利<small>脱敏文本字符 [33435, 34023)</small></blockquote>
+<p><b>影响：</b>第二条披露已实施/已许可，第3条要求甲方保证原技术转让合同履行并承受权利义务，但未预设清单、历史违约和款项分界。不能仅凭申请权标识判断所买资产不存在既有使用或付费负担。</p>
+<p><b>修改方向：</b>把每份上游/下游合同、许可范围、期限、应收应付、既有违约、变更所需协作列为附件；明确哪些义务移转、交割前后归属及无法完成变更时的处理。同步登记节点与实际履行移交。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;第3条原技术转让合同具体是哪些？对方当事人是上游让与人还是下游被许可人？未披露负担谁承担？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C05" data-case="P05">
+<h3>P05-C05 · high · 法务/知识产权/财务</h3>
+<p>专利无效不承担法律责任的宽泛表述需与权利保证协调</p><blockquote>第九条：乙方应当保证其专利权转让不侵犯任何第三人的合法权益。 如发生
+第三人指控甲方侵权的，乙方应当                   
+                                                         。 
+
+[PAGE 50]
+    第十条：乙方对本合同生效后专利权被宣告无效，不承担法律责任。<small>脱敏文本字符 [44643, 44818)</small></blockquote>
+<p><b>影响：</b>第十条对生效后无效写成不承担法律责任，第九条又保证转让不侵犯第三人合法权益。真实交易需区分正常无效风险与隐瞒已知争议、权属瑕疵或违约，不能据默认条款直接宣布让与方任何情形均免责。</p>
+<p><b>修改方向：</b>核验权属、有效期限、年费、无效/诉讼状态；把已披露风险和违约责任分别定义，约定价款调整、退款、抗辩协作和例外事项，交当地适用法律核验。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;是否存在已知无效请求或争议？价格中专利与技术秘密各占多少？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C06" data-case="P05">
+<h3>P05-C06 · high · 业务/知识产权/许可关系</h3>
+<p>受让专利不自动等于排除所有他人实施</p><blockquote>第三条：甲方应在本合同生效后，保证原专利实施许可合同的履行。乙方在
+原专利实施许可合同中享有的权利和义务，自本合同生效之日起，由甲方承受。
+乙方应当在      日内通知并协助原专利实施许可合 同的让与人与甲方办理合
+同变更事项。 
+    第四条：本合同生效后乙方继续实施本项专利的，按以下约定办理：                                                      
+                                                         。 
+
+[PAGE 49]
+    第五条：为保证甲方有效拥有本项专利权<small>脱敏文本字符 [43474, 43773)</small></blockquote><blockquote>第十三条：双方确定： 
+
+[PAGE 51]
+     1． 甲方有权利用乙方转让专利权涉及的发明创造进行后续改进。 由此产生
+的具有实质性或创造性技术进步特征的新的技术成果，归       （甲方、双方）
+方所有。具体相关利益的分配办法如下：          
+                                                            
+                                                         。 
+     2． 乙方有权在已交付甲方该项专利权后， 对该项专利权涉及的发明创造进
+行后续改进。 由此产生的具有实质性或创造性技术进步特征的新的技术成果，归      
+（乙方、双方）方所有。具体相关利益的分配办法如下：                                                     
+                                                       。 
+    第十四条：双方确定<small>脱敏文本字符 [45757, 46245)</small></blockquote>
+<p><b>影响：</b>第2/3条保留并承接原许可，第4条允许约定乙方继续实施，第13条允许双方后续改进。拟购买市场独占地位时，这些条款可能使买方的商业预期落空，须审签署稿具体配置。</p>
+<p><b>修改方向：</b>逐项列明存续被许可人及排他范围、乙方保留实施权限、后续改进实施所需授权；确认哪些许可须在交割前终止或调整，并将目标权利状态设为交割条件。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;甲方买的是收入权还是独占经营空间？乙方及原被许可人交割后还能怎样实施？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C07" data-case="P05">
+<h3>P05-C07 · medium · 财务/专利状态/责任计算</h3>
+<p>无效后的赔偿与不返还使用费需定义结算口径</p><blockquote>本项专利权被国家专利行政主管机关宣布无效的，乙方应当赔偿甲方损失，
+但甲方已给付乙方的使用费，不再返还。<small>脱敏文本字符 [54837, 54889)</small></blockquote><blockquote>第九条：甲方向乙方支付实施该项专利权使用费及支付方式为： 
+     1．许可实施使用费总额为：                             
+          其中：技术秘密的使用费为：                       
+                技术服务和指导费为：                       
+     2．许可实施使用费由甲方<small>脱敏文本字符 [53895, 54087)</small></blockquote>
+<p><b>影响：</b>第十一条同时规定专利无效赔偿损失但已付使用费不返还；第九条又把技术秘密/服务指导费拆入总费。若不区分收费期间、费用性质和可计入损失的项目，可能对是否抵扣或重复补偿产生争议。</p>
+<p><b>修改方向：</b>约定无效发生后的停止/继续使用、未付费用和各类费用结算；明确已付款与可赔损失的关系以及另有价值的技术秘密/服务部分，并核验适用法律边界。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;尚未实施就无效如何处理？哪些付费对应专利、秘密或服务？损失如何证明且避免双计？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C08" data-case="P05">
+<h3>P05-C08 · high · 业务/履约/现金流</h3>
+<p>强制开始实施期限需关联资料交付与验收条件</p><blockquote>第十二条：甲方应当在本合同生效后        日内开始实施本项专利；逾期
+未实施的，应当及时通知乙方并予以正当解释，征得乙方认可。甲方逾期        
+日未实施本项专利且未予解释， 影响乙方技术转让提成收益的，乙方有权要求甲
+方支付违约金或赔偿损失。 
+    第十三条<small>脱敏文本字符 [54895, 55033)</small></blockquote><blockquote>第八条：双方确定，乙方许可甲方实施本项专利及转让技术秘密、提供技
+术服务和技术指导，按以下标准和方式验收： 
+     1．                                                  
+     2．                                                  
+     3．                                                 
+    第九条<small>脱敏文本字符 [53663, 53898)</small></blockquote>
+<p><b>影响：</b>第12条以合同生效后天数要求开始实施，对无解释且影响提成收益的迟延设置责任；第4/5/7/8条另定资料、指导及验收。若实施所必需材料未就绪或验收失败，单纯按生效日起算易产生争议。</p>
+<p><b>修改方向：</b>把实施启动依赖、资料和指导交付、验收失败整改、允许延期及通知方式写清；对让与方迟延或客观许可条件未成就设置对应调整，约定与提成计算一致的实施证据。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;开始实施是试产、量产还是首笔销售？乙方提供条件未齐时如何暂停计时？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C09" data-case="P05">
+<h3>P05-C09 · high · 知识产权/技术风险/退出结算</h3>
+<p>第三人通过专利公开被排除于自动解除条件，需要另定侵权及价值下降处理</p><blockquote>第七条：在本合同履行过程中，因本项技术秘密已经由他人公开（以专利权
+方式公开的除外） ， 一方应在     日内通知另一方解除合同。逾期未通知并致使
+
+[PAGE 73]
+另一方产生损失的，另一方有权要求予以赔偿。具体赔偿方式为：                                           
+                                                         。 
+     第八条：双方确定<small>脱敏文本字符 [63246, 63478)</small></blockquote><blockquote>第九条：双方确定，乙方在本合同有效期内，将本项技术秘密申请专利或以
+
+[PAGE 74]
+其他方式公开的， 应当征得甲方同意；乙方就本项技术秘密申请专利并取得专利
+权的，甲方依本合同有继续使用的权利。 
+    第十条：为保证甲方有效实施<small>脱敏文本字符 [64450, 64569)</small></blockquote><blockquote>第六条：乙方保证本项技术秘密的实用性、可靠性，并保证本项技术秘密不
+侵犯任何第三人的合法权利。如发生第三人指控甲方实施技术秘密侵权的，乙方
+应当                                 
+                                                         。 
+    第七条<small>脱敏文本字符 [63076, 63249)</small></blockquote>
+<p><b>影响：</b>第7条针对技术秘密由他人公开设置通知解除，但括号排除专利公开；第9条处理的是乙方自行申请专利并保留甲方使用，两者主体不同，不能互相替代。真实技术若遇第三人专利公开，仍需结合第6条权利保证和第19条解除约定处理。</p>
+<p><b>修改方向：</b>分别约定第三人专利申请公开/授权/主张权利时的核验、抗辩、替代技术、暂停付款和退出结算；区分公开导致非秘密与实际侵权，不能见专利公开即认定侵权。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;技术是否已有竞争专利申请？公开后剩余秘密及应用价值如何评估？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C10" data-case="P05">
+<h3>P05-C10 · high · 业务/保密/知识产权</h3>
+<p>“使用权、转让权”及既有对外转让需形成明确许可范围</p><blockquote>本合同乙方将其拥有                                      
+               项目的技术秘密                   （使用权、转让权）转让
+甲方，甲方受让并支付相应的使用费。<small>脱敏文本字符 [60911, 61029)</small></blockquote><blockquote>第四条：乙方在本合同生效前实施或转让本项技术秘密的状况如下： 
+     1．乙方实施本项技术秘密的状况（时间、地点、方式和规模） ：                                                       
+                                                                 
+                                                         。 
+     2．乙方转让他人本项技术秘密的状况（时间、地点、方式和规模） ：                                                    
+                                                           
+                                                        。 
+     第五条：甲方应以如下范围、方式和期限实施本项技术秘密： 
+      1．实施范围：                                       
+                                                        。 
+      2．实施方式：                                       
+                                                        。 
+      3．实施期限：                                      。 
+    第六条：乙方保证<small>脱敏文本字符 [62302, 63084)</small></blockquote>
+<p><b>影响：</b>前言给出使用权/转让权选项，第4条披露乙方既有实施/转让，第5条规定甲方实施范围。选“转让权”并不自动说明是否独占、是否允许再许可或能否披露给关联方/供应商。若把这些概念混用，保密条款会与商业使用需要冲突。</p>
+<p><b>修改方向：</b>分别定义使用/再许可/再转让权限、地域行业期限、允许接收者和保密传递；披露并处理既有安排及乙方保留权，使用清单与第8条涉密人员/责任对应。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;是否需要关联公司、代工厂或服务商实施？购买方期待独占还是普通使用？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C11" data-case="P05">
+<h3>P05-C11 · high · 业务决策/法务/专业责任</h3>
+<p>决策损失免责选项仅针对符合约定的咨询成果，不能扩张成所有失误免责</p><blockquote>第九条：双方确定， 甲方按照乙方符合本合同约定标准和方式完成的技术咨
+询工作成果做出决策并予以实施所造成的损失， 按以下第         种方式处理： 
+      1．乙方不承担责任。 
+      2．乙方承担部分责任。具体承担方式为                   
+                                                         。 
+      3．乙方承担全部责任。 
+    第十条：双方确定<small>脱敏文本字符 [76427, 76658)</small></blockquote><blockquote>第七条：双方确定，按以下标准和方式对乙方提交的技术咨询工作成果进行
+验收： 
+      1．乙方提交技术咨询工作成果的形式：                   
+                                                            
+                                                         。 
+      2．技术咨询工作成果的验收标准：                       
+                                                         。 
+      3．技术咨询工作成果的验收方法：                       
+                                                         。 
+      4．验收的时间和地点：                                 
+                                                         。 
+    第八条：双方确定<small>脱敏文本字符 [75336, 75875)</small></blockquote>
+<p><b>影响：</b>第9条限定成果符合合同标准后据此决策实施的损失，再给出不承担/部分/全部责任选项；第7条验收与第8条违约另行存在。真实合同需区分合规咨询下的经营风险、成果不达标和资料错误，不能把勾选第9条当作不做专业审查。</p>
+<p><b>修改方向：</b>把咨询范围、输入事实、关键假设、验证深度、用途限制和交付标准写入附件；明确第8条与第9条适用分界，必要时约定更正、复核或责任分配，核验法定责任边界。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;报告将支撑投资/投产还是一般参考？错误源自甲方资料还是乙方分析？如何证明“符合约定”？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C12" data-case="P05">
+<h3>P05-C12 · medium · 知识产权/保密/数据使用</h3>
+<p>新技术成果归属选项不等于对甲方材料的无限利用授权</p><blockquote>第十条：双方确定： 
+      1．在本合同有效期内，甲方利用乙方提交的技术咨询工作成果所完成的
+新的技术成果，归        （甲、双）方所有。 
+      2．在本合同有效期内，乙方利用甲方提供的技术资料和工作条件所完成
+的新的技术成果，归        （乙、双）方所有。 
+     第十一条：双方确定<small>脱敏文本字符 [76650, 76808)</small></blockquote><blockquote>第三条：为保证乙方有效进行技术咨询工作， 甲方应当向乙方提供下列协作
+事项： 
+      1．提供技术资料：<small>脱敏文本字符 [72610, 72665)</small></blockquote>
+<p><b>影响：</b>第10条分别分配在合同有效期内产生的新成果，其中乙方可基于甲方资料与条件完成成果；第3条资料提供和第5条保密另存。若只填“乙方所有”，仍未明确基础材料使用目的、报告本身权利、对外复用和终止后处理。</p>
+<p><b>修改方向：</b>区分原有资料、咨询报告及新增成果，限定履约目的使用、可匿名复用范围及后续许可；约定归属不解除保密义务，涉及数据时另查访问和处理依据。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;乙方能否将资料用于其他客户或训练模型？甲方能否修改、转交或实施报告？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C13" data-case="P05">
+<h3>P05-C13 · high · 业务履约/质量/财务</h3>
+<p>一次成果验收与持续质量期限需按服务形态衔接</p><blockquote>第二条：乙方应按下列要求完成技术服务工作： 
+      1．技术服务地点：                                     
+      2．技术服务期限：                                     
+      3．技术服务进度：                                     
+                                                            
+                                                            
+      4．技术服务质量要求：                                 
+      5．技术服务质量期限要求：                             
+    第三条：为保证乙方有效进行技术服务工作<small>脱敏文本字符 [81899, 82326)</small></blockquote><blockquote>第七条：双方确定以下列标准和方式对乙方的技术服务工作成果进行验收： 
+      1．乙方完成技术服务工作的形式：                       
+                                                            
+                                                       。 
+      2．技术服务工作成果的验收标准：                       
+                                                         。 
+      3．技术服务工作成果的验收方法：                       
+                                                         。 
+      4．验收的时间和地点：                                 
+                                                         。 
+   第八条：双方确定<small>脱敏文本字符 [85014, 85548)</small></blockquote>
+<p><b>影响：</b>第2条已有服务质量要求/质量期限，第7条另设成果验收，第4条约定付款。用于持续维护或生产系统支持时，仅填一次验收不能说明验收后质量承诺、故障修复、服务中断及重复问题责任；一次专项服务则不必机械引入SLA。</p>
+<p><b>修改方向：</b>先确认一次交付还是持续服务；将质量期限起算、缺陷响应修复、复验、服务暂停及费用调整等与验收付款和第9条违约责任对应，保留必要的范围外收费机制。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;质量期限从何时起？验收后问题如何处理？服务范围是否包含持续运行保障？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-C14" data-case="P05">
+<h3>P05-C14 · high · 信息安全/协作资料/退出交接</h3>
+<p>技术服务中的资料和系统访问不能仅靠保密栏目控制</p><blockquote>第三条：为保证乙方有效进行技术服务工作， 甲方应当向乙方提供下列工作
+条件和协作事项： 
+
+[PAGE 97]
+      1．提供技术资料： 
+      （1）                                                
+      （2）                                                     
+      （3）                                                
+      （4）                                                
+      2．提供工作条件： 
+      （1）                                                
+      （2）                                                     
+      （3）                                               
+      （4）                                               
+      3．其他：                                            
+                                                         。 
+      4．甲方提供上述工作条件和协作事项的时间及方式：                 
+                                                         。 
+    第四条：甲方向乙方支付<small>脱敏文本字符 [82307, 83108)</small></blockquote><blockquote>第五条：双方确定因履行本合同应遵守的保密义务如下：<small>脱敏文本字符 [83613, 83638)</small></blockquote><blockquote>第十一条：双方确定，出现下列情形，致使本合同的履行成为不必要或不可
+能的，可以解除本合同： 
+      1．发生不可抗力； 
+
+[PAGE 101]
+      2．                                                 
+      3．                                                 
+    第十二条：双方因履行<small>脱敏文本字符 [86379, 86585)</small></blockquote>
+<p><b>影响：</b>第3条要求甲方提供资料及工作条件，第5条主要列保密内容/人员/期限/责任，第11条解除并未自动定义资料返还、账号撤销和交接。若服务涉及生产系统、源代码或个人信息，签署稿需要补执行控制；本模板不是已违规实例。</p>
+<p><b>修改方向：</b>按实际服务列明最小必要访问、授权审批、远程/外包限制、日志及事件通知、第三方工具使用、验收/终止时权限撤销与资料返还删除；与第8条新增成果权利及保密存续一并协调。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;template_text_and_conditional_business_review&quot;, &quot;note&quot;: &quot;未查询当前法律法规/司法解释/登记实务；不作当然违法、无效或最终责任判断。空白是模板配置入口，须结合真实签署稿、交易和立场确认。&quot;}</p>
+<p><b>事实问题：</b>[&quot;工作条件是否包含生产账号或真实数据？终止后谁接管账号、配置、数据和文档？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><p class="status">审核模式：independent_single_agent_public_template_pilot · 覆盖声明：PARTIAL_AUDIT；完整读取页1-18：通知、完整委托开发模板3-16、合作模板封面及说明17-18；其他页仅标题索引，未审核。不得宣称已覆盖8类模板全部内容。；本批已读页：1–18；本批未读页：19–104</p><article data-finding="P05-T01" data-case="P05">
+<h3>P05-T01 · medium · 法务/业务范围</h3>
+<p>2001年汇编需先选模板及核验适用时点</p><blockquote>国科发政字［2001］244 号<small>脱敏文本字符 [35, 51)</small></blockquote><blockquote>附件 1：技术开发(委托)合同 
+附件 2：技术开发(合作)合同 
+附件 3：技术转让(专利申请权)合同 
+附件 4：技术转让(专利权)合同<small>脱敏文本字符 [447, 517)</small></blockquote><blockquote>附件 5：技术转让(专利实施许可)合同 
+附件 6：技术转让(技术秘密)合同 
+附件 7：技术咨询合同 
+附件 8：技术服务合同<small>脱敏文本字符 [529, 593)</small></blockquote>
+<p><b>影响：</b>若将汇编直接当一份当前交易合同，可能混合委托与合作等不同交易，或把历史法律表述当作当前规则。不能据旧引用单独认定合同无效。</p>
+<p><b>修改方向：</b>先分离所需模板并确认交易类型、签署时间、立场与法域，再核验当前法源；保留其他模板为参考，不建立跨模板矛盾。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;拟评估的是委托开发、合作开发还是其他交易？签署/履行时间是什么？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-T02" data-case="P05">
+<h3>P05-T02 · high · 业务/财务/技术履约</h3>
+<p>委托开发需把技术目标、付款、交付和验收绑成可执行里程碑</p><blockquote>第一条  本合同研究开发项目的要求如下：<small>脱敏文本字符 [2398, 2418)</small></blockquote><blockquote>第五条  甲方应按以下方式支付研究开发经费和报酬：<small>脱敏文本字符 [4613, 4638)</small></blockquote><blockquote>第十二条  乙方应当按以下方式向甲方交付研究开发成果： 
+     1．研究开发成果交付的形式及数量：                       
+                                                          。 
+     2．研究开发成果交付的时间及地点：                       
+                                                         。 
+    第十三条  双方确定，按以下标准及方法对乙方完成的研究开发成果进行
+验收：                                                
+                                                              
+                                                         。 
+    第十四条<small>脱敏文本字符 [8390, 8853)</small></blockquote>
+<p><b>影响：</b>模板分别提供栏目，但未预设联动机制。若签署时仍缺客观验收标准及付款触发，双方可能对完成程度、尾款和整改产生争议；空白模板本身不是违法。</p>
+<p><b>修改方向：</b>形成里程碑附件，逐项列明输入依赖、交付物、验收测例/期限、整改复验、付款触发和逾期责任；正文确认附件优先关系。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;付款是否先于验收？验收失败时如何整改和处理已付款？源代码、文档、环境能否独立运行？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-T03" data-case="P05">
+<h3>P05-T03 · high · 法务/争议/业务变更</h3>
+<p>书面协商一致与特定情形沉默视为同意需收紧边界</p><blockquote>第七条  本合同的变更必须由双方协商一致，并以书面形式确定。但有下列情
+形之一的，一方可以向另一方提出变更合同权利与义务的请求，另一方应当在       
+日内予以答复；逾期未予答复的，视为同意：<small>脱敏文本字符 [5738, 5836)</small></blockquote>
+<p><b>影响：</b>第七条同时规定书面一致与逾期不答视为同意。若例外范围和送达证据宽泛，可能在未明确确认时改变费用、范围或工期；该例外并非当然自相矛盾。</p>
+<p><b>修改方向：</b>限定可适用沉默机制的具体非重大事项；价款、IP、范围、工期和责任变更须授权代表明确书面同意；明确到达、回复期限及提醒。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;哪些变更可以沉默同意？通知发给项目联系人是否具有合同变更授权？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-T04" data-case="P05">
+<h3>P05-T04 · high · 技术/信息安全/供应链</h3>
+<p>分包例外与技术资料保密需要联动</p><blockquote>第八条  未经甲方同意，乙方不得将本合同项目部分或全部研究开发工作
+转让第三人承担。但有下列情况之一的，乙方可以不经甲方同意，将本合同项目
+部分或全部研究开发工作转让第三人承担： 
+     1．                                                   ； 
+     2．                                                   ； 
+     3．                                                   ； 
+     4．                                                    。 
+    乙方可以转让研究开发工作的具体内容包括：<small>脱敏文本字符 [6086, 6446)</small></blockquote><blockquote>第十一条  双方确定因履行本合同应遵守的保密义务如下：<small>脱敏文本字符 [7265, 7292)</small></blockquote>
+<p><b>影响：</b>第八条允许约定未经同意的研发转交例外；第十一条保密栏目未自动把该例外中的第三方纳入约束。涉及代码、数据或核心技术时，单纯列保密期限不够支撑外包执行。</p>
+<p><b>修改方向：</b>列明允许转交范围、获准第三方、再分包条件及原受托方责任；关联保密/访问控制/数据用途、存储位置、事件通报、返还删除及验收要求。仅在实际涉及相应数据时适用专项控制。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;是否会外包或使用云/AI工具？谁可以接触甲方材料？是否涉及个人信息、重要数据或跨境访问？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-T05" data-case="P05">
+<h3>P05-T05 · high · 知识产权/技术/商业</h3>
+<p>专利和技术秘密选项未直接解决所有交付及持续使用权</p><blockquote>第十五条  双方确定，因履行本合同所产生的研究开发成果及其相关知识
+产权权利归属，按下列第      种方式处理： 
+    1．          （甲、乙、双）方享有申请专利的权利。 
+    专利权取得后的使用和有关利益分配方式如下：                
+                                                              
+                                                           。 
+    2．按技术秘密方式处理。<small>脱敏文本字符 [9003, 9281)</small></blockquote><blockquote>第十六条  乙方不得在向甲方交付研究开发成果之前，自行将研究开发成
+果转让给第三人。<small>脱敏文本字符 [9782, 9824)</small></blockquote><blockquote>第二十一条  双方确定，甲方有权利用乙方按照本合同约定提供的研究开
+发成果，进行后续改进。由此产生的具有实质性或创造性技术进步特征的新的技
+术成果及其权属， 由      （甲、 乙、 双） 方享有。 具体相关利益的分配办如下：                                    
+                                                            。 
+    乙方有权在完成本合同约定的研究开发工作后，利用该项研究开发成果进行
+后续改进。由此产生的具有实质性或创造性技术进步特征的新的技术成果，归       
+（ 甲 、 乙 、 双 ） 方 所 有 。 具 体 相 关 利 益 的 分 配 办 法 如
+下：                                                    。 
+    第二十二条<small>脱敏文本字符 [11258, 11664)</small></blockquote>
+<p><b>影响：</b>第十五条给出专利/技术秘密及特别约定；第十六条限制交付前对第三方转让，第十九/二十一条另涉培训及改进。软件项目若只勾选其中一个选项，仍需确定软件著作权、背景技术和第三方组件等具体权利，不能把后续改进或交付后转让一概视为被禁止。</p>
+<p><b>修改方向：</b>在特别约定中分清背景/项目/后续成果、软件和文档权利、第三方及开源许可、部署修改和再许可权限、源码与构建材料交付；协调第十四条侵权处置与第十九/二十一条。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;项目是否包含软件？甲方需要所有权还是充分使用许可？交付后能否向竞争对手许可同成果？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P05-T06" data-case="P05">
+<h3>P05-T06 · high · 财务/技术风险/争议解决</h3>
+<p>合理研发失败与解除后的费用及成果处置需明确</p><blockquote>第九条  在本合同履行中，因出现在现有技术水平和条件下难以克服的技
+术困难，导致研究开发失败或部分失败，并造成一方或双方损失的，双方按如下
+
+[PAGE 10]
+约定承担风险损失：                          
+                                                              
+                                                         。 
+    双方确定，本合同项目的技术风险按                          
+                                         的方式认定。认定技术风险的基
+本内容应当包括技术风险的存在、范围、程度及损失大小等。认定技术风险的基
+本条件是： 
+     1． 本合同项目在现有技术水平条件下具有足够的难度； 
+     2． 乙方在主观上无过错且经认定研究开发失败为合理的失败。 
+     一方发现技术风险存在并有可能致使研究开发失败或部分失败的情形时，
+应当在      日内通知另一方并采取适当措施减少损失。 逾期未通知并未采取适
+当措施而致使损失扩大的，应当就扩大的损失承担赔偿责任。 
+    第十条<small>脱敏文本字符 [6594, 7163)</small></blockquote><blockquote>第二十三条  双方确定，出现下列情形，致使本合同的履行成为不必要或
+不可能的，一方可以通知另一方解除本合同； 
+     1．因发生不可抗力或技术风险； 
+     2．                                                         
+     3．                                                           
+    第二十四条<small>脱敏文本字符 [12011, 12230)</small></blockquote>
+<p><b>影响：</b>第九条规定合理技术失败、损失分配和认定；第二十三条允许技术风险导致的不必要/不可能履行解除。若采用模板但未写清证明、已付经费、在研成果及退出交接，解除争议会同时影响现金流和研发继续。</p>
+<p><b>修改方向：</b>区分无过错技术失败与延期/违约；约定独立评估、通知减损、阶段结算/退款、在研代码和资料移交、后续使用权及保密存续。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;技术风险由谁认定？失败时剩余经费如何返还？谁继续使用阶段成果及接管项目？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P05"></textarea></label></section><section id="P06"><h2>P06 — Agreement for Consulting Services</h2>
+<p>设计咨询与保险 · en · 美国密苏里；高校工程设计咨询；公共机构单方模板</p>
+<p><a href="../originals/P06.pdf">原始公开文件</a> · <a href="../sanitized/P06.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>22d392e6c9a18baa61193e52c061b24316dc56391a63b220f99479094468e861</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：已完整阅读脱敏文本字符[0,57716)，含[PAGE 1]至[PAGE 15]、第1—27条及就业合规声明页，分三连续窗口后跨条款核对。单agent多视角试审，非六专家四轮；未验证PDF视觉提取完整性、签章、附件、真实项目参数或全部外国法。仅§431.180官方原文已核验，公共大学适用性仍待确认。公开空白模板，双方代理立场未定；列示条件化审查问题，非违法裁定或完整无遗漏保证。</p><article data-finding="P06-A-001" data-case="P06">
+<h3>P06-A-001 · high · 业务／法务／文档完整性</h3>
+<p>本件为未填写的公共机构模板，不是完整签约包。项目、费用方式和金额尚空；27.0纳入的General Conditions及指定日期Proposal未附在本次单文件中，3.9.2又以General Conditions界定施工管理权限。缺少项目版本及冲突顺序，无法闭合实际范围。</p><blockquote>PROJECT TITLE: 
+MSU PROJECT NUMBER: MSU CONTRACT NUMBER: 
+(The MSU project number is to appear on all documents produced by the Consultant. The contract number shall appear on this agreement.) 
+PROJECT DESCRIPTION: 
+COMPENSATION:  
+Compensation for Basic Services shall be a: (Check One) 
+   Fixed Fee Hourly Not-to-Exceed Percentage of Construction Costs Other 
+In the Amount of: 
+<small>脱敏文本字符 [763, 1145)</small></blockquote><blockquote>3.9.2 Missouri State University  General Conditions  will dictate Administration during the Construction 
+Phase.  The Consultant shall provide for Administration of the Construction Phase and shall advise 
+and consult with the Owner’s Representative and have authority to act on the behalf of the Owner to 
+the extent provided in the General Conditions unless otherwise modified in writing.  
+<small>脱敏文本字符 [19216, 19609)</small></blockquote><blockquote>27.0 This Agreement, by this specific reference, shall include the following supplemental documents: 
+• Missouri State University General Conditions
+• Consultant’s Proposal dated:  and approved: 
+THIS AGREEMENT represents the entire integrated agreement between the Owner and the Consultant and 
+supersedes all prior negotiations, representations, or agreements, either written or oral.  This Agreement may be 
+amended only by written instrument signed by both Owner and Consultant. 
+<small>脱敏文本字符 [55063, 55547)</small></blockquote>
+<p><b>影响：</b>若直接据此签署或出具完整审查结论，双方可能对基本服务、变更授权、权限和费用产生分歧；空白本身不等于模板违法。</p>
+<p><b>修改方向：</b>收齐填写后的封面、报价、对应版本General Conditions及项目设计规范，列明版本、页数、文件优先顺序和书面变更授权人；同步审查附件后再形成交易结论。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;代表Owner还是Consultant？具体项目和计费方式是什么？&quot;, &quot;General Conditions、Proposal及设计指南使用哪个版本，冲突如何解决？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-002" data-case="P06">
+<h3>P06-A-002 · high · 财务／工程业务／责任分配</h3>
+<p>1.0.2除不可抗力外要求超预算后无偿重设计；2.0.3的Construction Cost包含市场及变更预备量，3.7.5.3却禁止报价预备量。4.2再分配设计错误的non-value added变更成本，阈值超过后是全部赔还是只赔超额没有明确。</p><blockquote>1.0.2 The Consultant agrees to accept the Owner’s program and project budget and further agrees to use 
+professional skill and care to accomplish said Project within the intent of the program and established 
+budget.  In the event the Consultant determines that the Project cannot be accomplished within the 
+established budget, they shall notify the Owner’s Representative of this fact in writing, so that the 
+Project scope can be reviewed and modified if necessary. Consequently, should the lowest 
+acceptable bid(s) exceed the funds available, not due to events of force majeure, the Consultant shall 
+be required to redesign or perform such corrective work as necessary to allow the Project to be 
+successfully rebid and constructed within available funds, without additional cost to the Owner. 
+<small>脱敏文本字符 [2179, 2980)</small></blockquote><blockquote>Construction cost also includes a reasonable allowance for contingencies for market conditions at 
+the time of bidding  and for changes in the work during construction; however, it does not include 
+compensation of the Consultant and its Subconsultant or the costs of the land, rights -of-way, 
+financing, or other costs that remain the responsibility of the Owner. 
+<small>脱敏文本字符 [7015, 7382)</small></blockquote><blockquote>3.7.5.3 Updated budget based on Construction Documents Phase.  Budget shall delineate areas 
+of cost and Consultant shall be responsible for project design being within established 
+budget and completion deadlines .  This estimate shall take into account the expected 
+construction start date.  The Consultant shall make no provisions for a bidding contingency 
+in this estimate. 
+<small>脱敏文本字符 [17214, 17595)</small></blockquote><blockquote>4.2 The Consultant will reimburse the Owner for the non-value added cost of change orders due to design errors 
+when the cumulative total non -value added cost of all such change orders exceeds 0.1% of the total 
+construction cost or $1,000, whichever is greater. The non -value added cost of each change order will be 
+determined by the additional cost to the Owner less the value added to the project. Value is added to the 
+project if specifying the correct work in the original construction contract would have res ulted in a greater 
+contract amount.  
+<small>脱敏文本字符 [29189, 29747)</small></blockquote>
+<p><b>影响：</b>市场涨价、业主需求与可归责设计错误的边界不清，可能使顾问承担非其控制的返工；业主也难以统一证明应赔额及避免重复计算。不能把0.1%或1,000美元当作总体责任上限。</p>
+<p><b>修改方向：</b>统一预算基准及允许预备量；约定无偿重设计的归责、轮次和范围，业主变更或市场因素对应费用与工期调整；4.2明示阈值计算、价值增量评估、异议程序和是否仅赔超额，结合25.4责任认定限制解释。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;预算由谁冻结，是否含涨价及施工不可预见费？&quot;, &quot;阈值是免赔额还是触发点，是否另有总责任限制？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-003" data-case="P06">
+<h3>P06-A-003 · medium · 工程合规／时间适用／逻辑</h3>
+<p>1.1列明2018系列规范、NEC 2011及部分非强制例外；3.2又要求符合服务提供时有效的所有适用规范，3.6.2允许业主另行授权。固定版本、动态法律义务和业主授权的层级关系未明确。</p><blockquote>1.1 The Consultant shall design and detail all plans to be in compliance with the following building codes: 
+1.1.1 International Building Code 2018  
+1.1.2 International Fire Code 2018  
+1.1.3 International Mechanical Code 2018 
+1.1.4 International Plumbing Code 2018 
+1.1.5 International Fuel Gas Code 2018 
+1.1.6 International Energy Conservation Code 2018 
+1.1.6.1 Section C405.2 Lighting Controls shall be non-mandatory 
+1.1.6.2 Section C405.4 Exterior Lighting Power Requirements shall be non-mandatory and controls 
+to be approved by MSU 
+1.1.6.3 Section C503.1 General – Renovations to existing buildings can be an exception where it 
+is technically infeasible to conform to the IECC and may be allowed when approved by MSU 
+1.1.7 NEC 2011  
+1.1.8 In addition, all applicable state and federal laws and regulations including but not limited to: 
+1.1.8.1 Section 504 of the Federal Rehabilitation Act of 1973 
+1.1.8.2 The Americans with Disabilities Act (ADA) 
+1.1.8.3 Missouri State Statutes Chapter 8 
+1.1.8.4 Section 8.812 Minimum Energy Efficiency Standards  
+1.1.8.5 Applicable Life Safety Codes shall be incorporated herein by reference. 
+<small>脱敏文本字符 [3189, 4340)</small></blockquote><blockquote>3.2 The Consultant shall provide services for the Project to comply with all applicable federal, state and local laws, 
+statutes, ordinances, codes, orders, rules and regulations  in effect as of the date of services rendered , and 
+shall assist the Owner in obtaining required written approval of all governmental authorities having jurisdiction 
+over the project prior to execution of the contract(s) for construction.  Review or approval of the Consultant’s 
+documents by the Owner shall not relieve the Consultant of any obligations for such compliance or for 
+assistance in obtaining governmental approval.  The Owner shall be responsible for any additional costs due 
+to subsequent retraction or modification of written approval by a governmental authority, unless such retraction 
+or modification is the  result of a negligent error or omission in the Contract Documents discovered after the 
+original approval.  
+<small>脱敏文本字符 [9297, 10218)</small></blockquote><blockquote>3.6.2 The Consultant shall to the best of their knowledge, information and belief comply with all applicable 
+codes, standards and the Owner&#x27;s design guidelines in the preparation of project drawings and 
+specifications, unless otherwise authorized by the Owner. T he Consultant shall acknowledge such 
+action by sealing the contract documents as required by state statute. 
+<small>脱敏文本字符 [14140, 14515)</small></blockquote>
+<p><b>影响：</b>若项目期间适用标准更新或业主指南与主管机关要求不同，可能发生返工、报批迟延及额外费用争议。本试审未核验项目主管机关实际采用版本，不能认定这些旧年份本身违法。</p>
+<p><b>修改方向：</b>由当地持证设计人员确认适用法规、主管机关、版本和例外依据；约定业主授权不能替代法定审批。明确服务期间规范变更的费用和进度机制，并与3.2政府撤回批准责任安排衔接。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;title&quot;: &quot;本项目适用的Missouri及主管机关建筑、电气、能源规范&quot;, &quot;article&quot;: &quot;合同1.1所列版本及例外&quot;, &quot;url&quot;: &quot;&quot;, &quot;checked_at&quot;: &quot;2026-09-07&quot;, &quot;applicability&quot;: &quot;尚缺具体项目、审批机关与实际生效版本；仅提出核验任务&quot;}]</p>
+<p><b>事实问题：</b>[&quot;本项目主管机关采用哪些版本？&quot;, &quot;列示照明、外部照明、改造例外有何适用依据？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-004" data-case="P06">
+<h3>P06-A-004 · high · 财务／争议解决／公共机构适用范围</h3>
+<p>25.0已有月度分阶段付款，比例合计100%；25.3要求报告和业主认可的票据，25.4又以批准发票为到期条件，但没有明确批准时限。其30日利息安排援引431.180，而该法官方文本标题及第一款针对private design or construction work；本合同Owner为公共大学，具体适用或仅合同援引须核实。</p><blockquote>25.0 Consultant’s Payment Schedule – Payments for Consultant’s Basic Services shall be made monthly and will 
+be in proportion to services performed within each phase and will total the following percentages of total 
+compensation: 
+Schematic Design Phase: fifteen percent (15%) 
+Design Development Phase: twenty percent (20%) 
+Construction Documents Phase: thirty-five percent (35%) 
+Bidding Phase: five percent (  5%) 
+Construction Administration Phase: twenty percent (20%) 
+Post Construction: five percent (  5%) 
+Total Basic Compensation: one hundred percent (100%) 
+<small>脱敏文本字符 [52286, 52858)</small></blockquote><blockquote>25.3 Invoices – Payment will be made upon submission of a detailed invoice.  The invoice must include the total 
+fee, a percentage of completion, the previous fees billed and the current fee billing.  Any reimbursable 
+expenses shall be listed separately by line item and  invoices shall contain, or be attached to, documentation 
+that is satisfactory to the Owner  per the terms of Article 10.  Applicable reporting requirements must be met 
+before payment will be made. 
+25.4 Payments, Sums Withheld – No deductions will be made from the Consultant’s compensation on account of 
+penalty, liquidated damages, or other sums withheld from payments to Contractor(s) , or on account the cost 
+of changes in the Work other than those for which the Consultant has been adjudged to be liable.  Payments 
+are due and payable upon receipt of an approved Consultant’s invoice.  An amount unpaid 30 days after the 
+invoice date shall bear reasonable interest from the date payment is due in accordance with Chapter 431.180, 
+RSMo. 
+<small>脱敏文本字符 [53510, 54532)</small></blockquote>
+<p><b>影响：</b>批准迟延可能影响现金流和利息起算；不能声称本件没有付款安排，也不能直接将法定1.5%月利率自动套用公共大学交易。25.4限制因施工方罚款扣顾问款，是现有保护，仍需与18.0终止抵扣协调。</p>
+<p><b>修改方向：</b>规定完整发票收到、异议通知、认可和付款的期限，争议部分与无争议部分分开；当地律师核实公共机构规则及431.180适用，明确约定利息口径、起算点以及18.0抵扣程序。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;verified&quot;, &quot;title&quot;: &quot;Missouri Revised Statutes §431.180&quot;, &quot;article&quot;: &quot;1、2、4&quot;, &quot;url&quot;: &quot;https://revisor.mo.gov/main/OneSection.aspx?bid=24144&amp;section=431.180&quot;, &quot;checked_at&quot;: &quot;2026-09-07&quot;, &quot;applicability&quot;: &quot;官方原文已查阅；限定private design/construction并规定法院可裁量利息与费用。是否适用于本公共大学具体交易仍未确认，不能以原文核验替代适用结论。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;批准通常由谁完成、多少天？&quot;, &quot;431.180在该公共机构交易中的适用依据，还是作为双方约定计算规则？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-005" data-case="P06">
+<h3>P06-A-005 · medium · 保险／财务／风险管理</h3>
+<p>14.0保险仅明确维持协议期间；14.3专业责任写成每次索赔或年度累计100万美元，未交代保单是claims-made还是occurrence、追溯日及终止后保障。14.6要求30日取消通知，但尚无实际保单确认能否提供。</p><blockquote>14.0 The Consultant shall provide and maintain, during the life of the Agreement, insurance acceptable to the 
+Owner which will afford protection and coverage in accordance with the requirements set forth below. 
+<small>脱敏文本字符 [35983, 36196)</small></blockquote><blockquote>14.3 Professional Liability Insurance will be provided by the Consultant to cover claims arising out of the negligent 
+acts, errors and omissions by the Consultant or anyone employed by them. The coverage provided shall not 
+be less than $1,000,000  per claim or annual aggregate . The Consultant shall require its Subconsultant 
+similarly to provide Professional Liability coverage.   
+<small>脱敏文本字符 [37730, 38117)</small></blockquote><blockquote>14.6 The Consultant shall furnish the Owner with certificates, policies, or binders which indicate the Consultant 
+and/or the Owner and other Consultants (where required) are covered by the required insurance showing 
+type, amount, class of operations covered, e ffective dates and dates of expiration of policies prior to 
+commencement of the work. All certificates, policies, or binders shall give Missouri State University thirty (30) 
+day&#x27;s written notice before cancellation.  
+14.7 Upon receipt of any notice of cancellation, the Consultant shall, within ten (10) days, procure other policies of 
+insurance similar in all respects to the policy or policies about to be canceled or altered; and if the Consultant 
+fails to provide, procure a nd deliver acceptable policies of insurance or satisfactory certificates or other 
+evidence thereof, the Owner may obtain such insurance at the cost and expense of the Consultant without 
+notice to the Consultant.  
+<small>脱敏文本字符 [39085, 40048)</small></blockquote>
+<p><b>影响：</b>若采用claims-made且合同结束后不续保或无延长报告期，后发现设计缺陷的可赔性可能下降；累计额可能被其他项目消耗。保险限额不是合同赔偿上限，不能把两者混同。</p>
+<p><b>修改方向：</b>获取实际保单及批单，明确每次/累计限额、免赔额、追溯日及按项目风险确定的后续维持或延长报告期；验证取消通知可执行性，并核对分顾问保障和合同义务与承保范围。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;专业责任保单采用何种触发方式，是否已有追溯保障？&quot;, &quot;保险公司能否实际承诺通知及要求的保单条款？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-006" data-case="P06">
+<h3>P06-A-006 · medium · 知识产权／信息交付／技术业务</h3>
+<p>13.0保留顾问及分顾问著作权，并明确业主可对本项目复制、修改和维修，且未经顾问确认使用自担风险；3.10.1同时要求交付可编辑DWG、CTB及外部引用。“仅本项目”与后续扩建的边界、第三方素材许可和完整交付的权利链尚需项目化确认。</p><blockquote>13.0 Drawings, specifications and other documents, including those in electronic form, prepared by the Consultant 
+and its Subconsultants are Instruments of Service for use solely with respect to the Project.  The Consultant 
+and its Subconsultants shall be deemed the authors and owners of their respective Instruments of Service 
+and shall retain all common law, statutory and other reserved rights, including copyrights.  Neither the Owner 
+nor the Consultant or its Subconsultants shall use the documents produced pur suant to the Agreement for 
+any other Project.  However, the Owner may use , including copy, modify and amend such Instruments of 
+Service at any time including but not limited to expanding, correct ing any deficiencies to, or making  any 
+renovations or repairs to the Project.  Any such use without written verification or adaptation by the Consultant 
+for the specific purpose intended shall be at the user’s sole risk and without liability or legal exposure to the 
+Consultant or its independent Contractors or Consultants. 
+<small>脱敏文本字符 [34908, 35959)</small></blockquote><blockquote>3.10.1 As part of the basic services, Consultant shall provide Owner with an electronic set of Record 
+Drawings and two sets of prints that reflect as -built conditions.  These plans shall incorporate all 
+changes.  Reference to a separate document is not allowed. Each sheet of the plans shall be clearly 
+labeled “Record Drawings” and show the date revised.  One example sheet of the Consultant’s format 
+is to be submitted for Owner’s approval before proceeding with entire set.   All drawings and details 
+shall be prepared utilizing AutoCAD application programs and be compatible with the latest version 
+of AutoCAD.   The Consultant must deliver files in .dwg format along with Consultant’s .ctb file 
+showing standard layers and line weights along with any associated external references.   Along with 
+the electronic AutoCAD files, a copy of these documents shall also be provided in .pdf format.  The 
+.pdf format files shall be indexed according to the drawing set and shall be named according to the 
+name of the sheet.  Reasonable  effort shall be made to insure accuracy.   The Consultant shall 
+provide these documents within twenty -eight (28) calen dar days of the receipt of the marked up 
+drawings from the Contractor.   
+<small>脱敏文本字符 [27319, 28559)</small></blockquote>
+<p><b>影响：</b>业主已有较广本项目使用权，不能误报为没有许可。但若第三方库、分顾问文件或后续承包人参与未被覆盖，可能影响维修交接；顾问可能面对文件经他人修改后来源责任争议。</p>
+<p><b>修改方向：</b>列明本项目扩建、维修及受托第三方的许可边界，核实分顾问和第三方文件授权；交付清单固定文件版本、外部引用、完整性校验、传输访问权限，区分原始设计责任与后续未核验修改责任。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;项目是否涉及BIM或第三方库？&quot;, &quot;后续维修/扩建单位需要何种文件访问和再利用权限？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-007" data-case="P06">
+<h3>P06-A-007 · high · 业务连续性／财务／解除与工期</h3>
+<p>17允许业主停工并尽快选择续行、延长或终止，17.2已给予非顾问原因停复工的合理追加报酬；18.0又允许资金不足或阶段末七日前邮寄通知终止。未明确暂停最长期、复工通知及工期调整、可纠正违约补救安排和不可撤销分包成本结算。</p><blockquote>17.1 As soon as feasible, after a Notice for Interruption of Work has been issued, the Owners Representative shall 
+take appropriate action to (1) Terminate the contract; (2) Cancel the Interruption of Work; or (3) Extend the 
+period of the interruption if it is deemed necessary. 
+17.2 Upon written approval of the Owners Representative, the Owner shall pay all payments due to the Consultant 
+for services completed, up until the time of Interruption. Consultant’s contract with the Owner shall remain 
+valid through an Interruption of Work until such time that a Termination is necessary.   Consultant shall have 
+
+[PAGE 12]
+Planning, Design and Construction February 1, 2010 
+Missouri State University Page 12 of 15 
+Agreement for Consulting Services Rev March 1, 2026
+the right to reasonable compensation for additional services due to the interruption of work and subsequent 
+resumption of work if due to no fault of the Consultant. 
+<small>脱敏文本字符 [43542, 44482)</small></blockquote><blockquote>18.0 This Agreement may be terminated by the Owner’s Representative upon mailing notice of termination to the 
+Consultant at least seven (7) days in advance of the date of termination if the Consultant substantially fails to 
+perform according to the terms and conditions of this Agreement in the opinion of the Owner’s Representative 
+or funds for the Project are not appropriated or are insufficient to proceed with the Project.  The Owner’s 
+Representative may also terminate this Agreement by the same procedure at th e end of any phase or part 
+thereof as set forth in this Agreement.  In the event of termination, the Consultant shall be paid his 
+compensation for services performed up until the date of termination subject to amounts withheld to satisfy 
+any amount due the Owner by reasons of any prior default of the Consultant or otherwise. 
+<small>脱敏文本字符 [44509, 45362)</small></blockquote>
+<p><b>影响：</b>顾问可能长期保留资源、承担分包取消费而无法确定补偿程序；业主可能因停复工后的人员重配和文件交接不明影响续建。不能误称无任何停工补偿或把公共资金退出条款直接判为违法。</p>
+<p><b>修改方向：</b>约定暂停期限、复工准备期与里程碑重排、追加报酬确认程序；对可补救违约规定适当整改路径；对资金或便利终止列明已完成服务、不可撤销合理成本、交接成果及抵扣争议处理。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;项目资金是分年度拨款还是已全额落实？&quot;, &quot;分顾问采购存在不可取消承诺吗，最长可接受暂停多久？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P06-A-008" data-case="P06">
+<h3>P06-A-008 · high · 争议解决／证据／程序期限</h3>
+<p>16.0将大学建筑师关于工作质量、数量或价值的决定设为最终约束，顾问须在决定后30日书面申请调解才提出异议；起算送达、异议范围和调解期间其他期限如何处理未细化。16.1另保留公共主体豁免。</p><blockquote>16.0 In order to prevent all disputes or disagreements between the parties to this Agreement in relation to the 
+performance on the part of the Consultant, it is expressly agreed and understood that in case any  controversy 
+or difference of opinion shall arise b etween the parties as to the quality, quantity or value of the Work, the 
+decision of the University Architect shall be final and binding on all parties, unless the Consultant pursues the 
+mediation procedure set forth below by  written request within 30 days of the determination of the University 
+Architect. Such disputes shall be decided in the courts unless the parties agree in writing to 
+arbitration.  Notwithstanding anything to the contrary contained in the contract documents, in the event a 
+dispute shall arise between the Owner and the Consultant regarding the performance on the part of the 
+Consultant, the Consultant agrees to participate in one mandatory non-binding mediation session prior to filing 
+a lawsuit.  The parties involved agree to split the costs of the mediation.  The mediation shall be administered 
+by a mediator appointed by the Missouri Bar Association’s alternative dispute resolution comm ittee, unless 
+the parties agree to another mediator.   If a resolution of the dispute cannot be reached in the mediation, the 
+parties are free to pursue any other alternative of resolving the dispute which they choose, whether it be 
+arbitration, litigation, or some other means. 
+16.1 Any lawsuit to enforce this Agreement shall be brought in the Circuit Court of Greene County, Missouri.  A 
+prevailing party will be entitled to its court costs and expenses, including a reasonable attorney’s fee.  Nothing 
+in this Agreement shall be construed to waive any sovereign, governmental, or official immunity applicable to 
+any party, its officers or employees. 
+<small>脱敏文本字符 [40851, 42705)</small></blockquote>
+<p><b>影响：</b>若顾问未及时识别决定性质或书面提出异议，可能面临合同上权利受限争议；业主也可能因通知证据不足产生程序争议。该安排有效性、可诉范围及豁免效果需当地律师核实，不能直接断言有效或无效。</p>
+<p><b>修改方向：</b>明确决定须书面说明理由并送达指定联系人，区分临时项目指示与触发30日期限的最终决定；写明调解请求提交渠道、收悉证据及期限安排，保留依法可主张的救济，并审查豁免与费用承担的影响。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;哪些决定启动30日，收件及送达证据如何留存？&quot;, &quot;Missouri律师如何判断该决定机制、豁免和诉前调解的效力？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P06"></textarea></label></section><section id="P07"><h2>P07 — Auburn Mutual Nondisclosure Agreement</h2>
+<p>保密与科研合作 · en · 美国阿拉巴马；高校双向NDA，包含出口管制及备份保留；模板v1.31.24，生效栏预印2025需核验</p>
+<p><a href="../originals/P07.pdf">原始公开文件</a> · <a href="../sanitized/P07.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>9cdd7967eb1cff15766e1413d91166487f2bb5cced82ea3c654a440d9b248f43</code></p>
+<p class="status">审核模式：independent_single_agent_public_template_pilot · 覆盖声明：SINGLE_AGENT_TEXT_READ；全文文字层已读；非六专家四轮，未做全PDF视觉核验/当地法源核验；不保证穷尽风险。；本批已读页：1–4</p><article data-finding="P07-N01" data-case="P07">
+<h3>P07-N01 · high · 业务/保密期限</h3>
+<p>保密保护从生效日计算，并非每次披露或终止后重新起算</p><blockquote>The Receiving Party’s obligation to maintain 
+the confidentiality of Disclosing Party’s Confidential Information shall survive any expiration or 
+termination of this Agreement for three (3) years from the Effective Date.  The parties represent that they 
+will not disclose any trade secrets under this Agreement.<small>脱敏文本字符 [1564, 1876)</small></blockquote><blockquote>12. The term of this Agreement shall be one (1) year from the Effective Date.  Either party may terminate this 
+Agreement upon thirty (30) days written notice to the other party at the address referenced in the Preamble 
+of this Agreement.<small>脱敏文本字符 [7381, 7620)</small></blockquote>
+<p><b>影响：</b>第1条固定Effective Date后三年，第12条一年合同期并引用第1条。对临近到期披露的信息，剩余保护期更短；不能误读为终止后再保护三年。</p>
+<p><b>修改方向：</b>按双方业务保密生命周期明确起算点；如需按披露/终止计算，统一第1条、第12条及通知终止安排。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;最晚何时披露？希望保护多久？预印2025生效年份是否适用于新交易？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P07-N02" data-case="P07">
+<h3>P07-N02 · high · 知识产权/业务适配</h3>
+<p>双方承诺不披露trade secrets，不能直接当核心商业秘密交换协议使用</p><blockquote>will not disclose any trade secrets under this Agreement.<small>脱敏文本字符 [1819, 1876)</small></blockquote>
+<p><b>影响：</b>模板一般保密定义较广，但第1条另明确排除计划中的商业秘密披露。拟交换核心算法、源代码或配方时，交易事实可能与该承诺不符；不在此判断美国法上的商业秘密分类。</p>
+<p><b>修改方向：</b>披露前让相关法域专家判断材料性质；若需交换商业秘密，另行协商匹配的协议/条款与访问机制，不以文件标confidential替代适用性判断。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;资料是否构成trade secrets？是否仅进行非核心信息的初步讨论？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P07-N03" data-case="P07">
+<h3>P07-N03 · medium · 信息安全/数据生命周期</h3>
+<p>档案及备份例外需要可验证的留存期限与限制</p><blockquote>3. Confidential Information disclosed by one Party to the other shall remain the property of the Disclosing 
+Party, and shall be returned to the Disclosing Party, or destroyed by the Receiving Party, upon written 
+request of the Disclosing Party. The Receiving Party may, however, retain one archival copy of the 
+Confidential Information for the purpose of determining its obligations hereunder or for legal compliance 
+purposes. Notwithstanding the foregoing provisions hereof, Confidential Information that is stored on 
+routine back-up media solely for the purpose of disaster recovery shall not be required to be destroyed; 
+provided that such information will be subject to destruction in due course, and that employees are 
+precluded from accessing such information in the ordinary course of business prior to destruction.<small>脱敏文本字符 [2446, 3275)</small></blockquote>
+<p><b>影响：</b>第3条已要求备份日常不可访问且后续删除，不宜误报为没有删除义务。但in due course没有具体周期，档案副本也需与第1条有限期限及实际恢复流程协调。</p>
+<p><b>修改方向：</b>明确留存目的、最长备份轮换周期、受控恢复/再次隔离或删除、访问审计及适当证明；法律留存与技术备份分别约定。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;备份多久覆盖？恢复后如何删除？档案副本谁可访问、保密期后如何处理？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P07-N04" data-case="P07">
+<h3>P07-N04 · medium · 信息安全/第三方履约</h3>
+<p>第三方need-to-know已有约束，但责任与事件处置还需匹配风险</p><blockquote>5. The Receiving Party shall use reasonable efforts to disclose Confidential Information received by it only  
+to those of its employees, agents, representatives, or related third parties who must be so informed to 
+enable that party to accomplish the Purpose and who have been provided a copy of this fully executed 
+Agreement and are bound by that Party&#x27;s obligations of confidentiality hereunder, or have entered into a 
+confidentiality agreement with terms at least as restrictive as those herein.<small>脱敏文本字符 [4271, 4772)</small></blockquote>
+<p><b>影响：</b>第5条明确第三方需知且受保密约束，是现有保护。全文未见可操作的安全事件通报时限、协作/补救流程或明确的第三方违约责任承担方式；这些是否需要取决于信息和接收方环境。</p>
+<p><b>修改方向：</b>对敏感材料约定获准接收方类别、转交记录、第三方义务传递和违约承担；补充事件通知、控制扩散及协作规则，避免仅依赖reasonable efforts。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;related third parties具体包括谁？能否用外部云和AI服务处理？事件责任如何分配？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P07-N05" data-case="P07">
+<h3>P07-N05 · high · 跨境/出口管制/交易范围</h3>
+<p>出口受控或涉密材料不在当前交换计划内，修改合同不等于获得监管许可</p><blockquote>15. No disclosure or transfer of information, software, source code, equipment or materials identified on a US 
+export control list (“Export Control-Listed Material”), such as the Commerce Control List at 15 CFR 774 
+and the US Munitions List at 22 CFR 121, is planned under this Agreement. In addition, no disclosure of 
+any information that is subject to a security classification (“Classified Information”) is planned under this 
+Agreement. Neither Export Control -Listed Material nor Classified Information will be disclosed or 
+transferred without prior written amendment of this Agreement.<small>脱敏文本字符 [8667, 9262)</small></blockquote><blockquote>11. This Agreement shall be construed, interpreted, and governed in accordance with and under the 
+jurisdiction of the laws of the State of Alabama, USA, notwithstanding the residence or principal place of 
+business of any Party, the place where this Agreement may be executed by any Party, or the provisions of 
+any jurisdiction&#x27;s conflict-of-laws principles.<small>脱敏文本字符 [6998, 7358)</small></blockquote>
+<p><b>影响：</b>第15条已明确禁止未经书面修订的受控/涉密材料转移；第11条约定Alabama法。若实际合作跨境或涉及源代码/设备，先核对交易与声明是否一致；未核验出口分类和外国法，不作违法判断。</p>
+<p><b>修改方向：</b>由具相应法域能力的专家确认参与方、材料分类、访问地点、许可及其他限制，再决定是否能修订/披露；不要把签署修订条款当作监管审批替代。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;是否有中国或其他境外人员远程访问？材料是否完成出口分类？争议解决场所是否另需明确？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P07-N06" data-case="P07">
+<h3>P07-N06 · medium · 业务/技术验证/责任</h3>
+<p>as-is条款适合初步评估，但不能替代交付准确性承诺</p><blockquote>13. The CONFIDENTIAL Information is provided on an “as is” condition. THE Disclosing Party makes no 
+warranties, expressly, impliedly or otherwise, and shall not HAVE ANY LIABILITY, DIRECT OR 
+INDIRECT, TO THE RECEIVING PARTY FOR ANY DAMAGES THAT MAY RESULT FROM the 
+accuracy, completeness, OR utility of the CONFIDENTIAL Information.<small>脱敏文本字符 [7841, 8176)</small></blockquote><blockquote>4. The disclosure of Confidential Information by one Party to the other shall not constitute a grant by the 
+Disclosing Party to the Receiving Party of any species of right, title, interest, or property in or to 
+Confidential Information other than the right to evaluate such Confidential Information for the Purpose. 
+No license or other right under any U.S. or foreign patent, copyright, or know-how is granted or implied<small>脱敏文本字符 [3279, 3702)</small></blockquote>
+<p><b>影响：</b>第13条对信息准确性/完整性/效用不作保证并排除相关损失责任；第4条不给许可、声明不形成合作关系。若接收方直接用于生产或依赖结果投资，可能超出这份NDA的商业安排。</p>
+<p><b>修改方向：</b>将用途限定为约定评估；进入测试、采购、研发或许可阶段时另签相应协议，明确可依赖的指标、授权、保证、验收和责任。是否需要调整免责由当地律师确认。</p>
+<p><b>依据及待核实：</b>{&quot;status&quot;: &quot;unverified&quot;, &quot;type&quot;: &quot;contract_text_and_conditional_commercial_analysis&quot;, &quot;note&quot;: &quot;本轮未检索核验现行适用法律/司法解释/外国法；文本观察不等于违法或无效判断。&quot;}</p>
+<p><b>事实问题：</b>[&quot;接收方会据此生产部署或作投资决策吗？何时切换到正式研发/许可/采购合同？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P07"></textarea></label></section><section id="P08"><h2>P08 — 郑州市住房租赁合同范本</h2>
+<p>住房租赁 · zh-CN · 中国河南郑州；2025公开住宅租赁空白模板</p>
+<p><a href="../originals/P08.pdf">原始公开文件</a> · <a href="../sanitized/P08.txt">审核所用脱敏文本</a></p>
+<p>原件 SHA256：<code>bf4a35bf6febd01bdb9dace82e0f680ccb7d611726a57e0296bfe6295ea189d0</code></p>
+<p class="status">审核模式：single-agent multi-perspective pilot · 覆盖声明：已阅读10页全部不同正文与附件内容；重复水印以相同内容折叠显示检查，原审核文件保留水印及坐标。本文为公开空白模板，中立双向、具体事实未知；未做六专家四轮、地方新规全面核验或原件全面视觉验收。</p><article data-finding="P08-M-001" data-case="P08">
+<h3>P08-M-001 · high · business/legal/dispute</h3>
+<p>提前收回/退租条款规定通知加违约金，与第九条列举解除事由并存。需澄清这是约定提前退出权，还是仅约定违约后果；不能默认支付违约金即可无条件解除。</p><blockquote>（一）经双方当事人协商一致，可以解除本合同。本合同的解除应当采用书面形
+式。<small>脱敏文本字符 [12769, 12807)</small></blockquote><blockquote>（三）除本合同第九条约定情形外，租赁期内出租人需提前收回房屋的，或承租
+人需提前退租的，应至少提前【 】日书面通知对方，按月租金的【 】%向对方支付
+违约金。出租人应退还承租人已交纳且未发生的租金及费用。<small>脱敏文本字符 [15482, 15584)</small></blockquote>
+<p><b>影响：</b>双方可能对租期稳定性、通知效力和持续支付义务有不同预期。</p>
+<p><b>修改方向：</b>明确是否赋予约定退出权、适用条件、生效节点、交接及租金押金清算；如不赋权，明确赔偿约定不自动授予退出权。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;双方是否希望赋予便利退出权，还是仅处理违约？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P08-M-002" data-case="P08">
+<h3>P08-M-002 · medium · finance/dispute</h3>
+<p>押金已有返还期限，不能误报完全没有期限；但抵扣范围含其他费用，若对损坏、折旧或费用存在争议，缺少无争议余额先返还及扣款证明机制。</p><blockquote>除抵扣租金、违约金以及其他费用外，出租人应当自承租人返还住房 【3】
+【 】个工作日内向承租人退还剩余押金、租金。<small>脱敏文本字符 [15302, 15359)</small></blockquote><blockquote>租赁期满或合同解除后，双方当事人应当对房屋和附属物品、设施设备及
+水电气热等使用情况进行交验，结清相关费用。<small>脱敏文本字符 [7558, 7612)</small></blockquote>
+<p><b>影响：</b>交验争议可能扩大为押金整体扣留，或出租人难以证明扣款依据。</p>
+<p><b>修改方向：</b>在现有返还条款上补充扣款清单、凭证、正常损耗标准、异议期限和无争议部分先行返还规则。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;是否附带入住房况照片、设备年限及费用结清凭证？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P08-M-003" data-case="P08">
+<h3>P08-M-003 · medium · business/safety</h3>
+<p>维修条款已有逾期代修及租金调整，不应误报救济缺失；但一个统一的待填维修期限未区分紧急安全事件和一般维修。</p><blockquote>出租人应当在接到承租人通知后【 】
+日内进行维修。逾期不维修的，承租人可代为维修，费用由出租人承担。<small>脱敏文本字符 [10422, 10472)</small></blockquote><blockquote>因维修、更
+换致使承租人无法使用该房屋的，应当相应减少租金或延长租赁期。<small>脱敏文本字符 [10472, 10508)</small></blockquote>
+<p><b>影响：</b>漏水、燃气等紧急情形可能无法等待普通维修期限，双方事后可能争议费用及必要性。</p>
+<p><b>修改方向：</b>区分紧急联络、应急处置和普通维修时限，约定留证及费用核对；保留已有代修和租金调整机制。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;房屋是否有需要专项应急安排的设备或已知隐患？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P08-M-004" data-case="P08">
+<h3>P08-M-004 · low · language/business</h3>
+<p>提取文字出现“恢复原甲方状”，疑似模板笔误或提取错误，应核对原件后处理；不能未经视觉核验认定原件有错。</p><blockquote>出租人并可要求承租人将房屋恢复原甲方状或赔偿相应损失。<small>脱敏文本字符 [15454, 15481)</small></blockquote>
+<p><b>影响：</b>恢复标准表述不清，可能增加交验解释成本。</p>
+<p><b>修改方向：</b>核对PDF对应位置；若原件确如此，将文字订正为双方确认的恢复标准，并与正常损耗、装修处置衔接。</p>
+<p><b>依据及待核实：</b>[]</p>
+<p><b>事实问题：</b>[&quot;原件是否确为该文字？恢复基准是否以交付确认书和照片为准？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article><article data-finding="P08-M-005" data-case="P08">
+<h3>P08-M-005 · medium · compliance/finance</h3>
+<p>模板区分普通收款和从事转租业务企业的监管账户；如主体类型选错，后续可能使用错误支付路径。当前空白不等于已经违规付款。</p><blockquote>（一）直接交入出租人（个人/机构）账户<small>脱敏文本字符 [9763, 9782)</small></blockquote><blockquote>（二）出租人为从事转租业务的住房租赁企业，承租人通过出租人在本市商业银
+行开立的全市唯一的住房租赁交易资金监管专用账户付款<small>脱敏文本字符 [9838, 9899)</small></blockquote>
+<p><b>影响：</b>承租人可能把款项汇入业务人员或非约定账户，出租方也可能无法准确核对履行。</p>
+<p><b>修改方向：</b>核实出租方是否属于转租企业，按实际适用规则选择账户；支付前校验收款主体和账户，变更通过约定渠道确认。</p>
+<p><b>依据及待核实：</b>[{&quot;status&quot;: &quot;unverified&quot;, &quot;title&quot;: &quot;郑州住房租赁资金监管适用规则&quot;, &quot;article&quot;: &quot;待当地专业人员核实当前版本及主体条件&quot;, &quot;url&quot;: &quot;&quot;, &quot;applicability&quot;: &quot;本项基于模板自身的两种账户路径；未将模板表述作为已核验现行法结论。&quot;}]</p>
+<p><b>事实问题：</b>[&quot;出租方是否为从事转租业务的企业？账户与备案信息是否一致？&quot;]</p>
+
+<label>人工裁定 <select data-field="decision"><option value="">未裁定</option><option>支持</option><option>部分支持</option><option>不支持</option><option>待补事实</option></select></label>
+<label>人工风险等级 <select data-field="severity"><option value="">未裁定</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></label>
+<label>法源、修正意见与理由<textarea data-field="notes"></textarea></label></article>
+<label>人工新增遗漏、整体评价、附件/提取问题<textarea data-case-note="P08"></textarea></label></section><script>
+document.getElementById('export').addEventListener('click',()=>{
+ const judgments=[...document.querySelectorAll('article[data-finding]')].map(el=>({case_id:el.dataset.case,finding_id:el.dataset.finding,...Object.fromEntries([...el.querySelectorAll('[data-field]')].map(x=>[x.dataset.field,x.value]))}));
+ const case_notes=[...document.querySelectorAll('[data-case-note]')].map(el=>({case_id:el.dataset.caseNote,notes:el.value}));
+ const report={schema_version:1,reviewer:document.getElementById('reviewer').value,exported_at:new Date().toISOString(),package_manifest:{"schema_version": 1, "cases": 8, "review_records": 9, "findings": 65, "cross_reviewed_findings": 9, "quote_validation": "passed", "human_adjudication": "pending", "manifest_sha256": "10050e31b7607e969699c5eeef563b5b54e1e461bfc0bce6e96fa2d13c52c8f0", "review_files": {"batch-a.json": "da1a2a5e8895c14fcc4915321974d24b1a78d9ef0d9d22c3fa4cfd0e412029ba", "batch-construction.json": "d19b1b52d84970526842d9521067773cfa92713a5675f859f808f7ffff83e859", "batch-consulting.json": "dbd7b4bfc0f8e75c18441751e3194f7bc49c969f6ee0ba0af8210f52cc5c7395", "batch-main.json": "a940d0e313f2972396c67a2480bdded1713c6ccaf10df5f87de7198987910f03", "batch-tech-continuation.json": "1ca141dfcb5a8efa302b9326d39c0b81031354b33b974682f24f35a4f41ac5c8", "batch-tech-nda.json": "02700144eb47aafd422c9112cd1bf8650753f572b9bc6d39eaf93fec5834d4e0"}, "cross_review_files": {"P04.json": "670949414e3f40b523b7caa11791225c8701489657e72b65a71cd609d2ab9a5f"}},judgments,case_notes};
+ const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='human-adjudication.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});</script></html>

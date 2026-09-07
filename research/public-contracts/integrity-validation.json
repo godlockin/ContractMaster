@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "downloaded_files": 8,
+  "pages": 300,
+  "source_bytes_and_sanitized_sha256": "8/8",
+  "pilot_reviews": 2,
+  "pilot_findings": 12,
+  "exact_evidence_validated": 23,
+  "limits": "File integrity only; no full OCR/layout/privacy/semantic/legal or multi-agent acceptance."
+}

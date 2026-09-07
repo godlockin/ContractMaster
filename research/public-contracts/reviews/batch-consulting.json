@@ -1,0 +1,250 @@
+{
+  "reviews": [
+    {
+      "case_id": "P06",
+      "input_sha256": "fe913497936fcae6d307aba512a09ffcc78f7d69edd97b6090e9bca08129f429",
+      "review_mode": "single-agent multi-perspective pilot",
+      "coverage": "已完整阅读脱敏文本字符[0,57716)，含[PAGE 1]至[PAGE 15]、第1—27条及就业合规声明页，分三连续窗口后跨条款核对。单agent多视角试审，非六专家四轮；未验证PDF视觉提取完整性、签章、附件、真实项目参数或全部外国法。仅§431.180官方原文已核验，公共大学适用性仍待确认。公开空白模板，双方代理立场未定；列示条件化审查问题，非违法裁定或完整无遗漏保证。",
+      "findings": [
+        {
+          "id": "P06-A-001",
+          "severity": "high",
+          "perspective": "业务／法务／文档完整性",
+          "risk": "本件为未填写的公共机构模板，不是完整签约包。项目、费用方式和金额尚空；27.0纳入的General Conditions及指定日期Proposal未附在本次单文件中，3.9.2又以General Conditions界定施工管理权限。缺少项目版本及冲突顺序，无法闭合实际范围。",
+          "impact": "若直接据此签署或出具完整审查结论，双方可能对基本服务、变更授权、权限和费用产生分歧；空白本身不等于模板违法。",
+          "suggestion": "收齐填写后的封面、报价、对应版本General Conditions及项目设计规范，列明版本、页数、文件优先顺序和书面变更授权人；同步审查附件后再形成交易结论。",
+          "evidence": [
+            {
+              "quote": "PROJECT TITLE: \nMSU PROJECT NUMBER: MSU CONTRACT NUMBER: \n(The MSU project number is to appear on all documents produced by the Consultant. The contract number shall appear on this agreement.) \nPROJECT DESCRIPTION: \nCOMPENSATION:  \nCompensation for Basic Services shall be a: (Check One) \n   Fixed Fee Hourly Not-to-Exceed Percentage of Construction Costs Other \nIn the Amount of: \n",
+              "start": 763,
+              "end": 1145
+            },
+            {
+              "quote": "3.9.2 Missouri State University  General Conditions  will dictate Administration during the Construction \nPhase.  The Consultant shall provide for Administration of the Construction Phase and shall advise \nand consult with the Owner’s Representative and have authority to act on the behalf of the Owner to \nthe extent provided in the General Conditions unless otherwise modified in writing.  \n",
+              "start": 19216,
+              "end": 19609
+            },
+            {
+              "quote": "27.0 This Agreement, by this specific reference, shall include the following supplemental documents: \n• Missouri State University General Conditions\n• Consultant’s Proposal dated:  and approved: \nTHIS AGREEMENT represents the entire integrated agreement between the Owner and the Consultant and \nsupersedes all prior negotiations, representations, or agreements, either written or oral.  This Agreement may be \namended only by written instrument signed by both Owner and Consultant. \n",
+              "start": 55063,
+              "end": 55547
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "代表Owner还是Consultant？具体项目和计费方式是什么？",
+            "General Conditions、Proposal及设计指南使用哪个版本，冲突如何解决？"
+          ]
+        },
+        {
+          "id": "P06-A-002",
+          "severity": "high",
+          "perspective": "财务／工程业务／责任分配",
+          "risk": "1.0.2除不可抗力外要求超预算后无偿重设计；2.0.3的Construction Cost包含市场及变更预备量，3.7.5.3却禁止报价预备量。4.2再分配设计错误的non-value added变更成本，阈值超过后是全部赔还是只赔超额没有明确。",
+          "impact": "市场涨价、业主需求与可归责设计错误的边界不清，可能使顾问承担非其控制的返工；业主也难以统一证明应赔额及避免重复计算。不能把0.1%或1,000美元当作总体责任上限。",
+          "suggestion": "统一预算基准及允许预备量；约定无偿重设计的归责、轮次和范围，业主变更或市场因素对应费用与工期调整；4.2明示阈值计算、价值增量评估、异议程序和是否仅赔超额，结合25.4责任认定限制解释。",
+          "evidence": [
+            {
+              "quote": "1.0.2 The Consultant agrees to accept the Owner’s program and project budget and further agrees to use \nprofessional skill and care to accomplish said Project within the intent of the program and established \nbudget.  In the event the Consultant determines that the Project cannot be accomplished within the \nestablished budget, they shall notify the Owner’s Representative of this fact in writing, so that the \nProject scope can be reviewed and modified if necessary. Consequently, should the lowest \nacceptable bid(s) exceed the funds available, not due to events of force majeure, the Consultant shall \nbe required to redesign or perform such corrective work as necessary to allow the Project to be \nsuccessfully rebid and constructed within available funds, without additional cost to the Owner. \n",
+              "start": 2179,
+              "end": 2980
+            },
+            {
+              "quote": "Construction cost also includes a reasonable allowance for contingencies for market conditions at \nthe time of bidding  and for changes in the work during construction; however, it does not include \ncompensation of the Consultant and its Subconsultant or the costs of the land, rights -of-way, \nfinancing, or other costs that remain the responsibility of the Owner. \n",
+              "start": 7015,
+              "end": 7382
+            },
+            {
+              "quote": "3.7.5.3 Updated budget based on Construction Documents Phase.  Budget shall delineate areas \nof cost and Consultant shall be responsible for project design being within established \nbudget and completion deadlines .  This estimate shall take into account the expected \nconstruction start date.  The Consultant shall make no provisions for a bidding contingency \nin this estimate. \n",
+              "start": 17214,
+              "end": 17595
+            },
+            {
+              "quote": "4.2 The Consultant will reimburse the Owner for the non-value added cost of change orders due to design errors \nwhen the cumulative total non -value added cost of all such change orders exceeds 0.1% of the total \nconstruction cost or $1,000, whichever is greater. The non -value added cost of each change order will be \ndetermined by the additional cost to the Owner less the value added to the project. Value is added to the \nproject if specifying the correct work in the original construction contract would have res ulted in a greater \ncontract amount.  \n",
+              "start": 29189,
+              "end": 29747
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "预算由谁冻结，是否含涨价及施工不可预见费？",
+            "阈值是免赔额还是触发点，是否另有总责任限制？"
+          ]
+        },
+        {
+          "id": "P06-A-003",
+          "severity": "medium",
+          "perspective": "工程合规／时间适用／逻辑",
+          "risk": "1.1列明2018系列规范、NEC 2011及部分非强制例外；3.2又要求符合服务提供时有效的所有适用规范，3.6.2允许业主另行授权。固定版本、动态法律义务和业主授权的层级关系未明确。",
+          "impact": "若项目期间适用标准更新或业主指南与主管机关要求不同，可能发生返工、报批迟延及额外费用争议。本试审未核验项目主管机关实际采用版本，不能认定这些旧年份本身违法。",
+          "suggestion": "由当地持证设计人员确认适用法规、主管机关、版本和例外依据；约定业主授权不能替代法定审批。明确服务期间规范变更的费用和进度机制，并与3.2政府撤回批准责任安排衔接。",
+          "evidence": [
+            {
+              "quote": "1.1 The Consultant shall design and detail all plans to be in compliance with the following building codes: \n1.1.1 International Building Code 2018  \n1.1.2 International Fire Code 2018  \n1.1.3 International Mechanical Code 2018 \n1.1.4 International Plumbing Code 2018 \n1.1.5 International Fuel Gas Code 2018 \n1.1.6 International Energy Conservation Code 2018 \n1.1.6.1 Section C405.2 Lighting Controls shall be non-mandatory \n1.1.6.2 Section C405.4 Exterior Lighting Power Requirements shall be non-mandatory and controls \nto be approved by MSU \n1.1.6.3 Section C503.1 General – Renovations to existing buildings can be an exception where it \nis technically infeasible to conform to the IECC and may be allowed when approved by MSU \n1.1.7 NEC 2011  \n1.1.8 In addition, all applicable state and federal laws and regulations including but not limited to: \n1.1.8.1 Section 504 of the Federal Rehabilitation Act of 1973 \n1.1.8.2 The Americans with Disabilities Act (ADA) \n1.1.8.3 Missouri State Statutes Chapter 8 \n1.1.8.4 Section 8.812 Minimum Energy Efficiency Standards  \n1.1.8.5 Applicable Life Safety Codes shall be incorporated herein by reference. \n",
+              "start": 3189,
+              "end": 4340
+            },
+            {
+              "quote": "3.2 The Consultant shall provide services for the Project to comply with all applicable federal, state and local laws, \nstatutes, ordinances, codes, orders, rules and regulations  in effect as of the date of services rendered , and \nshall assist the Owner in obtaining required written approval of all governmental authorities having jurisdiction \nover the project prior to execution of the contract(s) for construction.  Review or approval of the Consultant’s \ndocuments by the Owner shall not relieve the Consultant of any obligations for such compliance or for \nassistance in obtaining governmental approval.  The Owner shall be responsible for any additional costs due \nto subsequent retraction or modification of written approval by a governmental authority, unless such retraction \nor modification is the  result of a negligent error or omission in the Contract Documents discovered after the \noriginal approval.  \n",
+              "start": 9297,
+              "end": 10218
+            },
+            {
+              "quote": "3.6.2 The Consultant shall to the best of their knowledge, information and belief comply with all applicable \ncodes, standards and the Owner's design guidelines in the preparation of project drawings and \nspecifications, unless otherwise authorized by the Owner. T he Consultant shall acknowledge such \naction by sealing the contract documents as required by state statute. \n",
+              "start": 14140,
+              "end": 14515
+            }
+          ],
+          "basis": [
+            {
+              "status": "unverified",
+              "title": "本项目适用的Missouri及主管机关建筑、电气、能源规范",
+              "article": "合同1.1所列版本及例外",
+              "url": "",
+              "checked_at": "2026-09-07",
+              "applicability": "尚缺具体项目、审批机关与实际生效版本；仅提出核验任务"
+            }
+          ],
+          "questions": [
+            "本项目主管机关采用哪些版本？",
+            "列示照明、外部照明、改造例外有何适用依据？"
+          ]
+        },
+        {
+          "id": "P06-A-004",
+          "severity": "high",
+          "perspective": "财务／争议解决／公共机构适用范围",
+          "risk": "25.0已有月度分阶段付款，比例合计100%；25.3要求报告和业主认可的票据，25.4又以批准发票为到期条件，但没有明确批准时限。其30日利息安排援引431.180，而该法官方文本标题及第一款针对private design or construction work；本合同Owner为公共大学，具体适用或仅合同援引须核实。",
+          "impact": "批准迟延可能影响现金流和利息起算；不能声称本件没有付款安排，也不能直接将法定1.5%月利率自动套用公共大学交易。25.4限制因施工方罚款扣顾问款，是现有保护，仍需与18.0终止抵扣协调。",
+          "suggestion": "规定完整发票收到、异议通知、认可和付款的期限，争议部分与无争议部分分开；当地律师核实公共机构规则及431.180适用，明确约定利息口径、起算点以及18.0抵扣程序。",
+          "evidence": [
+            {
+              "quote": "25.0 Consultant’s Payment Schedule – Payments for Consultant’s Basic Services shall be made monthly and will \nbe in proportion to services performed within each phase and will total the following percentages of total \ncompensation: \nSchematic Design Phase: fifteen percent (15%) \nDesign Development Phase: twenty percent (20%) \nConstruction Documents Phase: thirty-five percent (35%) \nBidding Phase: five percent (  5%) \nConstruction Administration Phase: twenty percent (20%) \nPost Construction: five percent (  5%) \nTotal Basic Compensation: one hundred percent (100%) \n",
+              "start": 52286,
+              "end": 52858
+            },
+            {
+              "quote": "25.3 Invoices – Payment will be made upon submission of a detailed invoice.  The invoice must include the total \nfee, a percentage of completion, the previous fees billed and the current fee billing.  Any reimbursable \nexpenses shall be listed separately by line item and  invoices shall contain, or be attached to, documentation \nthat is satisfactory to the Owner  per the terms of Article 10.  Applicable reporting requirements must be met \nbefore payment will be made. \n25.4 Payments, Sums Withheld – No deductions will be made from the Consultant’s compensation on account of \npenalty, liquidated damages, or other sums withheld from payments to Contractor(s) , or on account the cost \nof changes in the Work other than those for which the Consultant has been adjudged to be liable.  Payments \nare due and payable upon receipt of an approved Consultant’s invoice.  An amount unpaid 30 days after the \ninvoice date shall bear reasonable interest from the date payment is due in accordance with Chapter 431.180, \nRSMo. \n",
+              "start": 53510,
+              "end": 54532
+            }
+          ],
+          "basis": [
+            {
+              "status": "verified",
+              "title": "Missouri Revised Statutes §431.180",
+              "article": "1、2、4",
+              "url": "https://revisor.mo.gov/main/OneSection.aspx?bid=24144&section=431.180",
+              "checked_at": "2026-09-07",
+              "applicability": "官方原文已查阅；限定private design/construction并规定法院可裁量利息与费用。是否适用于本公共大学具体交易仍未确认，不能以原文核验替代适用结论。"
+            }
+          ],
+          "questions": [
+            "批准通常由谁完成、多少天？",
+            "431.180在该公共机构交易中的适用依据，还是作为双方约定计算规则？"
+          ]
+        },
+        {
+          "id": "P06-A-005",
+          "severity": "medium",
+          "perspective": "保险／财务／风险管理",
+          "risk": "14.0保险仅明确维持协议期间；14.3专业责任写成每次索赔或年度累计100万美元，未交代保单是claims-made还是occurrence、追溯日及终止后保障。14.6要求30日取消通知，但尚无实际保单确认能否提供。",
+          "impact": "若采用claims-made且合同结束后不续保或无延长报告期，后发现设计缺陷的可赔性可能下降；累计额可能被其他项目消耗。保险限额不是合同赔偿上限，不能把两者混同。",
+          "suggestion": "获取实际保单及批单，明确每次/累计限额、免赔额、追溯日及按项目风险确定的后续维持或延长报告期；验证取消通知可执行性，并核对分顾问保障和合同义务与承保范围。",
+          "evidence": [
+            {
+              "quote": "14.0 The Consultant shall provide and maintain, during the life of the Agreement, insurance acceptable to the \nOwner which will afford protection and coverage in accordance with the requirements set forth below. \n",
+              "start": 35983,
+              "end": 36196
+            },
+            {
+              "quote": "14.3 Professional Liability Insurance will be provided by the Consultant to cover claims arising out of the negligent \nacts, errors and omissions by the Consultant or anyone employed by them. The coverage provided shall not \nbe less than $1,000,000  per claim or annual aggregate . The Consultant shall require its Subconsultant \nsimilarly to provide Professional Liability coverage.   \n",
+              "start": 37730,
+              "end": 38117
+            },
+            {
+              "quote": "14.6 The Consultant shall furnish the Owner with certificates, policies, or binders which indicate the Consultant \nand/or the Owner and other Consultants (where required) are covered by the required insurance showing \ntype, amount, class of operations covered, e ffective dates and dates of expiration of policies prior to \ncommencement of the work. All certificates, policies, or binders shall give Missouri State University thirty (30) \nday's written notice before cancellation.  \n14.7 Upon receipt of any notice of cancellation, the Consultant shall, within ten (10) days, procure other policies of \ninsurance similar in all respects to the policy or policies about to be canceled or altered; and if the Consultant \nfails to provide, procure a nd deliver acceptable policies of insurance or satisfactory certificates or other \nevidence thereof, the Owner may obtain such insurance at the cost and expense of the Consultant without \nnotice to the Consultant.  \n",
+              "start": 39085,
+              "end": 40048
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "专业责任保单采用何种触发方式，是否已有追溯保障？",
+            "保险公司能否实际承诺通知及要求的保单条款？"
+          ]
+        },
+        {
+          "id": "P06-A-006",
+          "severity": "medium",
+          "perspective": "知识产权／信息交付／技术业务",
+          "risk": "13.0保留顾问及分顾问著作权，并明确业主可对本项目复制、修改和维修，且未经顾问确认使用自担风险；3.10.1同时要求交付可编辑DWG、CTB及外部引用。“仅本项目”与后续扩建的边界、第三方素材许可和完整交付的权利链尚需项目化确认。",
+          "impact": "业主已有较广本项目使用权，不能误报为没有许可。但若第三方库、分顾问文件或后续承包人参与未被覆盖，可能影响维修交接；顾问可能面对文件经他人修改后来源责任争议。",
+          "suggestion": "列明本项目扩建、维修及受托第三方的许可边界，核实分顾问和第三方文件授权；交付清单固定文件版本、外部引用、完整性校验、传输访问权限，区分原始设计责任与后续未核验修改责任。",
+          "evidence": [
+            {
+              "quote": "13.0 Drawings, specifications and other documents, including those in electronic form, prepared by the Consultant \nand its Subconsultants are Instruments of Service for use solely with respect to the Project.  The Consultant \nand its Subconsultants shall be deemed the authors and owners of their respective Instruments of Service \nand shall retain all common law, statutory and other reserved rights, including copyrights.  Neither the Owner \nnor the Consultant or its Subconsultants shall use the documents produced pur suant to the Agreement for \nany other Project.  However, the Owner may use , including copy, modify and amend such Instruments of \nService at any time including but not limited to expanding, correct ing any deficiencies to, or making  any \nrenovations or repairs to the Project.  Any such use without written verification or adaptation by the Consultant \nfor the specific purpose intended shall be at the user’s sole risk and without liability or legal exposure to the \nConsultant or its independent Contractors or Consultants. \n",
+              "start": 34908,
+              "end": 35959
+            },
+            {
+              "quote": "3.10.1 As part of the basic services, Consultant shall provide Owner with an electronic set of Record \nDrawings and two sets of prints that reflect as -built conditions.  These plans shall incorporate all \nchanges.  Reference to a separate document is not allowed. Each sheet of the plans shall be clearly \nlabeled “Record Drawings” and show the date revised.  One example sheet of the Consultant’s format \nis to be submitted for Owner’s approval before proceeding with entire set.   All drawings and details \nshall be prepared utilizing AutoCAD application programs and be compatible with the latest version \nof AutoCAD.   The Consultant must deliver files in .dwg format along with Consultant’s .ctb file \nshowing standard layers and line weights along with any associated external references.   Along with \nthe electronic AutoCAD files, a copy of these documents shall also be provided in .pdf format.  The \n.pdf format files shall be indexed according to the drawing set and shall be named according to the \nname of the sheet.  Reasonable  effort shall be made to insure accuracy.   The Consultant shall \nprovide these documents within twenty -eight (28) calen dar days of the receipt of the marked up \ndrawings from the Contractor.   \n",
+              "start": 27319,
+              "end": 28559
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "项目是否涉及BIM或第三方库？",
+            "后续维修/扩建单位需要何种文件访问和再利用权限？"
+          ]
+        },
+        {
+          "id": "P06-A-007",
+          "severity": "high",
+          "perspective": "业务连续性／财务／解除与工期",
+          "risk": "17允许业主停工并尽快选择续行、延长或终止，17.2已给予非顾问原因停复工的合理追加报酬；18.0又允许资金不足或阶段末七日前邮寄通知终止。未明确暂停最长期、复工通知及工期调整、可纠正违约补救安排和不可撤销分包成本结算。",
+          "impact": "顾问可能长期保留资源、承担分包取消费而无法确定补偿程序；业主可能因停复工后的人员重配和文件交接不明影响续建。不能误称无任何停工补偿或把公共资金退出条款直接判为违法。",
+          "suggestion": "约定暂停期限、复工准备期与里程碑重排、追加报酬确认程序；对可补救违约规定适当整改路径；对资金或便利终止列明已完成服务、不可撤销合理成本、交接成果及抵扣争议处理。",
+          "evidence": [
+            {
+              "quote": "17.1 As soon as feasible, after a Notice for Interruption of Work has been issued, the Owners Representative shall \ntake appropriate action to (1) Terminate the contract; (2) Cancel the Interruption of Work; or (3) Extend the \nperiod of the interruption if it is deemed necessary. \n17.2 Upon written approval of the Owners Representative, the Owner shall pay all payments due to the Consultant \nfor services completed, up until the time of Interruption. Consultant’s contract with the Owner shall remain \nvalid through an Interruption of Work until such time that a Termination is necessary.   Consultant shall have \n\n[PAGE 12]\nPlanning, Design and Construction February 1, 2010 \nMissouri State University Page 12 of 15 \nAgreement for Consulting Services Rev March 1, 2026\nthe right to reasonable compensation for additional services due to the interruption of work and subsequent \nresumption of work if due to no fault of the Consultant. \n",
+              "start": 43542,
+              "end": 44482
+            },
+            {
+              "quote": "18.0 This Agreement may be terminated by the Owner’s Representative upon mailing notice of termination to the \nConsultant at least seven (7) days in advance of the date of termination if the Consultant substantially fails to \nperform according to the terms and conditions of this Agreement in the opinion of the Owner’s Representative \nor funds for the Project are not appropriated or are insufficient to proceed with the Project.  The Owner’s \nRepresentative may also terminate this Agreement by the same procedure at th e end of any phase or part \nthereof as set forth in this Agreement.  In the event of termination, the Consultant shall be paid his \ncompensation for services performed up until the date of termination subject to amounts withheld to satisfy \nany amount due the Owner by reasons of any prior default of the Consultant or otherwise. \n",
+              "start": 44509,
+              "end": 45362
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "项目资金是分年度拨款还是已全额落实？",
+            "分顾问采购存在不可取消承诺吗，最长可接受暂停多久？"
+          ]
+        },
+        {
+          "id": "P06-A-008",
+          "severity": "high",
+          "perspective": "争议解决／证据／程序期限",
+          "risk": "16.0将大学建筑师关于工作质量、数量或价值的决定设为最终约束，顾问须在决定后30日书面申请调解才提出异议；起算送达、异议范围和调解期间其他期限如何处理未细化。16.1另保留公共主体豁免。",
+          "impact": "若顾问未及时识别决定性质或书面提出异议，可能面临合同上权利受限争议；业主也可能因通知证据不足产生程序争议。该安排有效性、可诉范围及豁免效果需当地律师核实，不能直接断言有效或无效。",
+          "suggestion": "明确决定须书面说明理由并送达指定联系人，区分临时项目指示与触发30日期限的最终决定；写明调解请求提交渠道、收悉证据及期限安排，保留依法可主张的救济，并审查豁免与费用承担的影响。",
+          "evidence": [
+            {
+              "quote": "16.0 In order to prevent all disputes or disagreements between the parties to this Agreement in relation to the \nperformance on the part of the Consultant, it is expressly agreed and understood that in case any  controversy \nor difference of opinion shall arise b etween the parties as to the quality, quantity or value of the Work, the \ndecision of the University Architect shall be final and binding on all parties, unless the Consultant pursues the \nmediation procedure set forth below by  written request within 30 days of the determination of the University \nArchitect. Such disputes shall be decided in the courts unless the parties agree in writing to \narbitration.  Notwithstanding anything to the contrary contained in the contract documents, in the event a \ndispute shall arise between the Owner and the Consultant regarding the performance on the part of the \nConsultant, the Consultant agrees to participate in one mandatory non-binding mediation session prior to filing \na lawsuit.  The parties involved agree to split the costs of the mediation.  The mediation shall be administered \nby a mediator appointed by the Missouri Bar Association’s alternative dispute resolution comm ittee, unless \nthe parties agree to another mediator.   If a resolution of the dispute cannot be reached in the mediation, the \nparties are free to pursue any other alternative of resolving the dispute which they choose, whether it be \narbitration, litigation, or some other means. \n16.1 Any lawsuit to enforce this Agreement shall be brought in the Circuit Court of Greene County, Missouri.  A \nprevailing party will be entitled to its court costs and expenses, including a reasonable attorney’s fee.  Nothing \nin this Agreement shall be construed to waive any sovereign, governmental, or official immunity applicable to \nany party, its officers or employees. \n",
+              "start": 40851,
+              "end": 42705
+            }
+          ],
+          "basis": [],
+          "questions": [
+            "哪些决定启动30日，收件及送达证据如何留存？",
+            "Missouri律师如何判断该决定机制、豁免和诉前调解的效力？"
+          ]
+        }
+      ]
+    }
+  ]
+}

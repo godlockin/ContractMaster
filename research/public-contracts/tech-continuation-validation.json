@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "findings": 14,
+  "exact_evidence": 28,
+  "new_templates": 7,
+  "all_evidence_inside_own_template": true,
+  "prior_batch_unchanged": true,
+  "read_pages_this_batch": [
+    19,
+    104
+  ],
+  "scope": "file/hash/coordinates only; human and legal validation pending"
+}

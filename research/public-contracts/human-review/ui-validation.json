@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "method": "local Playwright Chromium file URL",
+  "cards": 65,
+  "exported_judgments": 65,
+  "input_and_select_verified": true,
+  "page_errors": 0,
+  "checked_at": "2026-09-07",
+  "human_adjudication": "not performed"
+}

@@ -1,0 +1,115 @@
+{
+  "scope": "deterministic pipeline only; no legal-quality score",
+  "cases": [
+    {
+      "case_id": "C01",
+      "input_digest": "5a990b6e042f4a1ae83a6a0157cd06e41622c121eeedcdab9247dc1d9c696186",
+      "status": "PASS",
+      "segments": 9,
+      "redactions": 2,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    },
+    {
+      "case_id": "C02",
+      "input_digest": "651205b1f793a31ef8af2e7913506c90fd86ce060a0edff884f8a0532f632709",
+      "status": "PASS",
+      "segments": 9,
+      "redactions": 2,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    },
+    {
+      "case_id": "C03",
+      "input_digest": "1e4063405481605aee209f92f02049b07690e477ebe5bf6f6b7eef87cc812e44",
+      "status": "PASS",
+      "segments": 8,
+      "redactions": 2,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    },
+    {
+      "case_id": "C04",
+      "input_digest": "15b87e938450fd2c1a9ad1eae6b34b76f385023111fcdfef1cf6c7d5f7ddfa01",
+      "status": "PASS",
+      "segments": 7,
+      "redactions": 0,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    },
+    {
+      "case_id": "C05",
+      "input_digest": "1677dd6e33545147b443e3873fcbad30120bce20bf2d2f01f718f29ab8f56f08",
+      "status": "PASS",
+      "segments": 8,
+      "redactions": 5,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    },
+    {
+      "case_id": "C06",
+      "input_digest": "6a5e8a6aa86f8c2e7bae700323a3f2a68b65a7cc5c76b5222bc7f30bb2c46a74",
+      "status": "PASS",
+      "segments": 10,
+      "redactions": 2,
+      "assertions": [
+        "source_hash",
+        "expected_anchors",
+        "release_gate",
+        "full_text",
+        "known_privacy",
+        "roundtrip",
+        "mapping_offsets",
+        "schema",
+        "missing_segment_gate"
+      ]
+    }
+  ],
+  "status": "PASS",
+  "model_quality": "NOT_MEASURED_BY_THIS_RUNNER"
+}

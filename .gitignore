@@ -1,0 +1,14 @@
+review-runs/
+__pycache__/
+*.pyc
+.DS_Store
+**/private/
+.env
+.env.*
+!.env.example
+*.log
+# Third-party public contracts: download locally; redistribution not verified.
+research/public-contracts/originals/
+research/public-contracts/text/
+research/public-contracts/sanitized/
+research/public-contracts/qa/

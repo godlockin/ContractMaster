@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "cases": 8,
+  "review_records": 9,
+  "findings": 65,
+  "cross_reviewed_findings": 9,
+  "quote_validation": "passed",
+  "human_adjudication": "pending",
+  "manifest_sha256": "10050e31b7607e969699c5eeef563b5b54e1e461bfc0bce6e96fa2d13c52c8f0",
+  "review_files": {
+    "batch-a.json": "da1a2a5e8895c14fcc4915321974d24b1a78d9ef0d9d22c3fa4cfd0e412029ba",
+    "batch-construction.json": "d19b1b52d84970526842d9521067773cfa92713a5675f859f808f7ffff83e859",
+    "batch-consulting.json": "dbd7b4bfc0f8e75c18441751e3194f7bc49c969f6ee0ba0af8210f52cc5c7395",
+    "batch-main.json": "a940d0e313f2972396c67a2480bdded1713c6ccaf10df5f87de7198987910f03",
+    "batch-tech-continuation.json": "1ca141dfcb5a8efa302b9326d39c0b81031354b33b974682f24f35a4f41ac5c8",
+    "batch-tech-nda.json": "02700144eb47aafd422c9112cd1bf8650753f572b9bc6d39eaf93fec5834d4e0"
+  },
+  "cross_review_files": {
+    "P04.json": "670949414e3f40b523b7caa11791225c8701489657e72b65a71cd609d2ab9a5f"
+  }
+}

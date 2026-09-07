@@ -1,0 +1,568 @@
+﻿case_id,finding_id,perspective,ai_severity,ai_issue,evidence,ai_cross_decision,ai_cross_reason,ai_cross_correction,reviewer,decision,human_severity,legal_source,correction,notes
+P01,P01-A-001,"['法务', '合规']",high,第一条三类期限共用试用期栏，缺少适用条件分支。,（ 三 ） 以 完 成 工 作 任 务 为 期 限 。 | 其中试用期自     年  月  日起至     年  月  日止,,,,,,,,,
+P01,P01-A-002,"['业务', '法务', '语言']",medium,不胜任调岗与岗位变更协商签署条款衔接不明。,"第五条  甲方按工作标准，经 考核考评确认乙方不胜任本岗位工
+作，可以调整乙方工作岗位。 | 第三十八条  劳动合同约定的工作地点、岗位、工资等内容发生变
+更的，经甲乙双方协商一致",,,,,,,,,
+P01,P01-A-003,"['财务', '合规']",high,加班工资与补休并列表述可能被理解为任意替代，且未单列法定休假日。,"第二十条 甲方安排乙方延长工作时间或者在休息日工作的， 按照
+国家相关规定向乙方支付加班工资或者依法安排乙方补休。 | 经政府行政部
+门批准，可以实行综合计算工时或不定时工时制",,,,,,,,,
+P01,P01-A-004,"['争议', '财务']",high,紧急联系人在笼统联系障碍下获得和解及收款等全权代理。,"乙方同意，在其处于联系障碍状态（包括但不限于疾
+病、 发生意外事故、 丧失人身自由等情况） 时 | 权代理处理本合同项下所涉一切问题的权限，包括但不限于与甲方进行
+协商谈判、和解、代为收付有关款项及代为收发有关文书等权限。",,,,,,,,,
+P01,P01-A-005,"['争议', '语言']",medium,退件或拒收一律视为送达，未区分未通知改址与寄送错误等退件原因。,"如乙方变更地址的，应及时书面通知甲方。未能通
+知的， 甲方可按原地址送达。 送达后如发生退件或拒收， 视为已经送达。",,,,,,,,,
+P01,P01-A-006,"['财务', '业务']",medium,经济效益调整工资的概括授权与后文协商程序需要衔接。,"第十二条  甲方应建立正常的工资调整机制，根据经济效益情况调
+整乙方工资。 | 经平等协商、达成一致，公示或告知乙方后进行调整。",,,,,,,,,
+P02,P02-A-001,"['合规', '业务', '财务']",high,无异议视为验收通过与正式履约验收、付款衔接不清。,"1.4 甲方应当按照合同约定及时对交付的货物进行验收，未
+在代理填写日内对乙方履约提出任何异议或者向乙方作出任何
+说明的，视为验收通过。 | 各期支付条件应与分期履约验收情况挂钩",,,,,,,,,
+P02,P02-A-002,"['财务', '法务']",high,任意违约即不退履约保证金，与扣除赔偿及追加责任并行，结算规则不清。,"10.2 如果乙方出现违反合同约定情形的，履约保证金不予
+退还；如果乙方未能按合同约定全面履行义务，甲方有权从履约
+保证金中取得补偿或赔偿 | 甲方有权从货款中扣除误期赔偿费而不影响合同项下的其他
+补救方法",,,,,,,,,
+P02,P02-A-003,"['业务', '财务']",medium,寿命期性能保证与质量保证期免费维修的责任边界不明。,"件下，在其使用寿命期内具备合同约定的性能。 | （3）乙方收到通知后，应在代理填写内免费维修或更换有
+缺陷的货物或部件。 | 11.2 乙方提供的售后服务的费用已包含在合同价款中，甲
+方不再另行支付。",,,,,,,,,
+P02,P02-A-004,"['争议', '语言']",medium,仲裁与诉讼并列，仲裁机构仅以甲方所在地表述。,"可以通过仲裁或诉讼的方式解决
+争议。 | 16.2 选择仲裁的，应通过甲方所在地的仲裁机构；通过诉
+讼方式解决的，应通过甲所所在地具有管辖权的人民法院。",,,,,,,,,
+P02,P02-A-005,"['争议', '业务']",medium,通知允许数据电文与要求传真/快递签收两套渠道未衔接。,"18.1 本合同任何一方向对方发出的通知、信件、数据电文
+等 | 18.3 本合同一方给另一方的通知均应采用书面形式，传真
+或快递送到本合同中规定的对方的地址和办理签收手续。",,,,,,,,,
+P02,P02-A-006,"['法务', '语言']",medium,可另填生效条件与固定盖章生效句并存。,"6.合同生效
+本合同自 代理填写 生效。 | 本合同自甲乙双方加盖公章之日起生效。",,,,,,,,,
+P04,P04-A-001,"['法务', '财务', '语言']",high,缺陷责任期定义与专门条款使用不同起算日期。,"期限，自工程实际竣工日期起计算。 | 15.2.1 缺陷责任期从工程通过竣工验收之日起计算 | 工程经竣工验收合格的，以承包人提交竣工验收申请报告之
+日为实际竣工日期",support,定义与15.2.1的通常起算确有文字差异；13.2.3允许申请日作为实际竣工日，因此不是纯同义表达。但15.2.1已详细规定迟延、擅用、单位工程分支，原报告建议应引用这些既存规则而非表现为需要从零建立。,保留起算规则对齐问题；列出15.2.1既有分支并与定义统一，不声称文本完全没有异常情形规则。法律适用尚未独立核验。,,,,,,
+P04,P04-A-002,"['业务', '争议', '语言']",medium,开工通知的合同节点存在“前7天”与“之日起7天内”不同表述。,"监理人应在计
+划开工日期 7 天前向承包人发出开工通知 | （4）发包人未能在计划开工日期之日起 7 天内同意下达开
+工通知的； | （1）因发包人原因未能在计划开工日期前 7 天内下达开工
+通知的；",support,三个不同通知表述可以造成审批/下达节点解释分歧，具备跨条款证据。反面是7.5.1末段及16.1.2已提供一般工期和费用补偿，不能推定“计划日后7天前”当然没有任何救济。,保留节点统一建议，把影响收窄到认定与通知证据争议；明确一般违约补偿及顺延条款仍存在，90天机制不是唯一救济。,,,,,,
+P04,P04-A-003,"['争议', '财务']",high,日常28天索赔通知、竣工款7天异议及接收证书后索赔截止形成多重程序风险。,"承
+包人未在前述 28 天内发出索赔意向通知书的，丧失要求追加付
+款和（或）延长工期的权利； | 发包人未在前述 28 天内发
+出索赔意向通知书的，丧失要求赔付金额和（或）延长缺陷责任
+期的权利。 | 承包人逾期未提出异议的，视为认可发包人的审批结果。 | 承包人按第 14.2 款〔竣工结算审核〕约定接收竣工付
+款证书后，应被视为已无权再提出在工程接收证书颁发前所发生
+的任何索赔。",partial,程序管理风险成立，但“接收证书后截止”针对再提出索赔，不直接说明及时提出且未决的索赔全部消灭；14.2(3)明确允许异议与无争议部分先付，19.2/19.4又有迟延答复视为认可。不能把三层期限叠加推断为已申报索赔当然被放弃。,区分新提出、持续申报及已提出未决索赔；保留期限台账建议，补充双方答复和默示认可机制。将已提出未决事项效力列为解释待确认，避免既成失权表述。,,,,,,
+P04,P04-A-004,"['财务', '业务']",medium,质量担保的默认保函路径与默认逐期扣款路径需明确衔接。,"质量保证金原则上采用上述第
+（1）种方式。 | 质量保证金的扣留原则上采用
+上述第（1）种方式。 | 在工程项目竣工前，承包人已经提供履约担保的，发包人不
+得同时预留工程质量保证金。 | 如承包人在发包人签发竣工付款证书后 28 天内提交质量
+保证金保函，发包人应同时退还扣留的作为质量保证金的工程价
+款",partial,两处默认分别服务于担保方式与发生现金扣留时的路径，不能单凭默认并列认定必须双重提供；15.3总则先要求协商一致且专用明确，15.3.2明确换函同时退款和利息。原文已经引用部分保护，但风险仍容易被误读为模板自行导致双占。,归类为低/中级配置与执行提示，前提为双方选择现金扣留或转换时未协调；说明不是当然重叠义务，补充3%及退款付息的现有保护。,,,,,,
+P04,P04-A-005,"['财务', '业务']",high,总价风险、清单错误修正和市场调价是三个相互关联的选择，不能仅填写“固定总价”概括全部。,"（1）工程量清单存在缺项、漏项的； | 在约定的范围内合同总价不作调整。 | 其中因市场价
+格波动引起的调整按第 11.1 款〔市场价格波动引起的调整〕 | 未经发包人事先核对，
+承包人自行采购材料的，发包人有权不予调整合同价格。",partial,应同步配置范围的建议合理，但本模板12.1本身已经明示总价的约定风险范围和11.1/11.2调整，并无现成“所有情况固定不调”的冲突。报告影响以未来错误填写为条件，不能计作已经存在的高风险冲突。,降为配置检查项，填写后才评价实际高风险；补充采购报审5日不答视为认可及业主同意仍可调整，避免把未预先核对理解成绝对不得调价。,,,,,,
+P04,P04-A-006,"['业务', '争议']",medium,紧急口头监理指示与变更须发包人签认的程序，需要为同一事件确定转换路径。,"该指示与书面形式的指示具有同等法律效力，但必须在
+发出口头指示后 24 小时内补发书面监理指示 | 承包人收到经发
+包人签认的变更指示后，方可实施变更。 | 但监理人无权修改合同",partial,紧急新增工作与正式变更确有协调需求，但4.3口头指示被明确限定安全/避免工程受损并已有24小时书面化、错误指示责任和48小时异议处理。4.1无权修改合同与获授权办理变更不必然冲突。,描述为紧急处置超出既有范围时的授权和计价衔接，不判定条款相互否定；先使用已存在的补发、异议和责任机制，再建议项目补充紧急计量证据。,,,,,,
+P04,P04-A-007,"['业务', '财务']",medium,现场查勘风险与不可预见物质条件补偿，需要项目证据界线。,"因承包人未能充分查勘、了解前述情况或未
+能充分估计前述情况所可能产生后果的，承包人承担由此增加的
+费用和（或）延误的工期。 | 但因基础资料存在错
+误、遗漏导致承包人解释或推断失实的，由发包人承担责任。 | 通知应载明不利
+物质条件的内容以及承包人认为不可预见的理由。",partial,现场证据管理建议成立，但3.4已经保留基础资料错漏由发包人承担，7.6也明确合理措施费用/工期由发包人承担。这是分工边界，未发现文字矛盾或将全部地质风险无条件转给承包人；未知现场事实不足以证明已有中风险条款缺陷。,作为履约证据与尽调提示；在实际地勘缺失、限制查勘或风险重写证据出现后再定实质风险等级，不把常规风险分类本身计为缺陷。,,,,,,
+P04,P04-A-008,"['业务', '争议']",medium,照管至颁发接收证书与证书后7天移交之间，需要确定实际占有过渡责任。,"直到颁发工程接收证书之日止。 | 合同当事人应当在颁发工程接
+
+[PAGE 81]
+收证书后 7 天内完成工程的移交。 | 自验收合格后第 15 天起视为已颁发工程接收证书。",partial,3.6和13.2.5的日期差客观存在，但照管终点与实物交接办理期限不同不必然意味着无人负责；13.2.5已经规定迟延双方的费用责任，专用3.6及13.2.5还提供时间配置入口。正常交接期的实际占有安排值得确认，无法单靠这两条确认法律上的责任真空。,维持过渡交接安排提示，避免“必然照管空档”推论；结合实际占有、钥匙安保、专用时间和保险条款决定等级。,,,,,,
+P04,P04-A-009,"['法务', '语言']",medium,协议书可填生效条件与固定盖章生效句并存。,"十二、合同生效
+本合同自 生效。 | 本合同自甲乙双方加盖公章之日起生效。",support,协议书内同时存在可填生效节点及固定盖章生效句，确有填写后可能冲突；1.5文件优先顺序不能直接解决同一协议书内这两句话的关系。不过本模板尚无另一已填入条件，当前只是条件化一致性风险。,保留，并明确只有另填不同条件时才形成实际冲突；若填写的就是双方盖章生效，两句仅重复，应去重而非升级风险。,,,,,,
+P06,P06-A-001,业务／法务／文档完整性,high,本件为未填写的公共机构模板，不是完整签约包。项目、费用方式和金额尚空；27.0纳入的General Conditions及指定日期Proposal未附在本次单文件中，3.9.2又以General Conditions界定施工管理权限。缺少项目版本及冲突顺序，无法闭合实际范围。,"PROJECT TITLE: 
+MSU PROJECT NUMBER: MSU CONTRACT NUMBER: 
+(The MSU project number is to appear on all documents produced by the Consultant. The contract number shall appear on this agreement.) 
+PROJECT DESCRIPTION: 
+COMPENSATION:  
+Compensation for Basic Services shall be a: (Check One) 
+   Fixed Fee Hourly Not-to-Exceed Percentage of Construction Costs Other 
+In the Amount of: 
+ | 3.9.2 Missouri State University  General Conditions  will dictate Administration during the Construction 
+Phase.  The Consultant shall provide for Administration of the Construction Phase and shall advise 
+and consult with the Owner’s Representative and have authority to act on the behalf of the Owner to 
+the extent provided in the General Conditions unless otherwise modified in writing.  
+ | 27.0 This Agreement, by this specific reference, shall include the following supplemental documents: 
+• Missouri State University General Conditions
+• Consultant’s Proposal dated:  and approved: 
+THIS AGREEMENT represents the entire integrated agreement between the Owner and the Consultant and 
+supersedes all prior negotiations, representations, or agreements, either written or oral.  This Agreement may be 
+amended only by written instrument signed by both Owner and Consultant. 
+",,,,,,,,,
+P06,P06-A-002,财务／工程业务／责任分配,high,1.0.2除不可抗力外要求超预算后无偿重设计；2.0.3的Construction Cost包含市场及变更预备量，3.7.5.3却禁止报价预备量。4.2再分配设计错误的non-value added变更成本，阈值超过后是全部赔还是只赔超额没有明确。,"1.0.2 The Consultant agrees to accept the Owner’s program and project budget and further agrees to use 
+professional skill and care to accomplish said Project within the intent of the program and established 
+budget.  In the event the Consultant determines that the Project cannot be accomplished within the 
+established budget, they shall notify the Owner’s Representative of this fact in writing, so that the 
+Project scope can be reviewed and modified if necessary. Consequently, should the lowest 
+acceptable bid(s) exceed the funds available, not due to events of force majeure, the Consultant shall 
+be required to redesign or perform such corrective work as necessary to allow the Project to be 
+successfully rebid and constructed within available funds, without additional cost to the Owner. 
+ | Construction cost also includes a reasonable allowance for contingencies for market conditions at 
+the time of bidding  and for changes in the work during construction; however, it does not include 
+compensation of the Consultant and its Subconsultant or the costs of the land, rights -of-way, 
+financing, or other costs that remain the responsibility of the Owner. 
+ | 3.7.5.3 Updated budget based on Construction Documents Phase.  Budget shall delineate areas 
+of cost and Consultant shall be responsible for project design being within established 
+budget and completion deadlines .  This estimate shall take into account the expected 
+construction start date.  The Consultant shall make no provisions for a bidding contingency 
+in this estimate. 
+ | 4.2 The Consultant will reimburse the Owner for the non-value added cost of change orders due to design errors 
+when the cumulative total non -value added cost of all such change orders exceeds 0.1% of the total 
+construction cost or $1,000, whichever is greater. The non -value added cost of each change order will be 
+determined by the additional cost to the Owner less the value added to the project. Value is added to the 
+project if specifying the correct work in the original construction contract would have res ulted in a greater 
+contract amount.  
+",,,,,,,,,
+P06,P06-A-003,工程合规／时间适用／逻辑,medium,1.1列明2018系列规范、NEC 2011及部分非强制例外；3.2又要求符合服务提供时有效的所有适用规范，3.6.2允许业主另行授权。固定版本、动态法律义务和业主授权的层级关系未明确。,"1.1 The Consultant shall design and detail all plans to be in compliance with the following building codes: 
+1.1.1 International Building Code 2018  
+1.1.2 International Fire Code 2018  
+1.1.3 International Mechanical Code 2018 
+1.1.4 International Plumbing Code 2018 
+1.1.5 International Fuel Gas Code 2018 
+1.1.6 International Energy Conservation Code 2018 
+1.1.6.1 Section C405.2 Lighting Controls shall be non-mandatory 
+1.1.6.2 Section C405.4 Exterior Lighting Power Requirements shall be non-mandatory and controls 
+to be approved by MSU 
+1.1.6.3 Section C503.1 General – Renovations to existing buildings can be an exception where it 
+is technically infeasible to conform to the IECC and may be allowed when approved by MSU 
+1.1.7 NEC 2011  
+1.1.8 In addition, all applicable state and federal laws and regulations including but not limited to: 
+1.1.8.1 Section 504 of the Federal Rehabilitation Act of 1973 
+1.1.8.2 The Americans with Disabilities Act (ADA) 
+1.1.8.3 Missouri State Statutes Chapter 8 
+1.1.8.4 Section 8.812 Minimum Energy Efficiency Standards  
+1.1.8.5 Applicable Life Safety Codes shall be incorporated herein by reference. 
+ | 3.2 The Consultant shall provide services for the Project to comply with all applicable federal, state and local laws, 
+statutes, ordinances, codes, orders, rules and regulations  in effect as of the date of services rendered , and 
+shall assist the Owner in obtaining required written approval of all governmental authorities having jurisdiction 
+over the project prior to execution of the contract(s) for construction.  Review or approval of the Consultant’s 
+documents by the Owner shall not relieve the Consultant of any obligations for such compliance or for 
+assistance in obtaining governmental approval.  The Owner shall be responsible for any additional costs due 
+to subsequent retraction or modification of written approval by a governmental authority, unless such retraction 
+or modification is the  result of a negligent error or omission in the Contract Documents discovered after the 
+original approval.  
+ | 3.6.2 The Consultant shall to the best of their knowledge, information and belief comply with all applicable 
+codes, standards and the Owner's design guidelines in the preparation of project drawings and 
+specifications, unless otherwise authorized by the Owner. T he Consultant shall acknowledge such 
+action by sealing the contract documents as required by state statute. 
+",,,,,,,,,
+P06,P06-A-004,财务／争议解决／公共机构适用范围,high,25.0已有月度分阶段付款，比例合计100%；25.3要求报告和业主认可的票据，25.4又以批准发票为到期条件，但没有明确批准时限。其30日利息安排援引431.180，而该法官方文本标题及第一款针对private design or construction work；本合同Owner为公共大学，具体适用或仅合同援引须核实。,"25.0 Consultant’s Payment Schedule – Payments for Consultant’s Basic Services shall be made monthly and will 
+be in proportion to services performed within each phase and will total the following percentages of total 
+compensation: 
+Schematic Design Phase: fifteen percent (15%) 
+Design Development Phase: twenty percent (20%) 
+Construction Documents Phase: thirty-five percent (35%) 
+Bidding Phase: five percent (  5%) 
+Construction Administration Phase: twenty percent (20%) 
+Post Construction: five percent (  5%) 
+Total Basic Compensation: one hundred percent (100%) 
+ | 25.3 Invoices – Payment will be made upon submission of a detailed invoice.  The invoice must include the total 
+fee, a percentage of completion, the previous fees billed and the current fee billing.  Any reimbursable 
+expenses shall be listed separately by line item and  invoices shall contain, or be attached to, documentation 
+that is satisfactory to the Owner  per the terms of Article 10.  Applicable reporting requirements must be met 
+before payment will be made. 
+25.4 Payments, Sums Withheld – No deductions will be made from the Consultant’s compensation on account of 
+penalty, liquidated damages, or other sums withheld from payments to Contractor(s) , or on account the cost 
+of changes in the Work other than those for which the Consultant has been adjudged to be liable.  Payments 
+are due and payable upon receipt of an approved Consultant’s invoice.  An amount unpaid 30 days after the 
+invoice date shall bear reasonable interest from the date payment is due in accordance with Chapter 431.180, 
+RSMo. 
+",,,,,,,,,
+P06,P06-A-005,保险／财务／风险管理,medium,14.0保险仅明确维持协议期间；14.3专业责任写成每次索赔或年度累计100万美元，未交代保单是claims-made还是occurrence、追溯日及终止后保障。14.6要求30日取消通知，但尚无实际保单确认能否提供。,"14.0 The Consultant shall provide and maintain, during the life of the Agreement, insurance acceptable to the 
+Owner which will afford protection and coverage in accordance with the requirements set forth below. 
+ | 14.3 Professional Liability Insurance will be provided by the Consultant to cover claims arising out of the negligent 
+acts, errors and omissions by the Consultant or anyone employed by them. The coverage provided shall not 
+be less than $1,000,000  per claim or annual aggregate . The Consultant shall require its Subconsultant 
+similarly to provide Professional Liability coverage.   
+ | 14.6 The Consultant shall furnish the Owner with certificates, policies, or binders which indicate the Consultant 
+and/or the Owner and other Consultants (where required) are covered by the required insurance showing 
+type, amount, class of operations covered, e ffective dates and dates of expiration of policies prior to 
+commencement of the work. All certificates, policies, or binders shall give Missouri State University thirty (30) 
+day's written notice before cancellation.  
+14.7 Upon receipt of any notice of cancellation, the Consultant shall, within ten (10) days, procure other policies of 
+insurance similar in all respects to the policy or policies about to be canceled or altered; and if the Consultant 
+fails to provide, procure a nd deliver acceptable policies of insurance or satisfactory certificates or other 
+evidence thereof, the Owner may obtain such insurance at the cost and expense of the Consultant without 
+notice to the Consultant.  
+",,,,,,,,,
+P06,P06-A-006,知识产权／信息交付／技术业务,medium,13.0保留顾问及分顾问著作权，并明确业主可对本项目复制、修改和维修，且未经顾问确认使用自担风险；3.10.1同时要求交付可编辑DWG、CTB及外部引用。“仅本项目”与后续扩建的边界、第三方素材许可和完整交付的权利链尚需项目化确认。,"13.0 Drawings, specifications and other documents, including those in electronic form, prepared by the Consultant 
+and its Subconsultants are Instruments of Service for use solely with respect to the Project.  The Consultant 
+and its Subconsultants shall be deemed the authors and owners of their respective Instruments of Service 
+and shall retain all common law, statutory and other reserved rights, including copyrights.  Neither the Owner 
+nor the Consultant or its Subconsultants shall use the documents produced pur suant to the Agreement for 
+any other Project.  However, the Owner may use , including copy, modify and amend such Instruments of 
+Service at any time including but not limited to expanding, correct ing any deficiencies to, or making  any 
+renovations or repairs to the Project.  Any such use without written verification or adaptation by the Consultant 
+for the specific purpose intended shall be at the user’s sole risk and without liability or legal exposure to the 
+Consultant or its independent Contractors or Consultants. 
+ | 3.10.1 As part of the basic services, Consultant shall provide Owner with an electronic set of Record 
+Drawings and two sets of prints that reflect as -built conditions.  These plans shall incorporate all 
+changes.  Reference to a separate document is not allowed. Each sheet of the plans shall be clearly 
+labeled “Record Drawings” and show the date revised.  One example sheet of the Consultant’s format 
+is to be submitted for Owner’s approval before proceeding with entire set.   All drawings and details 
+shall be prepared utilizing AutoCAD application programs and be compatible with the latest version 
+of AutoCAD.   The Consultant must deliver files in .dwg format along with Consultant’s .ctb file 
+showing standard layers and line weights along with any associated external references.   Along with 
+the electronic AutoCAD files, a copy of these documents shall also be provided in .pdf format.  The 
+.pdf format files shall be indexed according to the drawing set and shall be named according to the 
+name of the sheet.  Reasonable  effort shall be made to insure accuracy.   The Consultant shall 
+provide these documents within twenty -eight (28) calen dar days of the receipt of the marked up 
+drawings from the Contractor.   
+",,,,,,,,,
+P06,P06-A-007,业务连续性／财务／解除与工期,high,17允许业主停工并尽快选择续行、延长或终止，17.2已给予非顾问原因停复工的合理追加报酬；18.0又允许资金不足或阶段末七日前邮寄通知终止。未明确暂停最长期、复工通知及工期调整、可纠正违约补救安排和不可撤销分包成本结算。,"17.1 As soon as feasible, after a Notice for Interruption of Work has been issued, the Owners Representative shall 
+take appropriate action to (1) Terminate the contract; (2) Cancel the Interruption of Work; or (3) Extend the 
+period of the interruption if it is deemed necessary. 
+17.2 Upon written approval of the Owners Representative, the Owner shall pay all payments due to the Consultant 
+for services completed, up until the time of Interruption. Consultant’s contract with the Owner shall remain 
+valid through an Interruption of Work until such time that a Termination is necessary.   Consultant shall have 
+
+[PAGE 12]
+Planning, Design and Construction February 1, 2010 
+Missouri State University Page 12 of 15 
+Agreement for Consulting Services Rev March 1, 2026
+the right to reasonable compensation for additional services due to the interruption of work and subsequent 
+resumption of work if due to no fault of the Consultant. 
+ | 18.0 This Agreement may be terminated by the Owner’s Representative upon mailing notice of termination to the 
+Consultant at least seven (7) days in advance of the date of termination if the Consultant substantially fails to 
+perform according to the terms and conditions of this Agreement in the opinion of the Owner’s Representative 
+or funds for the Project are not appropriated or are insufficient to proceed with the Project.  The Owner’s 
+Representative may also terminate this Agreement by the same procedure at th e end of any phase or part 
+thereof as set forth in this Agreement.  In the event of termination, the Consultant shall be paid his 
+compensation for services performed up until the date of termination subject to amounts withheld to satisfy 
+any amount due the Owner by reasons of any prior default of the Consultant or otherwise. 
+",,,,,,,,,
+P06,P06-A-008,争议解决／证据／程序期限,high,16.0将大学建筑师关于工作质量、数量或价值的决定设为最终约束，顾问须在决定后30日书面申请调解才提出异议；起算送达、异议范围和调解期间其他期限如何处理未细化。16.1另保留公共主体豁免。,"16.0 In order to prevent all disputes or disagreements between the parties to this Agreement in relation to the 
+performance on the part of the Consultant, it is expressly agreed and understood that in case any  controversy 
+or difference of opinion shall arise b etween the parties as to the quality, quantity or value of the Work, the 
+decision of the University Architect shall be final and binding on all parties, unless the Consultant pursues the 
+mediation procedure set forth below by  written request within 30 days of the determination of the University 
+Architect. Such disputes shall be decided in the courts unless the parties agree in writing to 
+arbitration.  Notwithstanding anything to the contrary contained in the contract documents, in the event a 
+dispute shall arise between the Owner and the Consultant regarding the performance on the part of the 
+Consultant, the Consultant agrees to participate in one mandatory non-binding mediation session prior to filing 
+a lawsuit.  The parties involved agree to split the costs of the mediation.  The mediation shall be administered 
+by a mediator appointed by the Missouri Bar Association’s alternative dispute resolution comm ittee, unless 
+the parties agree to another mediator.   If a resolution of the dispute cannot be reached in the mediation, the 
+parties are free to pursue any other alternative of resolving the dispute which they choose, whether it be 
+arbitration, litigation, or some other means. 
+16.1 Any lawsuit to enforce this Agreement shall be brought in the Circuit Court of Greene County, Missouri.  A 
+prevailing party will be entitled to its court costs and expenses, including a reasonable attorney’s fee.  Nothing 
+in this Agreement shall be construed to waive any sovereign, governmental, or official immunity applicable to 
+any party, its officers or employees. 
+",,,,,,,,,
+P03,P03-M-001,legal/language,medium,模板仍以《合同法》作为未尽事宜依据。如用于2021年后的新交易，应更新法源指引；这不意味着整份合同自动无效。若审历史交易，应先确认时间适用。,"5.其它未尽事宜，以《合同法》和《政府采购法》等有关法律法规规定为准，
+无相关规定的，双方协商解决。",,,,,,,,,
+P03,P03-M-002,finance/business/dispute,high,付款依赖甲方审核材料及双方签署验收，验收分歧仅约定协商。若招标文件未另定审核时限和争议处理节点，验收争议可持续阻塞付款；模板空白本身不构成违约。,"2.乙方向甲方提交下列文件材料，经甲方审核无误后支付采购资金： | （2）经甲乙双方确认签署的《验收报告》（或按项目进度阶段性《验收报告》）； | 分歧应通过
+协商解决。",,,,,,,,,
+P03,P03-M-003,legal/business/language,medium,多份文件具有同等效力，清单又采用开放式列举；当前提取文本未规定冲突解释顺序。实际附件若出现服务范围或价格不同，需要结合采购规则和文件形成过程判断，不能随意认定后文件优先。,"下列与本次采购活动有关的文件及附件是本合同不可分割的组成部分，与本
+合同具有同等法律效力，这些文件包括但不限于： | 二：合同要求（应为乙方投标文件的服务要求及投标承诺）",,,,,,,,,
+P03,P03-M-004,compliance/security/business,medium,保密条款限制资料提供对象和必要范围，但如果实际服务涉及个人信息或重要业务数据，仅此不能确定处理目的、权限、事件协作、留存删除和分包方义务已完整约定。不能因其为普通服务模板就默认存在数据处理。,"即使向履行本合同有关的人员提供，也应注意保密并限于履行合同的必需
+范围内。 | 除招标采购文件事先说明、且经甲方事先书面同意外，乙方不得分包、转包
+其应履行的合同义务。",,,,,,,,,
+P03,P03-M-005,finance/compliance,medium,第三条费用变化表述容易被脱离上下文理解为只要增加不超10%即可；第十五条已经援引政府采购法第49条，具有纠偏作用。执行时仍需按全部补充合同累计、相同标的及其他条件共同检查。,"但因此而增加的服务费用不得超过原中标金额的 10%。 | 符合《政府采购法》第 49 条规定的，经双方协商，办理政府采购手续后，
+可签订补充合同，所签订的补充合同与本合同具有同等法律效力。",,,,,,,,,
+P08,P08-M-001,business/legal/dispute,high,提前收回/退租条款规定通知加违约金，与第九条列举解除事由并存。需澄清这是约定提前退出权，还是仅约定违约后果；不能默认支付违约金即可无条件解除。,"（一）经双方当事人协商一致，可以解除本合同。本合同的解除应当采用书面形
+式。 | （三）除本合同第九条约定情形外，租赁期内出租人需提前收回房屋的，或承租
+人需提前退租的，应至少提前【 】日书面通知对方，按月租金的【 】%向对方支付
+违约金。出租人应退还承租人已交纳且未发生的租金及费用。",,,,,,,,,
+P08,P08-M-002,finance/dispute,medium,押金已有返还期限，不能误报完全没有期限；但抵扣范围含其他费用，若对损坏、折旧或费用存在争议，缺少无争议余额先返还及扣款证明机制。,"除抵扣租金、违约金以及其他费用外，出租人应当自承租人返还住房 【3】
+【 】个工作日内向承租人退还剩余押金、租金。 | 租赁期满或合同解除后，双方当事人应当对房屋和附属物品、设施设备及
+水电气热等使用情况进行交验，结清相关费用。",,,,,,,,,
+P08,P08-M-003,business/safety,medium,维修条款已有逾期代修及租金调整，不应误报救济缺失；但一个统一的待填维修期限未区分紧急安全事件和一般维修。,"出租人应当在接到承租人通知后【 】
+日内进行维修。逾期不维修的，承租人可代为维修，费用由出租人承担。 | 因维修、更
+换致使承租人无法使用该房屋的，应当相应减少租金或延长租赁期。",,,,,,,,,
+P08,P08-M-004,language/business,low,提取文字出现“恢复原甲方状”，疑似模板笔误或提取错误，应核对原件后处理；不能未经视觉核验认定原件有错。,出租人并可要求承租人将房屋恢复原甲方状或赔偿相应损失。,,,,,,,,,
+P08,P08-M-005,compliance/finance,medium,模板区分普通收款和从事转租业务企业的监管账户；如主体类型选错，后续可能使用错误支付路径。当前空白不等于已经违规付款。,"（一）直接交入出租人（个人/机构）账户 | （二）出租人为从事转租业务的住房租赁企业，承租人通过出租人在本市商业银
+行开立的全市唯一的住房租赁交易资金监管专用账户付款",,,,,,,,,
+P05,P05-C01,技术风险/法务/多方关系,medium,合作研发失败认定条件只写乙方无过错，未明确其他合作方角色,"第九条  在本合同履行中，因出现在现有技术水平和条件下难以克服的技
+术困难，导致研究开发失败或部分失败，并造成合作一方或多方损失的，合作各
+方约定按以下方式承担风险损失： | 2． 乙方在主观上无过错且经认定研究开发失败为合理的失败。",,,,,,,,,
+P05,P05-C02,知识产权/技术集成/业务,high,阶段成果、最终成果和后续改进归属需补足相互实施权限,"第十五条：合作各方确定， 因履行本合同所产生、 并由合作各方分别独立
+完成的阶段性技术成果及其相关知识产权权利归属，按第 
+      种方式处理： 
+     1．          （完成方、合作各方）方享有申请专利的权利。   
+    专利权取得后的使用和有关利益分配方式如下：              
+                                                            
+                                                         。 
+     2． 按技术秘密方式处理。 有关使用和转让的权利归属及由此产生的利益按
+以下约定处理： 
+    （1）技术秘密的使用权：                                 
+    （2）技术秘密的转让权：                                 
+    （3）相关利益的分配办法：                              ； 
+    合作各方对因履行本合同所产生、 并由合作各方分别独立完成的阶段性技术
+成果及其相关知识产权权利归属，特别约定如下：     
+                                                             
+                                                        。 
+    第十六条：合作各方确定 | 第二十条：合作各方确定，任何一方有权利用本合同项目研究开发所完成
+的技术成果， 进行后续改进。由此产生的具有实质性或创造性技术进步特征的新
+的技术成果，归         （完成方、合作各方）方所有。具体相关利益的分配
+办法如下：                                  
+                                                                          
+                                                         。 
+    第二十一条",,,,,,,,,
+P05,P05-C03,财务/知识产权/申请程序,high,申请被驳回不退已付款，需区分商业申请风险与让与方违约,"第八条：双方确定，本合同生效后，甲方专利申请被国家专利行政主管机关
+驳回的，乙方不退还已收取的转让费用：尚未收取的，按以下方式处理：                                           
+                                                         。 
+     双方对专利申请被驳回的特别约定如下：                                    
+                                                         。 
+    第九条：双方确定 | 第六条：乙方应当保证其专利申请权不侵犯任何第三人的合法权益。 如发生
+第三人指控甲方侵权的，乙方应当                  
+                                                         。     
+    第七条",,,,,,,,,
+P05,P05-C04,业务/财务/既有合同承接,high,原技术转让合同权利义务整体承接需要逐份确定,"第二条：乙方在本合同签署前实施或转让本项发明创造的状况如下： 
+     1．乙方实施本发明创造的状况（时间、地点、方式和规模） ：                                                       
+                                                            
+                                                         。 
+     2．乙方许可他人使用本发明创造的状况（时间、地点、方式和规模） ：                                                   
+                                                        。 
+     3． 本合同生效后， 乙方有义务在      日内将本发明创造专利申请权转让
+的状况告知被许可使用本发明创造的当事人。 
+    第三条：甲方应在本合同生效后，保证原技术转让合同的履行。乙方在原技
+术转让合同中享有的权利和义务，自本合同生效之日起，由甲方承受。乙方应当
+在      日内通知并协助原技术转让合同的让与人与甲方办理合同变更事项。 
+    第四条：为保证甲方申请专利",,,,,,,,,
+P05,P05-C05,法务/知识产权/财务,high,专利无效不承担法律责任的宽泛表述需与权利保证协调,"第九条：乙方应当保证其专利权转让不侵犯任何第三人的合法权益。 如发生
+第三人指控甲方侵权的，乙方应当                   
+                                                         。 
+
+[PAGE 50]
+    第十条：乙方对本合同生效后专利权被宣告无效，不承担法律责任。",,,,,,,,,
+P05,P05-C06,业务/知识产权/许可关系,high,受让专利不自动等于排除所有他人实施,"第三条：甲方应在本合同生效后，保证原专利实施许可合同的履行。乙方在
+原专利实施许可合同中享有的权利和义务，自本合同生效之日起，由甲方承受。
+乙方应当在      日内通知并协助原专利实施许可合 同的让与人与甲方办理合
+同变更事项。 
+    第四条：本合同生效后乙方继续实施本项专利的，按以下约定办理：                                                      
+                                                         。 
+
+[PAGE 49]
+    第五条：为保证甲方有效拥有本项专利权 | 第十三条：双方确定： 
+
+[PAGE 51]
+     1． 甲方有权利用乙方转让专利权涉及的发明创造进行后续改进。 由此产生
+的具有实质性或创造性技术进步特征的新的技术成果，归       （甲方、双方）
+方所有。具体相关利益的分配办法如下：          
+                                                            
+                                                         。 
+     2． 乙方有权在已交付甲方该项专利权后， 对该项专利权涉及的发明创造进
+行后续改进。 由此产生的具有实质性或创造性技术进步特征的新的技术成果，归      
+（乙方、双方）方所有。具体相关利益的分配办法如下：                                                     
+                                                       。 
+    第十四条：双方确定",,,,,,,,,
+P05,P05-C07,财务/专利状态/责任计算,medium,无效后的赔偿与不返还使用费需定义结算口径,"本项专利权被国家专利行政主管机关宣布无效的，乙方应当赔偿甲方损失，
+但甲方已给付乙方的使用费，不再返还。 | 第九条：甲方向乙方支付实施该项专利权使用费及支付方式为： 
+     1．许可实施使用费总额为：                             
+          其中：技术秘密的使用费为：                       
+                技术服务和指导费为：                       
+     2．许可实施使用费由甲方",,,,,,,,,
+P05,P05-C08,业务/履约/现金流,high,强制开始实施期限需关联资料交付与验收条件,"第十二条：甲方应当在本合同生效后        日内开始实施本项专利；逾期
+未实施的，应当及时通知乙方并予以正当解释，征得乙方认可。甲方逾期        
+日未实施本项专利且未予解释， 影响乙方技术转让提成收益的，乙方有权要求甲
+方支付违约金或赔偿损失。 
+    第十三条 | 第八条：双方确定，乙方许可甲方实施本项专利及转让技术秘密、提供技
+术服务和技术指导，按以下标准和方式验收： 
+     1．                                                  
+     2．                                                  
+     3．                                                 
+    第九条",,,,,,,,,
+P05,P05-C09,知识产权/技术风险/退出结算,high,第三人通过专利公开被排除于自动解除条件，需要另定侵权及价值下降处理,"第七条：在本合同履行过程中，因本项技术秘密已经由他人公开（以专利权
+方式公开的除外） ， 一方应在     日内通知另一方解除合同。逾期未通知并致使
+
+[PAGE 73]
+另一方产生损失的，另一方有权要求予以赔偿。具体赔偿方式为：                                           
+                                                         。 
+     第八条：双方确定 | 第九条：双方确定，乙方在本合同有效期内，将本项技术秘密申请专利或以
+
+[PAGE 74]
+其他方式公开的， 应当征得甲方同意；乙方就本项技术秘密申请专利并取得专利
+权的，甲方依本合同有继续使用的权利。 
+    第十条：为保证甲方有效实施 | 第六条：乙方保证本项技术秘密的实用性、可靠性，并保证本项技术秘密不
+侵犯任何第三人的合法权利。如发生第三人指控甲方实施技术秘密侵权的，乙方
+应当                                 
+                                                         。 
+    第七条",,,,,,,,,
+P05,P05-C10,业务/保密/知识产权,high,“使用权、转让权”及既有对外转让需形成明确许可范围,"本合同乙方将其拥有                                      
+               项目的技术秘密                   （使用权、转让权）转让
+甲方，甲方受让并支付相应的使用费。 | 第四条：乙方在本合同生效前实施或转让本项技术秘密的状况如下： 
+     1．乙方实施本项技术秘密的状况（时间、地点、方式和规模） ：                                                       
+                                                                 
+                                                         。 
+     2．乙方转让他人本项技术秘密的状况（时间、地点、方式和规模） ：                                                    
+                                                           
+                                                        。 
+     第五条：甲方应以如下范围、方式和期限实施本项技术秘密： 
+      1．实施范围：                                       
+                                                        。 
+      2．实施方式：                                       
+                                                        。 
+      3．实施期限：                                      。 
+    第六条：乙方保证",,,,,,,,,
+P05,P05-C11,业务决策/法务/专业责任,high,决策损失免责选项仅针对符合约定的咨询成果，不能扩张成所有失误免责,"第九条：双方确定， 甲方按照乙方符合本合同约定标准和方式完成的技术咨
+询工作成果做出决策并予以实施所造成的损失， 按以下第         种方式处理： 
+      1．乙方不承担责任。 
+      2．乙方承担部分责任。具体承担方式为                   
+                                                         。 
+      3．乙方承担全部责任。 
+    第十条：双方确定 | 第七条：双方确定，按以下标准和方式对乙方提交的技术咨询工作成果进行
+验收： 
+      1．乙方提交技术咨询工作成果的形式：                   
+                                                            
+                                                         。 
+      2．技术咨询工作成果的验收标准：                       
+                                                         。 
+      3．技术咨询工作成果的验收方法：                       
+                                                         。 
+      4．验收的时间和地点：                                 
+                                                         。 
+    第八条：双方确定",,,,,,,,,
+P05,P05-C12,知识产权/保密/数据使用,medium,新技术成果归属选项不等于对甲方材料的无限利用授权,"第十条：双方确定： 
+      1．在本合同有效期内，甲方利用乙方提交的技术咨询工作成果所完成的
+新的技术成果，归        （甲、双）方所有。 
+      2．在本合同有效期内，乙方利用甲方提供的技术资料和工作条件所完成
+的新的技术成果，归        （乙、双）方所有。 
+     第十一条：双方确定 | 第三条：为保证乙方有效进行技术咨询工作， 甲方应当向乙方提供下列协作
+事项： 
+      1．提供技术资料：",,,,,,,,,
+P05,P05-C13,业务履约/质量/财务,high,一次成果验收与持续质量期限需按服务形态衔接,"第二条：乙方应按下列要求完成技术服务工作： 
+      1．技术服务地点：                                     
+      2．技术服务期限：                                     
+      3．技术服务进度：                                     
+                                                            
+                                                            
+      4．技术服务质量要求：                                 
+      5．技术服务质量期限要求：                             
+    第三条：为保证乙方有效进行技术服务工作 | 第七条：双方确定以下列标准和方式对乙方的技术服务工作成果进行验收： 
+      1．乙方完成技术服务工作的形式：                       
+                                                            
+                                                       。 
+      2．技术服务工作成果的验收标准：                       
+                                                         。 
+      3．技术服务工作成果的验收方法：                       
+                                                         。 
+      4．验收的时间和地点：                                 
+                                                         。 
+   第八条：双方确定",,,,,,,,,
+P05,P05-C14,信息安全/协作资料/退出交接,high,技术服务中的资料和系统访问不能仅靠保密栏目控制,"第三条：为保证乙方有效进行技术服务工作， 甲方应当向乙方提供下列工作
+条件和协作事项： 
+
+[PAGE 97]
+      1．提供技术资料： 
+      （1）                                                
+      （2）                                                     
+      （3）                                                
+      （4）                                                
+      2．提供工作条件： 
+      （1）                                                
+      （2）                                                     
+      （3）                                               
+      （4）                                               
+      3．其他：                                            
+                                                         。 
+      4．甲方提供上述工作条件和协作事项的时间及方式：                 
+                                                         。 
+    第四条：甲方向乙方支付 | 第五条：双方确定因履行本合同应遵守的保密义务如下： | 第十一条：双方确定，出现下列情形，致使本合同的履行成为不必要或不可
+能的，可以解除本合同： 
+      1．发生不可抗力； 
+
+[PAGE 101]
+      2．                                                 
+      3．                                                 
+    第十二条：双方因履行",,,,,,,,,
+P05,P05-T01,法务/业务范围,medium,2001年汇编需先选模板及核验适用时点,"国科发政字［2001］244 号 | 附件 1：技术开发(委托)合同 
+附件 2：技术开发(合作)合同 
+附件 3：技术转让(专利申请权)合同 
+附件 4：技术转让(专利权)合同 | 附件 5：技术转让(专利实施许可)合同 
+附件 6：技术转让(技术秘密)合同 
+附件 7：技术咨询合同 
+附件 8：技术服务合同",,,,,,,,,
+P05,P05-T02,业务/财务/技术履约,high,委托开发需把技术目标、付款、交付和验收绑成可执行里程碑,"第一条  本合同研究开发项目的要求如下： | 第五条  甲方应按以下方式支付研究开发经费和报酬： | 第十二条  乙方应当按以下方式向甲方交付研究开发成果： 
+     1．研究开发成果交付的形式及数量：                       
+                                                          。 
+     2．研究开发成果交付的时间及地点：                       
+                                                         。 
+    第十三条  双方确定，按以下标准及方法对乙方完成的研究开发成果进行
+验收：                                                
+                                                              
+                                                         。 
+    第十四条",,,,,,,,,
+P05,P05-T03,法务/争议/业务变更,high,书面协商一致与特定情形沉默视为同意需收紧边界,"第七条  本合同的变更必须由双方协商一致，并以书面形式确定。但有下列情
+形之一的，一方可以向另一方提出变更合同权利与义务的请求，另一方应当在       
+日内予以答复；逾期未予答复的，视为同意：",,,,,,,,,
+P05,P05-T04,技术/信息安全/供应链,high,分包例外与技术资料保密需要联动,"第八条  未经甲方同意，乙方不得将本合同项目部分或全部研究开发工作
+转让第三人承担。但有下列情况之一的，乙方可以不经甲方同意，将本合同项目
+部分或全部研究开发工作转让第三人承担： 
+     1．                                                   ； 
+     2．                                                   ； 
+     3．                                                   ； 
+     4．                                                    。 
+    乙方可以转让研究开发工作的具体内容包括： | 第十一条  双方确定因履行本合同应遵守的保密义务如下：",,,,,,,,,
+P05,P05-T05,知识产权/技术/商业,high,专利和技术秘密选项未直接解决所有交付及持续使用权,"第十五条  双方确定，因履行本合同所产生的研究开发成果及其相关知识
+产权权利归属，按下列第      种方式处理： 
+    1．          （甲、乙、双）方享有申请专利的权利。 
+    专利权取得后的使用和有关利益分配方式如下：                
+                                                              
+                                                           。 
+    2．按技术秘密方式处理。 | 第十六条  乙方不得在向甲方交付研究开发成果之前，自行将研究开发成
+果转让给第三人。 | 第二十一条  双方确定，甲方有权利用乙方按照本合同约定提供的研究开
+发成果，进行后续改进。由此产生的具有实质性或创造性技术进步特征的新的技
+术成果及其权属， 由      （甲、 乙、 双） 方享有。 具体相关利益的分配办如下：                                    
+                                                            。 
+    乙方有权在完成本合同约定的研究开发工作后，利用该项研究开发成果进行
+后续改进。由此产生的具有实质性或创造性技术进步特征的新的技术成果，归       
+（ 甲 、 乙 、 双 ） 方 所 有 。 具 体 相 关 利 益 的 分 配 办 法 如
+下：                                                    。 
+    第二十二条",,,,,,,,,
+P05,P05-T06,财务/技术风险/争议解决,high,合理研发失败与解除后的费用及成果处置需明确,"第九条  在本合同履行中，因出现在现有技术水平和条件下难以克服的技
+术困难，导致研究开发失败或部分失败，并造成一方或双方损失的，双方按如下
+
+[PAGE 10]
+约定承担风险损失：                          
+                                                              
+                                                         。 
+    双方确定，本合同项目的技术风险按                          
+                                         的方式认定。认定技术风险的基
+本内容应当包括技术风险的存在、范围、程度及损失大小等。认定技术风险的基
+本条件是： 
+     1． 本合同项目在现有技术水平条件下具有足够的难度； 
+     2． 乙方在主观上无过错且经认定研究开发失败为合理的失败。 
+     一方发现技术风险存在并有可能致使研究开发失败或部分失败的情形时，
+应当在      日内通知另一方并采取适当措施减少损失。 逾期未通知并未采取适
+当措施而致使损失扩大的，应当就扩大的损失承担赔偿责任。 
+    第十条 | 第二十三条  双方确定，出现下列情形，致使本合同的履行成为不必要或
+不可能的，一方可以通知另一方解除本合同； 
+     1．因发生不可抗力或技术风险； 
+     2．                                                         
+     3．                                                           
+    第二十四条",,,,,,,,,
+P07,P07-N01,业务/保密期限,high,保密保护从生效日计算，并非每次披露或终止后重新起算,"The Receiving Party’s obligation to maintain 
+the confidentiality of Disclosing Party’s Confidential Information shall survive any expiration or 
+termination of this Agreement for three (3) years from the Effective Date.  The parties represent that they 
+will not disclose any trade secrets under this Agreement. | 12. The term of this Agreement shall be one (1) year from the Effective Date.  Either party may terminate this 
+Agreement upon thirty (30) days written notice to the other party at the address referenced in the Preamble 
+of this Agreement.",,,,,,,,,
+P07,P07-N02,知识产权/业务适配,high,双方承诺不披露trade secrets，不能直接当核心商业秘密交换协议使用,will not disclose any trade secrets under this Agreement.,,,,,,,,,
+P07,P07-N03,信息安全/数据生命周期,medium,档案及备份例外需要可验证的留存期限与限制,"3. Confidential Information disclosed by one Party to the other shall remain the property of the Disclosing 
+Party, and shall be returned to the Disclosing Party, or destroyed by the Receiving Party, upon written 
+request of the Disclosing Party. The Receiving Party may, however, retain one archival copy of the 
+Confidential Information for the purpose of determining its obligations hereunder or for legal compliance 
+purposes. Notwithstanding the foregoing provisions hereof, Confidential Information that is stored on 
+routine back-up media solely for the purpose of disaster recovery shall not be required to be destroyed; 
+provided that such information will be subject to destruction in due course, and that employees are 
+precluded from accessing such information in the ordinary course of business prior to destruction.",,,,,,,,,
+P07,P07-N04,信息安全/第三方履约,medium,第三方need-to-know已有约束，但责任与事件处置还需匹配风险,"5. The Receiving Party shall use reasonable efforts to disclose Confidential Information received by it only  
+to those of its employees, agents, representatives, or related third parties who must be so informed to 
+enable that party to accomplish the Purpose and who have been provided a copy of this fully executed 
+Agreement and are bound by that Party's obligations of confidentiality hereunder, or have entered into a 
+confidentiality agreement with terms at least as restrictive as those herein.",,,,,,,,,
+P07,P07-N05,跨境/出口管制/交易范围,high,出口受控或涉密材料不在当前交换计划内，修改合同不等于获得监管许可,"15. No disclosure or transfer of information, software, source code, equipment or materials identified on a US 
+export control list (“Export Control-Listed Material”), such as the Commerce Control List at 15 CFR 774 
+and the US Munitions List at 22 CFR 121, is planned under this Agreement. In addition, no disclosure of 
+any information that is subject to a security classification (“Classified Information”) is planned under this 
+Agreement. Neither Export Control -Listed Material nor Classified Information will be disclosed or 
+transferred without prior written amendment of this Agreement. | 11. This Agreement shall be construed, interpreted, and governed in accordance with and under the 
+jurisdiction of the laws of the State of Alabama, USA, notwithstanding the residence or principal place of 
+business of any Party, the place where this Agreement may be executed by any Party, or the provisions of 
+any jurisdiction's conflict-of-laws principles.",,,,,,,,,
+P07,P07-N06,业务/技术验证/责任,medium,as-is条款适合初步评估，但不能替代交付准确性承诺,"13. The CONFIDENTIAL Information is provided on an “as is” condition. THE Disclosing Party makes no 
+warranties, expressly, impliedly or otherwise, and shall not HAVE ANY LIABILITY, DIRECT OR 
+INDIRECT, TO THE RECEIVING PARTY FOR ANY DAMAGES THAT MAY RESULT FROM the 
+accuracy, completeness, OR utility of the CONFIDENTIAL Information. | 4. The disclosure of Confidential Information by one Party to the other shall not constitute a grant by the 
+Disclosing Party to the Receiving Party of any species of right, title, interest, or property in or to 
+Confidential Information other than the right to evaluate such Confidential Information for the Purpose. 
+No license or other right under any U.S. or foreign patent, copyright, or know-how is granted or implied",,,,,,,,,

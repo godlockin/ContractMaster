@@ -1,0 +1,20 @@
+{
+  "entities": [
+    {
+      "value": "测试买方青禾有限公司",
+      "type": "ORG"
+    },
+    {
+      "value": "测试卖方山岚有限公司",
+      "type": "ORG"
+    },
+    {
+      "value": "测试秘密项目紫星",
+      "type": "PROJECT"
+    },
+    {
+      "value": "测试联系人林甲",
+      "type": "PERSON"
+    }
+  ]
+}

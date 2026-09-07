@@ -1,0 +1,20 @@
+{
+  "scope": "single-agent development-set pilot; AI-adjudicated provisional labels",
+  "date": "2026-09-07",
+  "model": "unknown",
+  "submissions": 1,
+  "review_sha256": "dd6d9f2c07d1323f0a314c7be7fca2484e2755fb9552829452ea313467143f3e",
+  "expected_count": 14,
+  "matched_count": 14,
+  "detection_recall": 1.0,
+  "verified_quotes": 30,
+  "forbidden_pass": 14,
+  "forbidden_fail": 0,
+  "forbidden_unassessed": 1,
+  "precision": null,
+  "precision_note": "No independently lawyer-adjudicated finding labels",
+  "legal_citation_verification": "NOT_COMPLETED",
+  "six_expert_e2e": "NOT_RUN",
+  "severity_calibration": "NOT_SCORED",
+  "production_acceptance": "NOT_PASSED"
+}
