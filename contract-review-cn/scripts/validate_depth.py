@@ -91,6 +91,8 @@ def assess(bundle: dict, depth: dict, plan: dict | None = None, results: list[di
         characters += cursor
 
     blockers: list[str] = []
+    if bundle.get("input_gaps"):
+        blockers.append("INPUTS_NOT_PROCESSED")
     expected_roles = p.ROLES
     if plan is None:
         blockers.append("EXPERT_PLAN_NOT_VALIDATED")

@@ -27,6 +27,8 @@ description: 当用户说“我要审核一下这个合同 ~/Downloads/1234.pdf�
 
 ## 执行顺序
 
+先按 [输入格式与依赖引导](references/input-formats.md) 做只读doctor检查。Python是基础运行条件；pypdf仅PDF需要，不能要求所有用户先安装。拒绝或安装失败时继续可处理文件，告知转换选项；未处理输入必须保留缺口，不得报告全文审核完成。旧Word DOC需本地转DOCX，扫描PDF需OCR，不能仅靠安装pypdf解决。
+
 1. 读 [workflow.md](references/workflow.md)，建立任务及输入清单。使用 `scripts/pipeline.py prepare` 本地提取。支持 UTF-8 TXT/MD、DOCX 主文及表格/页眉页脚/脚注/尾注/批注、可提取文本 PDF（需本地 pypdf）。扫描件、图片、修订、复杂版面须按提取质量门禁处理，不能自动视作完整。
 2. 本地实体词典配合规则生成稳定 `⟦TYPE_0001⟧` 标记及逐出现位置映射。查看脚本返回的状态和路径，**不读取 private 内容进入对话**。请用户在本地完成提取完整性、敏感信息及保留商业参数复核；按 [privacy.md](references/privacy.md) 操作。用户已在当前版本完成复核的，不重复询问。
 3. 确认复核后执行 `release`，仅分发生成的 `public/bundle.json`。发布后变更原文、词典或候选包必须重新 prepare、复核和 release。不能把“用户想审核合同”当作脱敏质量已确认。

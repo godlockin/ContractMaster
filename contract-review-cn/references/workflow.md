@@ -26,6 +26,8 @@ run/
 
 ## 本地命令
 
+先执行 `python3 "$SKILL_DIR/scripts/pipeline.py" doctor --input /本地/合同.pdf` 探测格式与依赖，不安装软件、不读取正文。按[input-formats](input-formats.md)提供可选安装/转换引导。prepare可以保留成功文件，未处理文件写入冻结包的input_gaps并阻止深度完整状态；全部失败则不生成候选包。补齐输入后使用新运行目录重新处理，旧结果不可复用。
+
 参数应由宿主作为结构化 argv 传递或正确 shell 引号保护，不拼接不可信合同文本。以下命令放入用户已有后台 wrapper 执行；只返回退出状态和短错误码，读取 private 的内容操作不能回传模型。
 
 ```bash

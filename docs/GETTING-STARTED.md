@@ -29,6 +29,16 @@ python3 -m venv .venv
 
 ## 提供材料
 
+依赖按输入格式引导安装，不是启动时必装：DOCX、TXT、MD不需要额外解析库；仅PDF需要可选pypdf。拒绝安装、没有权限或安装失败都可以继续其他支持格式。DOC、RTF、ODT可用已有本地软件导出DOCX/TXT；扫描PDF和图片另需本地OCR及核对。
+
+可先做不读取正文的环境检查：
+
+```bash
+python3 contract-review-cn/scripts/pipeline.py doctor --input /path/to/contract.pdf
+```
+
+doctor输出当前Python解释器、库是否可用、文件序号与建议。不要把READY理解为已成功提取。混合输入中未处理文件会保留缺口，最终不能宣称完整审核；全部不可处理时提示转换或按需安装。[完整格式矩阵及引导规则](../contract-review-cn/references/input-formats.md)
+
 必需：合同文件或附件。支持UTF-8 TXT/MD、DOCX、可提取文字的PDF。附录、补充协议、技术/质量文件一并提供，标明主合同和版本。
 
 建议补充：我方角色、签署/履行日期、适用法域、交易背景、不可接受条件、企业规则。未知时可先做中立或部分审核，关键事实保留待确认。

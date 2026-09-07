@@ -11,6 +11,7 @@ import re
 import sys
 from datetime import datetime, timezone
 import zipfile
+import importlib.util
 import xml.etree.ElementTree as ET
 
 ROLES = ["legal", "dispute", "finance", "business", "compliance", "language"]
@@ -24,6 +25,32 @@ RULES = [
     ("ACCOUNT", re.compile(r"(?<!\d)\d{12,19}(?!\d)")),
 ]
 NS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+
+
+def input_capabilities(paths: list[Path], pdf_available: bool | None = None) -> dict:
+    """Metadata-only preflight. Never install software or read contract content."""
+    if pdf_available is None:
+        pdf_available = importlib.util.find_spec("pypdf") is not None
+    files = []
+    for index, path in enumerate(paths, 1):
+        suffix = path.suffix.lower()
+        if not path.is_file():
+            status, action = "INPUT_NOT_FOUND", "provide_existing_local_file"
+        elif suffix in {".txt", ".md", ".docx"}:
+            status, action = "READY", "local_extract_then_review"
+        elif suffix == ".pdf":
+            status, action = ("READY", "text_layer_only_then_visual_review") if pdf_available else ("PDF_REQUIRES_LOCAL_PYPDF", "offer_pypdf_or_local_export_to_docx_txt")
+        else:
+            status, action = "LOCAL_CONVERSION_REQUIRED", "export_locally_to_docx_or_utf8_txt"
+        files.append({"source_index": index, "format": suffix if suffix in {".txt", ".md", ".docx", ".pdf", ".doc", ".rtf", ".odt", ".png", ".jpg", ".jpeg"} else "other", "status": status, "action": action})
+    return {"python": sys.version.split()[0], "python_executable": sys.executable,
+            "pypdf_available": pdf_available, "files": files,
+            "ready_count": sum(f["status"] == "READY" for f in files),
+            "note": "Preflight checks format/dependencies only; no automatic install or completeness certification."}
+
+
+def doctor(args: argparse.Namespace) -> None:
+    print(json.dumps(input_capabilities(args.input or [])))
 
 
 class GateError(Exception):
@@ -115,13 +142,17 @@ def extract(path: Path) -> tuple[list[tuple[str, str]], list[str]]:
             from pypdf import PdfReader
         except ImportError as exc:
             raise GateError("PDF_REQUIRES_LOCAL_PYPDF") from exc
-        reader = PdfReader(path)
-        require(not reader.is_encrypted, "PDF_ENCRYPTED")
-        parts = []
-        for index, page in enumerate(reader.pages, 1):
-            value = page.extract_text() or ""
-            require(value.strip(), "PDF_EMPTY_PAGE_LOCAL_OCR_OR_REVIEW_REQUIRED")
-            parts.append((f"page:{index}", value))
+        from pypdf.errors import PyPdfError
+        try:
+            reader = PdfReader(path)
+            require(not reader.is_encrypted, "PDF_ENCRYPTED")
+            parts = []
+            for index, page in enumerate(reader.pages, 1):
+                value = page.extract_text() or ""
+                require(value.strip(), "PDF_EMPTY_PAGE_LOCAL_OCR_OR_REVIEW_REQUIRED")
+                parts.append((f"page:{index}", value))
+        except PyPdfError as exc:
+            raise GateError("PDF_PARSE_FAILED") from exc
         return parts, ["PDF_TEXT_LAYER_VISUAL_REVIEW_REQUIRED"]
     raise GateError("UNSUPPORTED_FORMAT_LOCAL_CONVERSION_REQUIRED")
 
@@ -205,9 +236,15 @@ def prepare(args: argparse.Namespace) -> None:
     registry: dict[str, dict] = {}
     occurrences: list[dict] = []
     documents, segments, sources = [], [], []
+    gaps = []
     for source_index, path in enumerate(args.input, 1):
-        parts, warnings = extract(path)
-        require(parts, "EMPTY_DOCUMENT")
+        try:
+            parts, warnings = extract(path)
+            require(parts and all(original.strip() for _, original in parts), "EMPTY_DOCUMENT")
+        except (GateError, OSError, ValueError, zipfile.BadZipFile) as exc:
+            code = str(exc) if isinstance(exc, GateError) else "INPUT_UNREADABLE_OR_MALFORMED"
+            gaps.append({"source_index": source_index, "code": code})
+            continue
         for label, original in parts:
             require(original.strip(), "EMPTY_DOCUMENT")
             doc_id = f"DOC{len(documents)+1:04d}"
@@ -221,6 +258,10 @@ def prepare(args: argparse.Namespace) -> None:
                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "warnings": warnings})
     bundle = {"schema_version": 1, "roles": ROLES, "levels": LEVELS,
               "documents": documents, "segments": segments}
+    if gaps:
+        write_json(run / "private" / "input-errors.json", [{**gap, "path": str(args.input[gap["source_index"] - 1].resolve())} for gap in gaps])
+        bundle["input_gaps"] = gaps
+    require(documents, "NO_PROCESSABLE_INPUTS_SEE_LOCAL_INPUT_ERRORS")
     bundle["input_digest"] = digest(bundle)
     write_json(run / "private" / "candidate.json", bundle)
     mapping = {"entities": list(registry.values()), "occurrences": occurrences}
@@ -232,7 +273,8 @@ def prepare(args: argparse.Namespace) -> None:
                    if args.entities else None), "requires_local_review": True})
     event(run, "PREPARED_PRIVATE", documents=len(documents), segments=len(segments), entities=len(registry))
     print(json.dumps({"status": "PREPARED_PRIVATE", "documents": len(documents),
-                      "segments": len(segments), "entities": len(registry), "local_review_required": True}))
+                      "segments": len(segments), "entities": len(registry), "local_review_required": True,
+                      "unprocessed_inputs": len(gaps)}))
 
 
 def check_bundle(bundle: dict) -> None:
@@ -241,6 +283,8 @@ def check_bundle(bundle: dict) -> None:
     require(bundle.get("input_digest") == digest(payload), "BUNDLE_DIGEST_MISMATCH")
     require(bundle.get("roles") == ROLES and bundle.get("levels") == LEVELS, "BUNDLE_POLICY_MISMATCH")
     require(bundle.get("documents") and bundle.get("segments"), "EMPTY_BUNDLE")
+    require(isinstance(bundle.get("input_gaps", []), list) and all(isinstance(g, dict) and type(g.get("source_index")) is int
+            and g["source_index"] > 0 and nonempty(g.get("code")) for g in bundle.get("input_gaps", [])), "INPUT_GAPS_SCHEMA")
 
 
 def release(args: argparse.Namespace) -> None:
@@ -380,6 +424,8 @@ def report(args: argparse.Namespace) -> None:
     for doc in bundle["documents"]:
         for warning in doc["warnings"]:
             lines.append(f"- {doc['id']}: {warning}")
+    for gap in bundle.get("input_gaps", []):
+        lines.append(f"- 未处理输入 #{gap['source_index']}：{gap['code']}；本报告不覆盖此文件及其可能影响。")
     ranks = {level: i for i, level in enumerate(("critical", "high", "medium", "low", "info"))}
     findings = [(r["role"], f) for r in results for f in r["findings"]]
     for role, finding in sorted(findings, key=lambda pair: ranks[pair[1]["severity"]]):
@@ -426,6 +472,8 @@ def main() -> int:
     os.umask(0o077)
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
+    probe = commands.add_parser("doctor", help="Read-only optional dependencies and input format check")
+    probe.add_argument("--input", type=Path, action="append")
     for name in ("prepare", "release", "validate", "report", "restore"):
         sub = commands.add_parser(name)
         sub.add_argument("--run", type=Path, required=True)
