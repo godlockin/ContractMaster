@@ -7,6 +7,7 @@ __pycache__/
 .env.*
 !.env.example
 *.log
+.venv/
 # Third-party public contracts: download locally; redistribution not verified.
 research/public-contracts/originals/
 research/public-contracts/text/

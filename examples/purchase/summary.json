@@ -1,0 +1,14 @@
+{
+  "case_id": "C01",
+  "mode": "offline_processing_and_historical_review_replay",
+  "model_calls": 0,
+  "input_sha256": "1223cacac38b204930682b4ba8a513054ecdefa0a989229023ac07d617361f11",
+  "input_digest": "5a990b6e042f4a1ae83a6a0157cd06e41622c121eeedcdab9247dc1d9c696186",
+  "segments": 9,
+  "redacted_characters": 420,
+  "masked_occurrences": 2,
+  "archived_findings": 3,
+  "verified_quotes": 8,
+  "new_legal_review": false,
+  "six_expert_four_round_acceptance": "NOT_RUN"
+}
