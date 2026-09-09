@@ -1,5 +1,7 @@
 # 专家结果契约
 
+新任务按[双组协议](dual-team.md)，每份角色结果增加team和first_pass，R1声明与深度记录摘要绑定。下例为通用字段示意，不是完整的双组结果。
+
 `bundle.json` 包含 `input_digest`、六个 `roles`、五个 `levels`、`documents`、`segments`。原件名称用 DOC0001 等替代。segments 的 start/end 是**各文档脱敏文本**坐标；风险引用必须按这些坐标，不能用模型 token 索引。
 
 bundle.roles 是不可修改的六基础角色；实际审核阵容来自最新 expert-plan，允许专项角色。每个 JSON 文件对应一个计划角色，携带 plan_digest（完整计划 JSON 的 pipeline.digest）；计划变更后必须真实复核并重新确认，不能仅替换摘要：
@@ -32,6 +34,8 @@ bundle.roles 是不可修改的六基础角色；实际审核阵容来自最新 
 ```
 
 severity 为 critical/high/medium/low/info；confidence 为 high/medium/low；basis status 为 verified/unverified/not_applicable。无法律依据需要时用空 basis，并在 risk 中明确商业/文本判断。verified 必须有 HTTPS 法源 URL、检查日期、条号/定位和适用说明；仅结构验证通过不证明法源真实。
+
+verified 的 URL 必须含有效主机，checked_at 使用 YYYY-MM-DD。申报完整深度时，每条 verified basis 还须含 `source_id`，关联 audit-depth.sources 中的 verified 来源；title、url、checked_at 与来源一致，article 属于该来源 articles。缺少关联或字段不匹配会保持 PARTIAL_AUDIT；历史结果可作初稿，但需补齐关联后再申报完整。
 
 每个风险至少一条精确证据；跨条款冲突至少两条。完全缺失的条款引用相关义务、合同目录或末尾，并在 risk 中写明“缺失项，无直接原文”。不能捏造缺失条款 quote。
 

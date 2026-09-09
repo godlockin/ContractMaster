@@ -1,0 +1,43 @@
+name: Engineering verification
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-pdf.txt
+      - name: Install verified PDF dependency
+        shell: bash
+        run: |
+          mkdir -p /tmp/Codex-tasks
+          (python -m pip install -r requirements-pdf.txt && python -m pip check) > /tmp/Codex-tasks/dependencies.log 2>&1 &
+          task_pid=$!
+          if wait "$task_pid"; then
+            echo 'Dependencies OK'
+          else
+            tail -n 20 /tmp/Codex-tasks/dependencies.log
+            exit 1
+          fi
+      - name: Tests and synthetic acceptance
+        shell: bash
+        run: |
+          mkdir -p /tmp/Codex-tasks
+          python scripts/verify.py > /tmp/Codex-tasks/verification.log 2>&1 &
+          task_pid=$!
+          if wait "$task_pid"; then
+            cat /tmp/Codex-tasks/verification.log
+          else
+            tail -n 30 /tmp/Codex-tasks/verification.log
+            exit 1
+          fi

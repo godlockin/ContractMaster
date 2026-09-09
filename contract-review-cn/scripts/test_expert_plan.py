@@ -73,7 +73,7 @@ class PlanTests(unittest.TestCase):
         self.depth["legal_domains"][-1]["status"] = "applicable"
         self.assertIn("APPLICABLE_DOMAIN_WITHOUT_SOURCE", d.assess(self.bundle, self.depth, self.plan, [])["blockers"])
         self.depth["legal_domains"][-1]["source_ids"] = ["S1"]
-        self.assertEqual(d.assess(self.bundle, self.depth, self.plan, [])["status"], "DECLARED_DEPTH_COMPLETE")
+        self.assertEqual(d.assess(self.bundle, self.depth, self.plan, [])["status"], "PARTIAL_AUDIT")
 
     def test_actual_finding_unverified_basis_and_questions_block(self):
         finding = {"basis": [{"status": "unverified"}], "questions": ["Is authority confirmed?"]}
@@ -83,7 +83,7 @@ class PlanTests(unittest.TestCase):
         finding["basis"] = []
         finding["question_resolutions"] = [{"question": finding["questions"][0], "status": "resolved",
              "reason": "Synthetic evidence confirmation", "evidence_refs": ["S1"]}]
-        self.assertEqual(d.assess(self.bundle, self.depth, self.plan, [{"findings": [finding]}])["status"], "DECLARED_DEPTH_COMPLETE")
+        self.assertEqual(d.assess(self.bundle, self.depth, self.plan, [{"findings": [finding]}])["status"], "PARTIAL_AUDIT")
         finding["question_resolutions"][0]["evidence_refs"] = ["MISSING"]
         with self.assertRaisesRegex(d.DepthError, "QUESTION_RESOLUTION_INVALID"):
             d.assess(self.bundle, self.depth, self.plan, [{"findings": [finding]}])

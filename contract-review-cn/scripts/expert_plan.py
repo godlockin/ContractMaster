@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pipeline as p
 
+REVERSE_ROLES = {"reverse_legal", "reverse_compliance", "reverse_dispute"}
+
 
 def activate(run: Path, bundle: dict, plan: dict) -> None:
     """Advance the run's plan monotonically, including blocked plans."""
@@ -43,13 +45,17 @@ def check_active(run: Path, bundle: dict, plan: dict) -> None:
 
 
 def assess(bundle: dict, plan: dict) -> dict:
-    p.require(isinstance(plan, dict) and plan.get("schema_version") == 1, "PLAN_SCHEMA")
+    p.require(isinstance(plan, dict) and plan.get("schema_version") in {1, 2}, "PLAN_SCHEMA")
     p.require(plan.get("input_digest") == bundle["input_digest"], "PLAN_STALE_INPUT")
     p.require(type(plan.get("revision")) is int and plan["revision"] > 0, "PLAN_REVISION")
     p.require(isinstance(plan.get("profile"), dict) and all(p.nonempty(plan["profile"].get(k)) for k in
         ("transaction", "party_position", "jurisdictions", "industry", "data_flow", "documents")), "PLAN_PROFILE")
     roles = set()
     blockers = []
+    teams = {}
+    dual = plan["schema_version"] == 2
+    if not dual:
+        blockers.append("DUAL_TEAM_PLAN_REQUIRED")
     p.require(isinstance(plan.get("experts"), list), "PLAN_EXPERTS_SCHEMA")
     for expert in plan["experts"]:
         p.require(isinstance(expert, dict), "PLAN_EXPERT_SCHEMA")
@@ -57,6 +63,9 @@ def assess(bundle: dict, plan: dict) -> dict:
         p.require(isinstance(role, str) and re.fullmatch(r"[a-z][a-z0-9_]{0,63}", role) is not None
                   and role not in roles, "PLAN_ROLE_INVALID_OR_DUPLICATE")
         roles.add(role)
+        if dual:
+            p.require(expert.get("team") in {"A", "B"}, "PLAN_TEAM_INVALID")
+            teams[role] = expert["team"]
         p.require(all(p.nonempty(expert.get(k)) for k in ("trigger", "mandate", "escalation", "context_strategy")), "PLAN_MANDATE")
         p.require(expert.get("full_text") is True and expert.get("independent_first") is True, "PLAN_REVIEW_SCOPE")
         p.require(expert.get("readiness") in {"ready", "blocked"}, "PLAN_READINESS")
@@ -71,6 +80,10 @@ def assess(bundle: dict, plan: dict) -> dict:
             if tool["required"] and not tool["available"]:
                 blockers.append("REQUIRED_TOOL_UNAVAILABLE")
     p.require(set(p.ROLES) <= roles, "PLAN_BASE_ROLES_MISSING")
+    if dual:
+        p.require(REVERSE_ROLES <= roles, "PLAN_REVERSE_ROLES_MISSING")
+        p.require(all(teams[r] == "A" for r in p.ROLES) and
+                  all(teams[r] == "B" for r in REVERSE_ROLES), "PLAN_TEAM_BASELINE_INVALID")
     matrix = plan.get("coverage")
     p.require(isinstance(matrix, list) and matrix, "PLAN_COVERAGE")
     ids = set()
@@ -85,6 +98,9 @@ def assess(bundle: dict, plan: dict) -> dict:
                   and all(isinstance(r, str) and r in roles for r in owners + challengers), "PLAN_OWNER_UNKNOWN")
         if row["status"] == "applicable":
             p.require(owners and challengers and not set(owners) & set(challengers), "PLAN_CROSS_REVIEW_MISSING")
+            if dual:
+                p.require(all(teams[r] == "A" for r in owners) and
+                          all(teams[r] == "B" for r in challengers), "PLAN_CROSS_TEAM_REQUIRED")
         elif row["status"] == "unknown":
             blockers.append("PLAN_SCOPE_UNKNOWN")
     from validate_depth import DOMAINS
@@ -93,7 +109,7 @@ def assess(bundle: dict, plan: dict) -> dict:
         p.require(isinstance(plan.get(key), list) and all(p.nonempty(x) for x in plan[key]), "PLAN_RECORDS")
     if plan["open_issues"]:
         blockers.append("PLAN_OPEN_ISSUES")
-    return {"roles": sorted(roles), "blockers": sorted(set(blockers)),
+    return {"roles": sorted(roles), "teams": teams, "blockers": sorted(set(blockers)),
             "status": "DECLARED_PLAN_READY" if not blockers else "PARTIAL_AUDIT", "plan_digest": p.digest(plan)}
 
 

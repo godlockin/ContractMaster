@@ -1,5 +1,7 @@
 # 动态专家规划与初始化
 
+新任务使用[双组协议](dual-team.md)：计划schema_version=2，A组六基础角色+B组三逆向基础角色，适用领域跨组分配。下文通用字段继续适用；旧schema_version=1只保留部分审核兼容。
+
 在 release 后、第一次专家调用前执行；只读脱敏包。输出 `reports/expert-plan.v1.json`，不修改已冻结的 bundle。六基础角色是最低覆盖，不是领域穷尽承诺。
 
 ## 规划阶段
@@ -28,7 +30,7 @@ R1后、R2发现新关系后、R3出现跨领域分歧时复评。增派必须�
 
 ## 数据契约
 
-`schema_version:1, input_digest, revision:正整数, profile, experts:[], coverage:[], open_issues:[], change_log:[]`。
+`schema_version:2, input_digest, revision:正整数, profile, experts:[], coverage:[], open_issues:[], change_log:[]`；experts增加team=A|B，详细基线和独立首审字段见双组协议。
 
 - profile：transaction、party_position、jurisdictions、industry、data_flow、documents 六个非空脱敏描述；不确定性进入 open_issues，深度协议另校验范围确认状态。
 - experts：`{role,trigger,mandate,escalation,context_strategy,full_text:true,independent_first:true,readiness:"ready|blocked",tools:[]}`。role 为小写英文、数字或下划线，首字母英文，最长64字符。

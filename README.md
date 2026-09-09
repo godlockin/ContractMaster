@@ -53,6 +53,8 @@ flowchart LR
 
 ## 使用
 
+默认采用[双组独立审核](contract-review-cn/references/dual-team.md)：A组六背景正向审查，B组三背景逆向查漏；独立首审后双向质询。程序验证声明及材料一致性，实际隔离与并行仍需宿主执行证据。
+
 | 输入格式 | 处理方式 |
 |---|---|
 | Word DOCX、TXT、Markdown | Python标准库直接处理，无额外解析依赖 |
@@ -91,15 +93,17 @@ GitHub显示HTML源码；下载后用浏览器打开即可填写裁定。也可�
 
 ## 验证
 
+统一入口：`.venv/bin/python scripts/verify.py`。任何测试跳过均视为失败，合成验收在临时副本执行。CI配置覆盖Python 3.10/3.14，远端运行状态以GitHub Actions为准。生产差距、责任分工及验收标准见[生产能力矩阵](docs/PRODUCTION-READINESS.md)。
+
 Python 3.10+；PDF文字提取需 `pypdf`，示例PDF生成另需 `reportlab` 和中文字体。宿主按其后台执行与日志规则运行：
 
 ```bash
-python3 -m unittest discover -s contract-review-cn/scripts -p 'test_*.py'
-python3 -m unittest discover -s research/public-contracts/tools -p 'test_*.py'
-python3 contract-review-cn/evals/run_acceptance.py
-python3 -m unittest discover -s tests -p 'test_*.py'
+.venv/bin/python -m unittest discover -s contract-review-cn/scripts -p 'test_*.py'
+.venv/bin/python -m unittest discover -s research/public-contracts/tools -p 'test_*.py'
+.venv/bin/python contract-review-cn/evals/run_acceptance.py
+.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 ```
 
-当前技能33项测试、复核包6项测试及6个合成案例流程检查通过。公开合同初评和部分独立交叉质询不等于每份合同完成六专家四轮验收；没有律师金标准，不报告法律准确率。结构和覆盖校验不能保证穷尽所有风险或法律法规。
+先按[环境指南](docs/GETTING-STARTED.md)创建 .venv 并安装 requirements-pdf.txt。当前 pypdf 6.18.0 环境中，技能42项、复核包6项、演示及回归12项测试全部通过，无跳过；6个合成案例流程检查通过。公开合同初评和部分独立交叉质询不等于每份合同完成六专家四轮验收；没有律师金标准，不报告法律准确率。结构和覆盖校验不能保证穷尽所有风险或法律法规。
 
 历史开发集14/14个预期项命中，**不是14份合同，也不是法律准确率100%**。高保密场景另需宿主技术隔离或可信本地模型；文件权限和提示词不等于沙箱。

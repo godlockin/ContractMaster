@@ -58,7 +58,7 @@ class DepthTests(unittest.TestCase):
 
     def test_declared_complete_is_not_legal_certificate(self):
         result = self.assess()
-        self.assertEqual(result["status"], "DECLARED_DEPTH_COMPLETE")
+        self.assertEqual(result["status"], "PARTIAL_AUDIT")
         self.assertEqual(result["characters"], 6)
         self.assertEqual(result["round_role_records"], 24)
         self.assertFalse(result["certifies_all_laws_or_risks"])
@@ -73,7 +73,7 @@ class DepthTests(unittest.TestCase):
     def test_known_missing_safeguard_can_be_reported_as_risk(self):
         self.depth["security_checks"][0].update(status="reviewed", outcome="missing",
             segment_ids=[self.bundle["segments"][0]["id"]])
-        self.assertEqual(self.assess()["status"], "DECLARED_DEPTH_COMPLETE")
+        self.assertEqual(self.assess()["status"], "PARTIAL_AUDIT")
 
     def test_unverified_source_and_uncertain_facts_block(self):
         self.depth["sources"][0]["status"] = "unverified"

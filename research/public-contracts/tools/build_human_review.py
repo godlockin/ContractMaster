@@ -109,7 +109,12 @@ def build(root: Path) -> dict:
             })
         case_reviews[case_id].append(review)
     challenges: dict[str, list[dict]] = {}
-    report_digests = {digest(path): {r["case_id"] for r in records(read_json(path), "reviews")} for path in (root / "reviews").glob("*.json")}
+    report_digests: dict[str, dict[str, set[str]]] = {}
+    for path in (root / "reviews").glob("*.json"):
+        report_cases: dict[str, set[str]] = {}
+        for review in records(read_json(path), "reviews"):
+            report_cases.setdefault(review["case_id"], set()).update(f["id"] for f in records(review, "findings"))
+        report_digests[digest(path)] = report_cases
     cross_files = sorted((root / "cross-review").glob("*.json"))
     for path in cross_files:
         cross = read_json(path)
@@ -126,6 +131,8 @@ def build(root: Path) -> dict:
             fid = judgment.get("finding_id")
             if finding_cases.get(fid) != case_id:
                 raise ValueError("Unknown cross-review finding")
+            if fid not in report_digests[cross["reviewed_report_sha256"]][case_id]:
+                raise ValueError("Cross-review finding not in referenced report")
             for entry in records(judgment, "counterevidence"):
                 start, end, quote = entry.get("start"), entry.get("end"), entry.get("quote")
                 if type(start) is not int or type(end) is not int or not isinstance(quote, str) or not quote or not 0 <= start < end <= len(text) or text[start:end] != quote:

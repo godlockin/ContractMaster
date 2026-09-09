@@ -22,10 +22,12 @@ cp -R contract-review-cn "$HOME/.codex/skills/contract-review-cn"
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install pypdf
+.venv/bin/python -m pip install --upgrade -r requirements-pdf.txt
 ```
 
 告诉agent使用该虚拟环境解释器，终端激活不保证桌面宿主继承。仓库已有样例PDF，无需安装 `reportlab`；仅重新生成该PDF时需要此库及中文字体。
+
+PDF 依赖固定为通过测试的 pypdf 6.18.0。更新版本时修改 requirements-pdf.txt，并按 README 使用 `.venv/bin/python` 跑全量验证；系统 `python3` 不会自动使用项目虚拟环境中的库。
 
 ## 提供材料
 

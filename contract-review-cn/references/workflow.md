@@ -4,6 +4,8 @@
 
 `NEW → PREPARED_PRIVATE → EXTRACTION_AND_PRIVACY_REVIEWED → RELEASED → EXPERT_PLAN_READY → EXPERTS_RUNNING → RESULTS_VALIDATED → ADJUDICATED → DELIVERED`
 
+新任务默认双组计划v2，详见[双组协议](dual-team.md)。所有results参数必须包括A/B两组，下面基础六角色路径仅示意，另加入reverse_legal、reverse_compliance、reverse_dispute及专项结果。
+
 EXPERT_PLAN_READY按[动态专家规划](expert-planning.md)执行：交易画像、角度矩阵、六基础及专项组队、上下文和工具配置、就绪校验。计划版本绑定所有专家结果及深度报告。
 
 EXPERTS_RUNNING内部强制R1独立逐段→R2跨条款多跳→R3反证质询→R4回归。详细适用矩阵、信息安全、证据链和深度门禁见[deep-audit.md](deep-audit.md)。只有基础validate和validate_depth都通过才允许申报完整；缺口存在可交付部分报告，不能伪造完整。
@@ -54,17 +56,20 @@ python3 "$SKILL_DIR/scripts/pipeline.py" validate --run /本地私有目录/运�
   /本地私有目录/运行编号/reports/language.json
 
 python3 "$SKILL_DIR/scripts/pipeline.py" report --run /本地私有目录/运行编号 \
+  --revision 1 \
   --plan /本地私有目录/运行编号/reports/expert-plan.v1.json \
   --depth /本地私有目录/运行编号/reports/audit-depth.json \
   --results /本地私有目录/运行编号/reports/{legal,dispute,finance,business,compliance,language}.json
 
 # 仅在用户要求恢复身份时：
 python3 "$SKILL_DIR/scripts/pipeline.py" restore --run /本地私有目录/运行编号 \
-  --input /本地私有目录/运行编号/reports/report.md \
+  --input /本地私有目录/运行编号/reports/versions/v000001/report.md \
   --output /本地私有目录/运行编号/private/restored-report.md
 ```
 
 prepare 失败不继续；修正输入后用新运行目录。release 拒绝缺少确认、已发布、空文档、候选包摘要不一致。validate 非零时不允许 report 成功；补审对应角色后重试，不重复提取无变更输入。
+
+补审使用新的正整数revision，成功版本不可覆盖；报告、结果快照、摘要清单整体提交到reports/versions/vNNNNNN。清单记录输入、计划、深度、结果与报告摘要，签核状态保持NOT_ATTESTED。保留原版本计划与深度文件。审计准备失败时版本尚未提交，修复后可重试同编号；旧调用未传revision仍写reports/report.md。
 
 release 还核对原件、实体词典及映射摘要。发布后报告绑定冻结的 `input_digest` 快照，不代表随后修改的原件；新版本必须创建新运行。验证脚本本地检查结果中是否含已知敏感值，不能替代对未知泄漏的复核。
 

@@ -1,0 +1,2 @@
+# Optional PDF parser; verified with the complete test suite.
+pypdf==6.18.0

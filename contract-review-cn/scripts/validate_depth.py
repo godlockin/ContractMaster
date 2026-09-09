@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import argparse
-from datetime import date
 import json
 from pathlib import Path
 import sys
-from urllib.parse import urlparse
 
 import pipeline as p
 
@@ -56,19 +54,11 @@ def rows(value: object, key: str, required: tuple[str, ...] = ()) -> dict:
 
 
 def valid_date(value: object) -> bool:
-    if not isinstance(value, str):
-        return False
-    try:
-        return date.fromisoformat(value).isoformat() == value
-    except ValueError:
-        return False
+    return p.valid_date(value)
 
 
 def https(value: object) -> bool:
-    if not isinstance(value, str):
-        return False
-    parsed = urlparse(value)
-    return parsed.scheme == "https" and bool(parsed.hostname) and not parsed.username
+    return p.https(value)
 
 
 def assess(bundle: dict, depth: dict, plan: dict | None = None, results: list[dict] | None = None) -> dict:
@@ -222,18 +212,29 @@ def assess(bundle: dict, depth: dict, plan: dict | None = None, results: list[di
             for finding in result.get("findings", []):
                 if any(b.get("status") == "unverified" for b in finding.get("basis", [])):
                     blockers.append("FINDING_BASIS_UNVERIFIED")
-                resolutions = finding.get("question_resolutions", [])
-                check(isinstance(resolutions, list), "DEPTH_QUESTION_RESOLUTIONS_SCHEMA")
-                resolved = set()
-                for resolution in resolutions:
-                    check(isinstance(resolution, dict) and resolution.get("question") in finding.get("questions", [])
-                          and resolution["question"] not in resolved and resolution.get("status") == "resolved"
-                          and p.nonempty(resolution.get("reason")) and unique_strings(resolution.get("evidence_refs"))
-                          and resolution["evidence_refs"] and set(resolution["evidence_refs"]) <= set(sources) | set(segments),
-                          "DEPTH_QUESTION_RESOLUTION_INVALID")
-                    resolved.add(resolution["question"])
+                for basis in finding.get("basis", []):
+                    if basis.get("status") != "verified":
+                        continue
+                    source_id = basis.get("source_id")
+                    source = sources.get(source_id) if isinstance(source_id, str) else None
+                    if source is None:
+                        blockers.append("FINDING_BASIS_SOURCE_NOT_LINKED")
+                    elif (source.get("status") != "verified" or
+                          any(basis.get(key) != source.get(key) for key in ("title", "url", "checked_at")) or
+                          basis.get("article") not in source.get("articles", [])):
+                        blockers.append("FINDING_BASIS_SOURCE_MISMATCH")
+                try:
+                    resolved = p.validate_question_resolutions(finding, set(sources) | set(segments))
+                except p.GateError as exc:
+                    raise DepthError("DEPTH_" + str(exc)) from exc
                 if set(finding.get("questions", [])) - resolved:
                     blockers.append("FINDING_QUESTIONS_UNRESOLVED")
+    if plan is not None and plan.get("schema_version") == 2:
+        from dual_team import assess as assess_dual
+        try:
+            blockers.extend(assess_dual(bundle, plan, depth, results, domains, sources, SOURCE_KINDS))
+        except p.GateError as exc:
+            raise DepthError(str(exc)) from exc
     return {"status": "DECLARED_DEPTH_COMPLETE" if not blockers else "PARTIAL_AUDIT",
             "input_digest": bundle["input_digest"], "characters": characters, "segments": len(segments),
             "round_role_records": len(completed), "domains": len(domains), "security_checks": len(SECURITY),
@@ -241,15 +242,16 @@ def assess(bundle: dict, depth: dict, plan: dict | None = None, results: list[di
             "blockers": sorted(set(blockers)), "certifies_all_laws_or_risks": False}
 
 
-def load_depth(run: Path, path: Path, bundle: dict, plan: dict | None = None, results: list[dict] | None = None) -> dict:
-    depth = p.read_json(path)
+def load_depth(run: Path, path: Path, bundle: dict, plan: dict | None = None, results: list[dict] | None = None,
+               depth: dict | None = None) -> dict:
+    depth = p.read_json(path) if depth is None else depth
     mapping = p.read_json(run / "private/mapping.json")
     check(not p.contains_private_value([depth, plan, results], [item["value"] for item in mapping["entities"]]),
           "DEPTH_PRIVATE_VALUE_LEAK")
     if plan is not None:
         from expert_plan import check_active
         check_active(run, bundle, plan)
-    return assess(bundle, depth, plan, results)
+    return {**assess(bundle, depth, plan, results), "depth_digest": p.digest(depth)}
 
 
 def main() -> int:
