@@ -42,8 +42,6 @@
 | 对象 / 证据 | Best practices | Bad points、局限与证据边界 | 对本 skill 的取舍 |
 |---|---|---|---|
 | [Anthropic knowledge-work-plugins/legal](https://github.com/anthropics/knowledge-work-plugins/tree/main/legal)，插件 README | 企业 playbook 配置，合同审核、NDA 分流、合规和风险工作流；明确要求按法域定制 | **已知**：README 的默认法律立场以美国为主，提及 Delaware/New York/California；不能直接用于中国。**未核实**：本轮没有完成底层 skill 文件逐行审计或跨宿主测试 | 必须显式法域门禁；不沿用默认责任上限、通知期限或“市场标准” |
-| [Anthropic claude-for-legal](https://github.com/anthropics/claude-for-legal)，仓库说明 | 按公司、雇佣、产品、监管等法律工作领域组织插件 | **推断**：跨文档和连接器工作流需要额外权限、数据域及任务边界治理。**未核实**：本轮未运行插件及集成 | 专家按适用事项分工；连接器权限独立控制，不因接入方便扩大合同数据访问 |
-| [evolsb/claude-legal-skill](https://github.com/evolsb/claude-legal-skill/blob/main/skill.md)，Skill 指令 | 先查完整性、空白和附件；确认代理哪一方、谈判能力；提供具体 redline 与退让建议 | **已知**：样例含通用 market-standard 假设，并将 CUAD 分类用于风险框架。**推断**：类别识别不等于法律判断；无来源的“惯例”可能误导。多宿主兼容声明未实测 | 风险与商业偏好分开；所谓市场惯例必须记录地区、行业、样本、日期或明确未证实 |
 | [OpenContracts](https://github.com/Open-Source-Legal/OpenContracts)，README；[可复现检索评测](https://open-source-legal.github.io/OpenContracts/benchmarks/legalbench_rag_results/) | 文档/注释/关系图、精确坐标、人工采纳、可替换解析组件；发布检索评测流程 | **已知**：README 说明匿名遥测及关闭配置。**推断**：多服务部署比本地 skill 运维复杂；自托管也要检查遥测。检索得分不等于法律审查得分 | 借鉴坐标与证据关系图、评测可复现；先做轻量适配层，不复制整个服务栈 |
 
 ## 四、评测资源（5）

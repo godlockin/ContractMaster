@@ -1,5 +1,7 @@
 # 专家结果契约
 
+合同版本比较模式另须提交 comparison_digest 和逐项 change_reviews，字段、枚举及完整性门禁见 [修改审核](change-review.md)。普通单版本审核无需这些字段。
+
 新任务按[双组协议](dual-team.md)，每份角色结果增加team和first_pass，R1声明与深度记录摘要绑定。下例为通用字段示意，不是完整的双组结果。
 
 `bundle.json` 包含 `input_digest`、六个 `roles`、五个 `levels`、`documents`、`segments`。原件名称用 DOC0001 等替代。segments 的 start/end 是**各文档脱敏文本**坐标；风险引用必须按这些坐标，不能用模型 token 索引。

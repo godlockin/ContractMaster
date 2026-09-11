@@ -48,6 +48,8 @@ audit-depth沿用schema_version=1，计划v2另要求：
 
 ## 完成门禁
 
+合同版本比较模式下，每条 cross_challenges 另含 change_ids 数组（无关质询可为空），每个差异必须覆盖 A→B、B→A 两个方向。缺少方向或存在未决修改保持 PARTIAL_AUDIT；每角色逐项结果见 [修改审核](change-review.md)。
+
 旧计划v1只能部分审核，带DUAL_TEAM_PLAN_REQUIRED。v2缺组、重复上下文、首审污染、片段遗漏、摘要陈旧、缺轮次/组清单会失败。缺双向领域质询、未复核发现或未解决挑战时保持PARTIAL_AUDIT。
 
 这些是结构及独立性声明检查。不同context_id不能证明宿主隔离，摘要不能证明真实并行。真实执行需宿主原生记录；协议升级不等于已运行真实专家审核。

@@ -1,5 +1,9 @@
 # 可执行 workflow
 
+AI IDE 新审核优先按 [案例目录管理](case-management.md) 建立版本及组快照，以 case_store.py prepare 返回的 run 路径继续本流程。案例脚本按稳定文件编号比较，支持缺失中间附件；下文 pipeline.py prepare 示例仍适用于独立临时审核。
+
+合同原版与返回版的审核使用 [修改审核流程](change-review.md)：以 `prepare-change --before ... --after ... --run ...` 替代下文 prepare，两版联合脱敏；其余发布和审核门禁继续适用。每角色追加逐项 change_reviews，双组质询追加 change_ids。报告 revision 与合同版本比较是不同功能。
+
 ## 状态及产物
 
 `NEW → PREPARED_PRIVATE → EXTRACTION_AND_PRIVACY_REVIEWED → RELEASED → EXPERT_PLAN_READY → EXPERTS_RUNNING → RESULTS_VALIDATED → ADJUDICATED → DELIVERED`

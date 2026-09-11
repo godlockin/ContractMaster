@@ -1,24 +1,19 @@
-# 开始使用
+# 契衡 · 加载与使用
 
 | 目标 | 需要什么 | 入口 |
 |---|---|---|
-| 不安装，先看效果 | GitHub/浏览器 | [完整样例](WALKTHROUGH.md) |
+| 不安装，先看效果 | 文档阅读器或浏览器 | [完整样例](WALKTHROUGH.md) |
 | 本地体验处理 | Git、Python 3.10+ | `python3 demo.py`，不调用模型 |
-| 审自己的合同 | Codex宿主、skill、Python、文件工具与模型 | 提供文件路径和立场 |
+| 审自己的合同 | 支持大模型 Skills、本地文件与脚本执行的工作环境 | 提供文件路径和立场 |
 | 评价结果 | 专业判断、浏览器/表格软件 | [人工复核包](../research/public-contracts/RUN-REPORT.md) |
 
 ## 安装与环境
 
-macOS/Linux首次安装示例；当前本地测试环境为macOS，Windows和其他宿主尚未实测。目标已存在时先备份、核对版本，避免嵌套复制。
+从项目发布渠道取得代码包，将 `contract-review-cn/` 整个目录导入所用工作环境的 Skills 管理功能；支持直接加载技能文件的环境可读取 `contract-review-cn/SKILL.md`。目录内 scripts、references 等文件需一并保留。目标已存在时先备份、核对版本，避免嵌套复制。实际合同保存在用户工作目录或指定案例目录，与技能目录分开。
 
-```bash
-git clone --branch miao https://github.com/godlockin/ContractMaster.git
-cd ContractMaster
-mkdir -p "$HOME/.codex/skills"
-cp -R contract-review-cn "$HOME/.codex/skills/contract-review-cn"
-```
+刷新技能或开启新会话，确认助手已加载该大模型 Skills。安装目录及发现机制以所用环境说明为准，本项目不绑定特定模型产品。当前本地测试环境为macOS，Windows和其他环境尚未实测。
 
-开启能发现该skill的新会话，或刷新宿主技能；非默认目录按宿主配置调整。Python需在agent命令环境中可用。TXT/MD和基础DOCX解析使用标准库，文字层PDF额外需要 `pypdf`：
+以下命令供环境配置人员使用。Python需在助手命令环境中可用。TXT/MD和基础DOCX解析使用标准库，文字层PDF额外需要 `pypdf`；在项目目录中执行：
 
 ```bash
 python3 -m venv .venv

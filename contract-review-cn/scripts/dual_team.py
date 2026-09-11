@@ -39,6 +39,8 @@ def assess(bundle, plan, depth, results, domains, sources, source_kinds):
     challenges = depth.get("cross_challenges")
     p.require(isinstance(challenges, list), "CROSS_CHALLENGES_REQUIRED")
     covered, challenged, ids = set(), set(), set()
+    change_ids = {change["id"] for change in bundle.get("comparison", {}).get("changes", [])}
+    change_coverage = set()
     for item in challenges:
         p.require(isinstance(item, dict) and p.nonempty(item.get("id")) and item["id"] not in ids, "CHALLENGE_ID")
         ids.add(item["id"])
@@ -59,6 +61,11 @@ def assess(bundle, plan, depth, results, domains, sources, source_kinds):
                   and teams[findings[fid]] == teams[target] for fid in targets)
                   and len(targets) == len(set(targets)), "CHALLENGE_FINDING_INVALID")
         challenged.update(targets)
+        if "comparison" in bundle:
+            changes = item.get("change_ids")
+            p.require(isinstance(changes, list) and all(isinstance(cid, str) and cid in change_ids for cid in changes)
+                      and len(changes) == len(set(changes)), "CHALLENGE_CHANGE_INVALID")
+            change_coverage.update((cid, teams[author], teams[target]) for cid in changes)
         covered.add((angle, teams[author], teams[target]))
         if item["status"] == "unresolved":
             blockers.append("CROSS_CHALLENGE_UNRESOLVED")
@@ -68,4 +75,6 @@ def assess(bundle, plan, depth, results, domains, sources, source_kinds):
         blockers.append("CROSS_TEAM_ANGLE_COVERAGE")
     if set(findings) - challenged:
         blockers.append("FINDINGS_NOT_CROSS_CHALLENGED")
+    if not {(cid, author, target) for cid in change_ids for author, target in (("A", "B"), ("B", "A"))} <= change_coverage:
+        blockers.append("CHANGES_NOT_CROSS_CHALLENGED")
     return blockers

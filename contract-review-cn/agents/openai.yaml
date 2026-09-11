@@ -1,6 +1,6 @@
 interface:
-  display_name: "中国合同多专家审核"
-  short_description: "本地脱敏留存映射，六专家四轮审核，核查法规、信息安全及跨条款证据链"
-  default_prompt: "使用 $contract-review-cn 审核指定本地合同，先提取脱敏、保存映射并完成本地复核，再并行审核与核实法源。"
+  display_name: "契衡 · 合同审核"
+  short_description: "按工作目录维护合同案例与版本，脱敏后双组审核修改及全文风险"
+  default_prompt: "使用 $contract-review-cn 在用户工作目录或指定目录维护合同案例、版本与组快照；审核指定合同或比较返回版，先本地提取脱敏并完成复核，再双组审核与核实法源。"
 policy:
   allow_implicit_invocation: true

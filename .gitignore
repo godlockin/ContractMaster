@@ -1,4 +1,5 @@
 review-runs/
+contract-cases/
 __pycache__/
 *.pyc
 .DS_Store

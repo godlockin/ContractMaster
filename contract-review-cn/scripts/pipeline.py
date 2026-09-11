@@ -93,11 +93,13 @@ def event(run: Path, stage: str, **counts: object) -> None:
                                  "stage": stage, **counts}) + "\n")
 
 
-def xml_text(root: ET.Element) -> str:
+def xml_text(root: ET.Element, view: str = "all") -> str:
     out: list[str] = []
     # Paragraph descendants contain table cells, including nested tables.
     # Walk once to avoid double-emitting text inside nested text boxes.
     def walk(node: ET.Element) -> None:
+        if view == "final" and node.tag in {NS + "del", NS + "moveFrom", NS + "delText", NS + "instrText"}:
+            return
         if node.tag in {NS + "t", NS + "delText", NS + "instrText"}:
             out.append(node.text or "")
         elif node.tag == NS + "tab":
@@ -114,7 +116,7 @@ def xml_text(root: ET.Element) -> str:
     return "".join(out)
 
 
-def extract(path: Path, data: bytes | None = None) -> tuple[list[tuple[str, str]], list[str]]:
+def extract(path: Path, data: bytes | None = None, docx_view: str = "all") -> tuple[list[tuple[str, str]], list[str]]:
     data = path.read_bytes() if data is None else data
     suffix = path.suffix.lower()
     if suffix in {".txt", ".md"}:
@@ -140,7 +142,9 @@ def extract(path: Path, data: bytes | None = None) -> tuple[list[tuple[str, str]
                 if flags & {"drawing", "pict", "object", "txbxContent", "ins", "del",
                             "fldChar", "instrText", "altChunk", "vanish"}:
                     warnings.append("DOCX_IMAGES_REVISIONS_FIELDS_OR_HIDDEN_CONTENT")
-                value = xml_text(root)
+                if docx_view == "final":
+                    warnings.append("DOCX_FINAL_TEXT_PROJECTION_REQUIRES_LOCAL_REVIEW")
+                value = xml_text(root, docx_view)
                 if value.strip():
                     parts.append((name, value))
         return parts, sorted(set(warnings))
@@ -257,6 +261,16 @@ def segments_for(doc_id: str, text: str) -> list[dict]:
     return result
 
 
+def prepare_change(args: argparse.Namespace) -> None:
+    """Pair V1/V2 files in supplied order; unmatched trailing files are additions/deletions."""
+    before, after = args.before, args.after
+    require(before and after, "BOTH_CONTRACT_VERSIONS_REQUIRED")
+    pairs = [{"before": i + 1 if i < len(before) else None,
+              "after": len(before) + i + 1 if i < len(after) else None}
+             for i in range(max(len(before), len(after)))]
+    prepare(argparse.Namespace(**{**vars(args), "input": [*before, *after], "comparison_pairs": pairs}))
+
+
 def prepare(args: argparse.Namespace) -> None:
     run = args.run
     require(not run.exists(), "RUN_ALREADY_EXISTS")
@@ -269,10 +283,12 @@ def prepare(args: argparse.Namespace) -> None:
     occurrences: list[dict] = []
     documents, segments, sources = [], [], []
     gaps = []
+    comparison_pairs = getattr(args, "comparison_pairs", None)
     for source_index, path in enumerate(args.input, 1):
         try:
             source_data = path.read_bytes()
-            parts, warnings = extract(path, source_data)
+            parts, warnings = (extract(path, source_data, docx_view="final") if comparison_pairs is not None
+                               else extract(path, source_data))
             require(parts and all(original.strip() for _, original in parts), "EMPTY_DOCUMENT")
         except (GateError, OSError, ValueError, zipfile.BadZipFile) as exc:
             code = str(exc) if isinstance(exc, GateError) else "INPUT_UNREADABLE_OR_MALFORMED"
@@ -286,6 +302,8 @@ def prepare(args: argparse.Namespace) -> None:
             write_new(run / "private" / f"source-{len(documents)+1:04d}.txt", original)
             documents.append({"id": doc_id, "source_index": source_index,
                               "part": label, "text": redacted, "warnings": warnings})
+            if comparison_pairs is not None:
+                documents[-1]["version"] = "V1" if source_index in {pair["before"] for pair in comparison_pairs} else "V2"
             segments.extend(segments_for(doc_id, redacted))
         sources.append({"source_index": source_index, "path": str(path.resolve()),
                         "sha256": hashlib.sha256(source_data).hexdigest(), "warnings": warnings})
@@ -295,6 +313,9 @@ def prepare(args: argparse.Namespace) -> None:
         write_json(run / "private" / "input-errors.json", [{**gap, "path": str(args.input[gap["source_index"] - 1].resolve())} for gap in gaps])
         bundle["input_gaps"] = gaps
     require(documents, "NO_PROCESSABLE_INPUTS_SEE_LOCAL_INPUT_ERRORS")
+    if comparison_pairs is not None:
+        from change_review import compare
+        bundle["comparison"] = compare(documents, comparison_pairs, gaps)
     bundle["input_digest"] = digest(bundle)
     write_json(run / "private" / "candidate.json", bundle)
     mapping = {"entities": list(registry.values()), "occurrences": occurrences}
@@ -318,6 +339,9 @@ def check_bundle(bundle: dict) -> None:
     require(bundle.get("documents") and bundle.get("segments"), "EMPTY_BUNDLE")
     require(isinstance(bundle.get("input_gaps", []), list) and all(isinstance(g, dict) and type(g.get("source_index")) is int
             and g["source_index"] > 0 and nonempty(g.get("code")) for g in bundle.get("input_gaps", [])), "INPUT_GAPS_SCHEMA")
+    if "comparison" in bundle:
+        from change_review import check
+        check(bundle["comparison"], bundle["documents"], bundle.get("input_gaps", []))
 
 
 def release(args: argparse.Namespace) -> None:
@@ -425,6 +449,9 @@ def validate_results(bundle: dict, results: list[dict], plan: dict | None = None
             require(isinstance(review.get("levels"), list) and sorted(review["levels"]) == sorted(LEVELS), "LEVEL_COVERAGE_MISSING")
             require(nonempty(review.get("review_note")), "REVIEW_NOTE_MISSING")
         require(reviewed == set(segments), "SEGMENT_COVERAGE_MISSING")
+        if "comparison" in bundle:
+            from change_review import validate_reviews
+            validate_reviews(bundle, result)
         require(isinstance(result.get("findings"), list), "FINDINGS_SCHEMA")
         for finding in result["findings"]:
             require(isinstance(finding, dict), "FINDING_SCHEMA")
@@ -559,6 +586,9 @@ def report(args: argparse.Namespace) -> None:
                 lines.append(f"- 声明已解决：{markdown_text(question)}；{markdown_text(resolved['reason'])}；证据 {markdown_text(resolved['evidence_refs'])}")
             else:
                 lines.append(f"- 待确认：{markdown_text(question)}")
+    if "comparison" in bundle:
+        from change_review import report_lines
+        lines.extend(report_lines(bundle, results))
     lines.extend(["", "## 全文复核记录", ""])
     for result in results:
         lines.append(f"- {result['role']}: {markdown_text(result['global_note'])}")
@@ -594,6 +624,8 @@ def report(args: argparse.Namespace) -> None:
                     "declared_depth_status": depth_summary["status"], "blockers": depth_summary["blockers"],
                     "report_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
                     "created_at": datetime.now(timezone.utc).isoformat(), "legal_signoff": "NOT_ATTESTED"}
+        if "comparison" in bundle:
+            manifest["comparison_digest"] = bundle["comparison"]["comparison_digest"]
         with tempfile.TemporaryDirectory(prefix="report-", dir=args.run / "private") as temporary:
             staged = Path(temporary) / "version"
             staged.mkdir(mode=0o700)
@@ -627,11 +659,15 @@ def main() -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     probe = commands.add_parser("doctor", help="Read-only optional dependencies and input format check")
     probe.add_argument("--input", type=Path, action="append")
-    for name in ("prepare", "release", "validate", "report", "restore"):
+    for name in ("prepare", "prepare-change", "release", "validate", "report", "restore"):
         sub = commands.add_parser(name)
         sub.add_argument("--run", type=Path, required=True)
         if name == "prepare":
             sub.add_argument("--input", type=Path, action="append", required=True)
+            sub.add_argument("--entities", type=Path)
+        if name == "prepare-change":
+            sub.add_argument("--before", type=Path, action="append", required=True)
+            sub.add_argument("--after", type=Path, action="append", required=True)
             sub.add_argument("--entities", type=Path)
         if name == "release":
             sub.add_argument("--attest-extraction-reviewed", action="store_true")
@@ -647,7 +683,7 @@ def main() -> int:
             sub.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     try:
-        globals()[args.command](args)
+        globals()[args.command.replace("-", "_")](args)
         return 0
     except GateError as exc:
         print(json.dumps({"status": "FAILED", "code": str(exc)}), file=sys.stderr)

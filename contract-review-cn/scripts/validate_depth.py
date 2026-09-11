@@ -229,6 +229,12 @@ def assess(bundle: dict, depth: dict, plan: dict | None = None, results: list[di
                     raise DepthError("DEPTH_" + str(exc)) from exc
                 if set(finding.get("questions", [])) - resolved:
                     blockers.append("FINDING_QUESTIONS_UNRESOLVED")
+    if "comparison" in bundle:
+        from change_review import depth_blockers
+        try:
+            blockers.extend(depth_blockers(bundle, results))
+        except p.GateError as exc:
+            raise DepthError(str(exc)) from exc
     if plan is not None and plan.get("schema_version") == 2:
         from dual_team import assess as assess_dual
         try:

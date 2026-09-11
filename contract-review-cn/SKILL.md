@@ -1,13 +1,16 @@
 ---
 name: contract-review-cn
-description: 当用户说“我要审核一下这个合同 ~/Downloads/1234.pdf”“帮我看看这份合同”并提供文件路径或附件时使用，无需显式指定 skill。审核中国法域合同：本地提取脱敏、映射留存、多背景专家并行逐字词句段及上下文审核，输出可定位风险、修改建议和覆盖记录。
+description: 当用户要求审核中国法域合同、对比原版与返回版的细微修改，或在工作目录维护合同案例、版本和审核索引时使用。由AI IDE执行本地案例管理、提取脱敏、版本比较及双组专家审核，输出可定位风险和修改建议。
 ---
 
-# 中国合同多专家审核
+# 契衡 · 合同审核大模型 Skills
 
 目标：完整提取 → 本地脱敏及可逆映射 → 脱敏复核 → 交易画像与动态专家规划初始化 → 法律适用范围及法源检索 → 多专家至少四轮并行审核与多跳关系核查 → 汇总与覆盖校验。不要将“所有片段有审阅记录”描述为“找到了所有风险”。
 
 ## 用户入口
+
+- 本项目是技能包。AI IDE 按 [案例目录管理](references/case-management.md) 在用户工作目录的 `contract-cases/` 或指定根目录维护案例；技能源码/安装目录与业务材料分开。新审核优先使用案例、合同稳定编号和组快照；已有独立 run 保持兼容。
+- 提供原版与修改版时，先索引确认身份及基准，以案例脚本 `prepare --snapshot ... --baseline ...` 联合准备两版；独立临时审核仍可用 `pipeline.py prepare-change`。按 [合同修改审核](references/change-review.md) 逐项审核和双向质询，仍保留全文审核。
 
 - 自然语言加路径或附件即触发，例如“我要审核一下这个合同 ~/Downloads/1234.pdf”。用户无需写 `$contract-review-cn`、执行 Python 命令、选择专家或填写配置表；主 agent 负责路径解析、准备、调度和报告。
 - 分清实际审核请求和用法示例；用户讨论“用户大概率会这样说”时，不读取示例路径文件。
@@ -29,7 +32,7 @@ description: 当用户说“我要审核一下这个合同 ~/Downloads/1234.pdf�
 
 先按 [输入格式与依赖引导](references/input-formats.md) 做只读doctor检查。Python是基础运行条件；pypdf仅PDF需要，不能要求所有用户先安装。拒绝或安装失败时继续可处理文件，告知转换选项；未处理输入必须保留缺口，不得报告全文审核完成。旧Word DOC需本地转DOCX，扫描PDF需OCR，不能仅靠安装pypdf解决。
 
-1. 读 [workflow.md](references/workflow.md)，建立任务及输入清单。使用 `scripts/pipeline.py prepare` 本地提取。支持 UTF-8 TXT/MD、DOCX 主文及表格/页眉页脚/脚注/尾注/批注、可提取文本 PDF（需本地 pypdf）。扫描件、图片、修订、复杂版面须按提取质量门禁处理，不能自动视作完整。
+1. 读 [workflow.md](references/workflow.md)，建立任务及输入清单。新案例按 [案例目录管理](references/case-management.md) 导入版本、固定组快照，再用 `scripts/case_store.py prepare` 本地提取；已有独立流程兼容 `scripts/pipeline.py prepare`。支持 UTF-8 TXT/MD、DOCX 主文及表格/页眉页脚/脚注/尾注/批注、可提取文本 PDF（需本地 pypdf）。扫描件、图片、修订、复杂版面须按提取质量门禁处理，不能自动视作完整。
 2. 本地实体词典配合规则生成稳定 `⟦TYPE_0001⟧` 标记及逐出现位置映射。查看脚本返回的状态和路径，**不读取 private 内容进入对话**。请用户在本地完成提取完整性、敏感信息及保留商业参数复核；按 [privacy.md](references/privacy.md) 操作。用户已在当前版本完成复核的，不重复询问。
 3. 确认复核后执行 `release`，仅分发生成的 `public/bundle.json`。发布后变更原文、词典或候选包必须重新 prepare、复核和 release。不能把“用户想审核合同”当作脱敏质量已确认。
 4. 先读 [双组协议](references/dual-team.md) 和 [expert-planning.md](references/expert-planning.md)，生成版本化 expert-plan，建立角度—主审—质询矩阵，检查就绪与工具能力；运行 `scripts/expert_plan.py --run <run> --plan <plan> --activate` 登记当前计划，复评变更递增版本重新激活。六角色是基线，按事实增派专项，未决缺口保持部分审核。然后读 [experts.md](references/experts.md) 和 [deep-audit.md](references/deep-audit.md)。默认A组六背景正向审核+B组三背景独立逆向查漏，计划schema_version=2；首轮不交换答案，双向交叉质询。两组全部角色执行独立逐段、关系多跳、对抗质询、全文回归至少四轮；每角色每轮覆盖全文。建立18领域法律适用矩阵、9类法源检索记录、11项信息安全清单，按事实追加专项；未知项不得当作不适用。真正调用宿主并行 agent 工具；限制并发时分批，不能把串行角色扮演称作多 agent 并行。默认不指定不同模型，专业差异来自独立任务与审查维度。宿主无 agent 工具时说明能力缺口，输出待执行任务包，不伪造完成。
@@ -42,7 +45,9 @@ description: 当用户说“我要审核一下这个合同 ~/Downloads/1234.pdf�
 
 以此 SKILL.md 所在目录为 `SKILL_DIR`；命令参数使用本地文件路径，不把敏感值写入命令行。CLI 按宿主后台执行规范运行，日志只含状态/数量/路径。完整命令在 workflow。
 
-`prepare`、`release`、`validate`、`report`、`restore`；运行 `python3 "$SKILL_DIR/scripts/pipeline.py" --help` 查看参数。
+`prepare`、`prepare-change`、`release`、`validate`、`report`、`restore`；运行 `python3 "$SKILL_DIR/scripts/pipeline.py" --help` 查看参数。
+
+案例工具：`python3 "$SKILL_DIR/scripts/case_store.py" --root <业务根目录> init|create|import|snapshot|prepare|list`，具体参数见 [案例目录管理](references/case-management.md)。
 
 研究依据及适用边界见 [research.md](references/research.md)。本 skill 原创实现，不复制参考项目代码、规则库或未经核实的法条。
 
