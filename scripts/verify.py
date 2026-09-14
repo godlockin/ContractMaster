@@ -14,7 +14,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SUITES = ("contract-review-cn/scripts", "research/public-contracts/tools", "tests")
+SUITES = ("contract-review-cn/scripts", "research/public-contracts/tools", "tests", "training/privacy")
 
 
 def run_suite(relative: str) -> dict:

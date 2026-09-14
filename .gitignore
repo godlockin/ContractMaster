@@ -4,11 +4,14 @@ __pycache__/
 *.pyc
 .DS_Store
 **/private/
+privacy-policy.json
 .env
 .env.*
 !.env.example
 *.log
 .venv/
+.venv-privacy/
+artifacts/privacy/
 # Third-party public contracts: download locally; redistribution not verified.
 research/public-contracts/originals/
 research/public-contracts/text/
