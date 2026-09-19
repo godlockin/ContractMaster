@@ -1,3 +1,8 @@
+> **License**: 契衡软件许可协议 v1.0.0(基于律鉴 v8.2 演化)
+> Copyright (c) 2026 godlockin
+> 个人学习、研究、教学免费;商业使用需书面授权;AI 输出需律师审阅。
+> 详见 [LICENSE](./LICENSE)。
+
 <p align="center">
   <img src="docs/assets/qiheng-logo.png" alt="契衡 Logo：契约与平衡" width="160" />
 </p>
@@ -57,6 +62,31 @@
 想先看交付形式，可直接打开[原创采购合同审查报告](examples/purchase/REPORT.md)，或查看[六个原创案例的处理过程](docs/WALKTHROUGH.md)。样例包含历史试审意见，用于展示形式，不代表你的合同已经接受审核。
 
 ## 如何开始使用
+
+### 先安装工作工具
+
+**Codex 与腾讯 WorkBuddy 任选一种即可，无需全部安装。** 契衡是加载到这些工具中的技能包；模型账号、可用额度和本地运行环境由使用者准备。
+
+| 工具 | 官方下载、安装与配置入口 | 如何开始 |
+|---|---|---|
+| **Codex 桌面端** | [官方应用入口](https://developers.openai.com/codex/app) · [快速开始](https://developers.openai.com/codex/quickstart) | 按官方指引安装、登录，打开项目工作目录，再加载下方技能包。下载方式与账号要求以官方页面为准 |
+| **Codex CLI**（命令行用户） | [官方安装与使用指南](https://developers.openai.com/codex/cli) | 按指南安装并完成认证，在项目目录启动；使用同一份技能包 |
+| **腾讯 WorkBuddy** | [官网与下载入口](https://www.workbuddy.cn/) · [快速开始](https://www.workbuddy.cn/docs/workbuddy/Quickstart) · [模型配置](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Model) | 安装并登录，配置可用模型及工作目录；在“技能 → 添加技能 → 上传技能”导入本地技能包，见[官方技能指南](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market) |
+| **Python 3.10+**（本地处理运行环境） | [官方下载](https://www.python.org/downloads/) | 如果助手已有可用 Python，无需重复安装；否则安装后让助手重新检查环境 |
+| **LibreOffice**（可选文档转换工具） | [官方下载](https://www.libreoffice.org/download/download-libreoffice/) | 需要转换旧版 DOC、RTF、ODT 时可用；已有 Word 等本地文档软件也可导出 DOCX/TXT |
+
+**兼容性说明：** 本项目当前本地测试环境为 macOS；WorkBuddy、Windows 及不同模型组合尚未完成本项目端到端验收。宿主支持 Skills 不等于已具备独立子 agent、联网法源核验和全部文档处理能力，首次使用须检查。WorkBuddy 技能导入步骤依据其官方文档（查阅日期：2026-09-15）；其他产品的安装界面与要求以链接中的最新说明为准。
+
+安装并加载技能后，可以先发送：
+
+```text
+请检查契衡（contract-review-cn）技能是否已加载，当前工作目录是否可读写，
+Python、本地脚本执行、独立子agent和联网搜索是否可用。
+暂不读取合同正文；列出缺失能力、安装建议及可继续的处理方式。
+任何安装先征求我的同意。
+```
+
+PDF 提取库按需安装；拒绝安装或安装失败，可以继续使用 DOCX、TXT、Markdown。扫描件需要另做本地文字识别与核对，具体见[依赖安装与输入格式指南](docs/GETTING-STARTED.md#提供材料)。
 
 ### 1. 加载技能包
 
@@ -153,7 +183,13 @@ python3 demo.py
 .venv/bin/python scripts/verify.py
 ```
 
-当前已验证环境：Python 3.14.7、pypdf 6.18.0。**94项测试通过，零跳过**，另有6个合成案例流程检查通过。测试覆盖技能、案例管理、复核工具、隐私模型实验工具及回归检查；这些数字不表示法律准确率或敏感信息识别合格。持续集成配置覆盖 Python 3.10/3.14，实际执行结果以任务记录为准。
+当前已验证环境：Python 3.14.7、pypdf 6.18.0。**135项测试通过，零跳过**，另有6个合成案例流程检查通过。测试覆盖技能、案例管理、复核工具、隐私模型实验工具及回归检查；这些数字不表示法律准确率或敏感信息识别合格。持续集成配置覆盖 Python 3.10/3.14，实际执行结果以任务记录为准。
+
+本地隐私模型已完成新一轮真实微调与泛化对比，但尚未通过推广验收；当前边界与失败案例见[泛化验收报告](docs/PRIVACY-GENERALIZATION-ROUND2.md)。
+
+repair-v5 的冻结运行器、开发/holdout/历史回归结果及未推广原因见[Privacy repair-v5 评估记录](docs/PRIVACY-REPAIR-V5.md)。
+
+扩展红队测试分别覆盖公开模板、业务正文、独立合成行业案例和实际文件提取；本地模型仍存在敏感残留，详见[红队扩展验收报告](docs/PRIVACY-REDTEAM-EXPANSION.md)。
 
 ## 进一步阅读
 
@@ -163,7 +199,7 @@ python3 demo.py
 | 版本修改审核 | [修改审核流程](contract-review-cn/references/change-review.md) |
 | 多背景审查与逆向查漏 | [双组审核协议](contract-review-cn/references/dual-team.md) |
 | 全文覆盖、法源及未决事项 | [深度审核协议](contract-review-cn/references/deep-audit.md) |
-| 样例与评测边界 | [样例过程](docs/WALKTHROUGH.md) · [评测说明](docs/BENCHMARK.md) |
+| 样例与评测边界 | [样例过程](docs/WALKTHROUGH.md) · [评测说明](docs/BENCHMARK.md) · [独立测评项目](evaluation/README.md) |
 | 专业人员裁定材料 | [人工复核说明](research/public-contracts/README.md) |
 | 生产使用差距与验收要求 | [能力矩阵](docs/PRODUCTION-READINESS.md) |
 
