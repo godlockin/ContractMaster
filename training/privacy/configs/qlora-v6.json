@@ -1,0 +1,47 @@
+{
+  "model": "artifacts/privacy/models/qwen3-1.7b-4bit",
+  "data": "artifacts/privacy/data/v7/mlx",
+  "adapter_path": "artifacts/privacy/adapters/v6",
+  "resume_adapter_file": "artifacts/privacy/adapters/v5/adapters.safetensors",
+  "train": true,
+  "test": false,
+  "fine_tune_type": "lora",
+  "optimizer": "adamw",
+  "optimizer_config": {
+    "adamw": {
+      "weight_decay": 0.01
+    }
+  },
+  "seed": 20260919,
+  "num_layers": 16,
+  "batch_size": 2,
+  "grad_accumulation_steps": 1,
+  "iters": 120,
+  "val_batches": 8,
+  "steps_per_report": 10,
+  "steps_per_eval": 60,
+  "save_every": 60,
+  "max_seq_length": 1024,
+  "grad_checkpoint": false,
+  "mask_prompt": true,
+  "learning_rate": 1e-05,
+  "lr_schedule": {
+    "name": "cosine_decay",
+    "warmup": 10,
+    "warmup_init": 1e-06,
+    "arguments": [
+      1e-05,
+      110,
+      1e-06
+    ]
+  },
+  "lora_parameters": {
+    "keys": [
+      "self_attn.q_proj",
+      "self_attn.v_proj"
+    ],
+    "rank": 8,
+    "scale": 16.0,
+    "dropout": 0.05
+  }
+}

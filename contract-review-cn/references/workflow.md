@@ -8,6 +8,41 @@ AI IDE 新审核优先按 [案例目录管理](case-management.md) 建立版本�
 
 `NEW → PREPARED_PRIVATE → EXTRACTION_AND_PRIVACY_REVIEWED → RELEASED → EXPERT_PLAN_READY → EXPERTS_RUNNING → RESULTS_VALIDATED → ADJUDICATED → DELIVERED`
 
+## 隐私能力选择与安全降级
+
+每个案例首次处理先运行 `training/privacy/model_status.py`（不读取合同正文）。
+
+```text
+能力探测
+  ├─ AVAILABLE：本地模型＋本地规则＋案例策略
+  └─ 其他状态：本地规则＋案例策略
+                  ├─ 覆盖充分 → 生成本地候选，人工复核
+                  └─ 覆盖不足 → 阻断发布，补充策略后重跑
+人工确认提取及隐私复核
+  └─ 仅生成 public/bundle.json → 大模型审核
+```
+
+规则降级表示“先在本机脱敏，再将复核后的公开包交给大模型”，绝不表示把原合同直接发送给大模型。`--backend local` 用于强制本地模型，能力不可用即失败；`--backend rules` 用于离线演练。模型校验失败或运行异常只能转为本地规则状态，不能绕过复核自动外发。
+
+首次使用在案例根目录建立并编辑策略：
+
+```bash
+python3 "$SKILL_DIR/scripts/privacy_config.py" init --root /本地案例根目录
+python3 "$SKILL_DIR/scripts/privacy_config.py" check --config /本地案例根目录/privacy-policy.json
+```
+
+用户需自主确认公司/机构、人名及别名、地址、联系方式、证件/账户、项目代号、内部报价、底价、技术秘密，以及普通金额、期限、比例是否允许进入公开包。策略和映射永不上传。
+
+对已在本地核对的 UTF-8 提取文本，可运行：
+
+```bash
+python3 "$SKILL_DIR/../training/privacy/redact_local.py" --backend auto \
+  --input /本地提取/合同.txt --output /本地私有/脱敏候选 \
+  --config /本地案例根目录/privacy-policy.json
+```
+
+输出目录中的 `redacted.txt`、`mapping.json` 都是私有候选；先逐页复核，再按本流程用实体策略运行 `prepare/release`。命令返回 `backend=rules` 时表示安全降级，不代表识别完整。
+
 新任务默认双组计划v2，详见[双组协议](dual-team.md)。所有results参数必须包括A/B两组，下面基础六角色路径仅示意，另加入reverse_legal、reverse_compliance、reverse_dispute及专项结果。
 
 EXPERT_PLAN_READY按[动态专家规划](expert-planning.md)执行：交易画像、角度矩阵、六基础及专项组队、上下文和工具配置、就绪校验。计划版本绑定所有专家结果及深度报告。
