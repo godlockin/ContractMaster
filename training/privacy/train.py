@@ -95,6 +95,10 @@ def main(config_path):
         raise
     dump(output / "status.json", {"status": "TRAINED_NOT_YET_QUALIFIED", "elapsed_seconds": time.perf_counter()-started,
                                  "peak_memory_gb": mx.get_peak_memory()/1e9})
+    provenance = json.loads((output / "provenance.json").read_text())
+    provenance["adapter_sha256"] = hashlib.sha256((output / "adapters.safetensors").read_bytes()).hexdigest()
+    provenance["integrity_evidence"] = "local training completion; not quality certification"
+    dump(output / "provenance.json", provenance)
     print(json.dumps({"status": "TRAINED_NOT_YET_QUALIFIED", "seconds": time.perf_counter()-started,
                       "peak_memory_gb": mx.get_peak_memory()/1e9}))
 

@@ -15,10 +15,19 @@ from urllib.parse import urlparse
 import tempfile
 import zipfile
 import importlib.util
+import subprocess
 import xml.etree.ElementTree as ET
 
 ROLES = ["legal", "dispute", "finance", "business", "compliance", "language"]
 LEVELS = ["char", "word", "sentence", "paragraph", "context"]
+SAFE_REDACTION_FAILURES = {
+    "EMPTY_TEXT", "INPUT_TOO_LONG_REQUIRES_PARTITION", "MODEL_OUTPUT_BLOCKED",
+    "MODEL_ITEMS_UNGROUNDED", "AMBIGUOUS_ENTITY_OCCURRENCE", "ENTITY_NOT_IN_SOURCE",
+    "OUTPUT_TOO_LARGE", "LOCAL_MODEL_FAILED", "MODEL_OR_ADAPTER_NOT_FOUND",
+    "TOTAL_BUDGET_EXCEEDED", "PARTITION_INPUT_TOO_LARGE", "MAX_CHUNKS_EXCEEDED",
+    "INVALID_PARTITION_BUDGET", "TOKENIZER_NOT_COUNTABLE", "PARTITION_PROMPT_OVER_BUDGET",
+    "ENTITY_CROSSES_PARTITION_BOUNDARY",
+}
 TOKEN = re.compile(r"⟦[A-Z][A-Z0-9_]*_\d{4,}⟧")
 RULES = [
     ("ID", re.compile(r"(?<![0-9A-Za-z])\d{17}[0-9Xx](?![0-9A-Za-z])")),
@@ -185,14 +194,19 @@ def load_entities(path: Path | None, data: bytes | None = None) -> list[tuple[st
 
 
 def redact(text: str, entities: list[tuple[str, str]], registry: dict[str, dict],
-           doc_id: str) -> tuple[str, list[dict]]:
+           doc_id: str, *, include_rules: bool = True) -> tuple[str, list[dict]]:
     require(not TOKEN.search(text), "SOURCE_TOKEN_COLLISION")
     matches: list[tuple[int, int, str, str]] = []
     for literal, kind in entities:
         for match in re.finditer(re.escape(literal), text):
             matches.append((match.start(), match.end(), kind, literal))
-    for kind, regex in RULES:
+    for kind, regex in (RULES if include_rules else []):
         for match in regex.finditer(text):
+            if kind in {"ID", "ACCOUNT"}:
+                prefix = re.split(r'[，,。；;\n]', text[max(0, match.start()-32):match.start()])[-1]
+                cues = re.findall(r'合同编号|订单号|运单号|批次号|身份证|证件|账号|账户|银行卡', prefix)
+                if cues and cues[-1] in {'合同编号', '订单号', '运单号', '批次号'}:
+                    continue
             matches.append((match.start(), match.end(), kind, match.group()))
     # Select longest first even where a shorter match begins earlier.
     selected: list[tuple[int, int, str, str]] = []
@@ -273,6 +287,7 @@ def prepare_change(args: argparse.Namespace) -> None:
 
 def prepare(args: argparse.Namespace) -> None:
     run = args.run
+    require(not (run / "public").exists(), "ALREADY_RELEASED")
     require(not run.exists(), "RUN_ALREADY_EXISTS")
     entity_data = args.entities.read_bytes() if args.entities else None
     entities = load_entities(args.entities, entity_data)
@@ -281,7 +296,7 @@ def prepare(args: argparse.Namespace) -> None:
         (run / sub).mkdir(mode=0o700)
     registry: dict[str, dict] = {}
     occurrences: list[dict] = []
-    documents, segments, sources = [], [], []
+    documents, segments, sources, snapshots = [], [], [], []
     gaps = []
     comparison_pairs = getattr(args, "comparison_pairs", None)
     for source_index, path in enumerate(args.input, 1):
@@ -299,7 +314,11 @@ def prepare(args: argparse.Namespace) -> None:
             doc_id = f"DOC{len(documents)+1:04d}"
             redacted, spans = redact(original, entities, registry, doc_id)
             occurrences.extend(spans)
-            write_new(run / "private" / f"source-{len(documents)+1:04d}.txt", original)
+            snapshot_name = f"source-{len(documents)+1:04d}.txt"
+            snapshot_path = run / "private" / snapshot_name
+            write_new(snapshot_path, original)
+            snapshots.append({"name": snapshot_name, "source_index": source_index,
+                              "sha256": hashlib.sha256(original.encode("utf-8")).hexdigest()})
             documents.append({"id": doc_id, "source_index": source_index,
                               "part": label, "text": redacted, "warnings": warnings})
             if comparison_pairs is not None:
@@ -320,7 +339,7 @@ def prepare(args: argparse.Namespace) -> None:
     write_json(run / "private" / "candidate.json", bundle)
     mapping = {"entities": list(registry.values()), "occurrences": occurrences}
     write_json(run / "private" / "mapping.json", mapping)
-    write_json(run / "private" / "extraction.json", {"sources": sources,
+    write_json(run / "private" / "extraction.json", {"sources": sources, "snapshots": snapshots,
                "candidate_digest": digest(bundle), "mapping_digest": digest(mapping),
                "entity_source": ({"path": str(args.entities.resolve()),
                    "sha256": hashlib.sha256(entity_data).hexdigest()}
@@ -329,6 +348,205 @@ def prepare(args: argparse.Namespace) -> None:
     print(json.dumps({"status": "PREPARED_PRIVATE", "documents": len(documents),
                       "segments": len(segments), "entities": len(registry), "local_review_required": True,
                       "unprocessed_inputs": len(gaps)}))
+
+
+def artifact_identity(path: Path) -> str:
+    """Hash a file or deterministic directory manifest without reading secrets."""
+    path = path.resolve()
+    require(path.exists(), "ARTIFACT_NOT_FOUND")
+    if path.is_file():
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    entries = []
+    for child in sorted(item for item in path.rglob("*") if item.is_file()):
+        entries.append((str(child.relative_to(path)), hashlib.sha256(child.read_bytes()).hexdigest()))
+    return hashlib.sha256(json.dumps(entries, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+
+
+def optional_artifact_identity(path: Path | None) -> str | None:
+    return artifact_identity(path) if path is not None and path.exists() else None
+
+
+def runtime_identity() -> dict[str, str]:
+    paths = [Path(__file__), Path(__file__).parents[2] / "training/privacy/redact_local.py",
+             Path(__file__).parents[2] / "training/privacy/partition.py",
+             Path(__file__).parents[2] / "training/privacy/guardrails.py",
+             Path(__file__).parents[2] / "training/privacy/common.py",
+             Path(__file__).parents[2] / "training/privacy/normalized_view.py",
+             Path(__file__).parent / "privacy_config.py",
+             Path(__file__).parent / "privacy_policy_schema.py"]
+    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths if path.is_file()}
+
+
+def redact_run(args: argparse.Namespace) -> None:
+    """Run explicit local redactor against prepared private snapshots."""
+    run = args.run
+    require(not (run / "public").exists(), "ALREADY_RELEASED")
+    candidate_path = run / "private" / "candidate.json"
+    extraction_path = run / "private" / "extraction.json"
+    mapping_path = run / "private" / "mapping.json"
+    bundle = read_json(candidate_path)
+    check_bundle(bundle)
+    meta = read_json(extraction_path)
+    require(meta["candidate_digest"] == digest(bundle), "CANDIDATE_CHANGED_REPREPARE")
+    require("comparison" not in bundle, "REDACTION_COMPARISON_UNSUPPORTED")
+    require(not (run / "private" / "redaction.json").exists(), "REDACTION_ALREADY_EXISTS")
+    state_path = run / "private" / "redaction-state.json"
+    require(not state_path.exists(), "REDACTION_ALREADY_EXISTS")
+    write_new(state_path, json.dumps({"status": "RUNNING"}) + "\n")
+    redactor = args.redactor.resolve()
+    require(redactor.is_file(), "REDACTOR_NOT_FOUND")
+    if args.backend == "local":
+        require(args.model is not None and args.adapter is not None, "MODEL_ARTIFACT_REQUIRED")
+    global_entities: list[dict] = []
+    global_occurrences: list[dict] = []
+    counters: dict[str, int] = {}
+    shared_tokens: dict[tuple[str, str], str] = {}
+    redaction_runs: list[dict] = []
+    snapshot_hashes = {item["name"]: item["sha256"] for item in meta.get("snapshots", [])}
+    runtime_hashes = runtime_identity()
+    frozen_artifacts = {"redactor": hashlib.sha256(redactor.read_bytes()).hexdigest(),
+                        "model": optional_artifact_identity(args.model),
+                        "adapter": optional_artifact_identity(args.adapter),
+                        "policy": optional_artifact_identity(args.policy)}
+    for index, document in enumerate(bundle["documents"], 1):
+        source_path = run / "private" / f"source-{index:04d}.txt"
+        require(source_path.is_file() and hashlib.sha256(source_path.read_bytes()).hexdigest() == snapshot_hashes.get(source_path.name), "SOURCE_SNAPSHOT_CHANGED")
+        with tempfile.TemporaryDirectory(prefix="redact-", dir=run / "private") as temp:
+            output_dir = Path(temp) / "out"
+            executable = Path(args.python).absolute()
+            require(executable.is_file(), "REDACTOR_PYTHON_NOT_FOUND")
+            command = [str(executable), str(redactor), "--input", str(source_path),
+                       "--output", str(output_dir), "--backend", args.backend]
+            entity_source = meta.get("entity_source")
+            if entity_source:
+                command.extend(["--entities", str(Path(entity_source["path"]).resolve())])
+            if args.model:
+                command.extend(["--model", str(args.model.resolve())])
+            if args.adapter:
+                command.extend(["--adapter", str(args.adapter.resolve())])
+            if args.policy:
+                command.extend(["--config", str(args.policy.resolve())])
+            try:
+                completed = subprocess.run(command, capture_output=True, text=True,
+                                           check=False, shell=False, timeout=args.timeout)
+            except subprocess.TimeoutExpired as exc:
+                raise GateError("LOCAL_REDACTION_TIMEOUT") from exc
+            if completed.returncode != 0:
+                try:
+                    failure = json.loads(completed.stderr.strip().splitlines()[-1]).get("reason")
+                except (ValueError, IndexError, AttributeError):
+                    failure = None
+                raise GateError(failure if isinstance(failure, str) and failure in SAFE_REDACTION_FAILURES
+                                else "LOCAL_REDACTION_FAILED")
+            try:
+                status = json.loads(completed.stdout.strip().splitlines()[-1])
+            except (ValueError, IndexError, AttributeError) as exc:
+                raise GateError("REDACTION_STATUS_SCHEMA") from exc
+            require(status.get("status") == "LOCAL_REDACTION_COMPLETE", "REDACTION_STATUS_SCHEMA")
+            require(status.get("backend") in {"rules", "local-model"}, "REDACTION_STATUS_SCHEMA")
+            if status.get("backend") == "local-model":
+                require(args.model is not None and args.adapter is not None, "MODEL_ARTIFACT_REQUIRED")
+            redacted_path, local_mapping_path = output_dir / "redacted.txt", output_dir / "mapping.json"
+            require(redacted_path.is_file() and local_mapping_path.is_file(), "REDACTION_ARTIFACT_MISSING")
+            redacted = redacted_path.read_text(encoding="utf-8")
+            local = read_json(local_mapping_path)
+            require(isinstance(local, dict) and isinstance(local.get("mapping"), list)
+                    and isinstance(local.get("occurrences"), list), "REDACTION_MAPPING_SCHEMA")
+            local_entities = {item.get("token"): item for item in local["mapping"]
+                              if isinstance(item, dict)}
+            require(len(local_entities) == len(local["mapping"]), "REDACTION_MAPPING_SCHEMA")
+            source_text = source_path.read_text(encoding="utf-8")
+            for occurrence in local["occurrences"]:
+                require(isinstance(occurrence, dict), "REDACTION_OCCURRENCE_SCHEMA")
+                token = occurrence.get("token")
+                start, end = occurrence.get("original_start"), occurrence.get("original_end")
+                require(token in local_entities and type(start) is int and type(end) is int
+                        and 0 <= start < end <= len(source_text), "REDACTION_OCCURRENCE_SCHEMA")
+                require(source_text[start:end] == local_entities[token].get("value"), "REDACTION_OCCURRENCE_MISMATCH")
+            for token in local_entities:
+                require(redacted.count(token) == sum(o.get("token") == token for o in local["occurrences"]),
+                        "REDACTION_TOKEN_MISMATCH")
+        replacements: dict[str, str] = {}
+        for entity in local.get("mapping", []):
+            token, kind, value = entity.get("token"), entity.get("type"), entity.get("value")
+            require(isinstance(token, str) and isinstance(kind, str) and isinstance(value, str), "REDACTION_MAPPING_SCHEMA")
+            key = (kind, value)
+            new_token = shared_tokens.get(key)
+            if new_token is None:
+                counters[kind] = counters.get(kind, 0) + 1
+                new_token = f"⟦{kind}_{counters[kind]:04d}⟧"
+                shared_tokens[key] = new_token
+                global_entities.append({"token": new_token, "type": kind, "value": value})
+            replacements[token] = new_token
+        expected = source_text
+        local_occurrences = sorted(local.get("occurrences", []), key=lambda item: item["original_start"])
+        previous_end = -1
+        for occurrence in local_occurrences:
+            start, end = occurrence["original_start"], occurrence["original_end"]
+            require(start >= previous_end, "REDACTION_OCCURRENCE_OVERLAP")
+            previous_end = end
+        for occurrence in reversed(local_occurrences):
+            expected = expected[:occurrence["original_start"]] + replacements[occurrence["token"]] + expected[occurrence["original_end"]:]
+        redacted = TOKEN.sub(lambda match: replacements.get(match.group(), match.group()), redacted)
+        require(redacted == expected, "REDACTION_SOURCE_RECONSTRUCTION_MISMATCH")
+        redaction_runs.append({"document_id": document["id"], "snapshot": source_path.name,
+                               "backend": status["backend"], "status": "complete"})
+        redacted_offsets: dict[str, list[tuple[int, int]]] = {}
+        for token in replacements.values():
+            redacted_offsets[token] = [(match.start(), match.end())
+                                       for match in re.finditer(re.escape(token), redacted)]
+        redacted_seen: dict[str, int] = {}
+        document["text"] = redacted
+        for occurrence in local.get("occurrences", []):
+            item = dict(occurrence)
+            item["document_id"] = document["id"]
+            item["token"] = replacements.get(item.get("token"), item.get("token"))
+            token = item["token"]
+            offset_index = redacted_seen.get(token, 0)
+            require(offset_index < len(redacted_offsets.get(token, [])), "REDACTION_TOKEN_MISMATCH")
+            item["redacted_start"], item["redacted_end"] = redacted_offsets[token][offset_index]
+            redacted_seen[token] = offset_index + 1
+            global_occurrences.append(item)
+    require(runtime_identity() == runtime_hashes, "RUNTIME_CHANGED_DURING_REDACTION")
+    require(hashlib.sha256(redactor.read_bytes()).hexdigest() == frozen_artifacts["redactor"], "REDACTOR_CHANGED_DURING_REDACTION")
+    require(optional_artifact_identity(args.model) == frozen_artifacts["model"], "MODEL_CHANGED_DURING_REDACTION")
+    require(optional_artifact_identity(args.adapter) == frozen_artifacts["adapter"], "ADAPTER_CHANGED_DURING_REDACTION")
+    require(optional_artifact_identity(args.policy) == frozen_artifacts["policy"], "POLICY_CHANGED_DURING_REDACTION")
+    bundle["segments"] = [segment for document in bundle["documents"]
+                           for segment in segments_for(document["id"], document["text"])]
+    bundle.pop("input_digest", None)
+    bundle["input_digest"] = digest(bundle)
+    mapping = {"entities": global_entities, "occurrences": global_occurrences}
+    meta["candidate_digest"] = digest(bundle)
+    meta["mapping_digest"] = digest(mapping)
+    meta["redaction"] = {"backend": "per_document", "runs": redaction_runs,
+                          "requested_backend": args.backend, "redactor": str(redactor),
+                          "model": str(args.model.resolve()) if args.model else None,
+                          "adapter": str(args.adapter.resolve()) if args.adapter else None,
+                          "policy": str(args.policy.resolve()) if args.policy else None,
+                          "redactor_sha256": hashlib.sha256(redactor.read_bytes()).hexdigest(),
+                          "model_sha256": optional_artifact_identity(args.model),
+                          "adapter_sha256": optional_artifact_identity(args.adapter),
+                          "policy_sha256": optional_artifact_identity(args.policy),
+                          "pipeline_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                          "runtime_sha256": runtime_hashes,
+                          "requires_local_review": True}
+    staged = run / "private" / "redaction-stage"
+    staged.mkdir(mode=0o700)
+    write_new(staged / "candidate.json", json.dumps(bundle, ensure_ascii=False, indent=2) + "\n")
+    write_new(staged / "mapping.json", json.dumps(mapping, ensure_ascii=False, indent=2) + "\n")
+    write_new(staged / "extraction.json", json.dumps(meta, ensure_ascii=False, indent=2) + "\n")
+    os.replace(staged / "candidate.json", candidate_path)
+    os.replace(staged / "mapping.json", mapping_path)
+    os.replace(staged / "extraction.json", extraction_path)
+    staged.rmdir()
+    write_new(run / "private" / "redaction.json", json.dumps({"status": "ATTACHED", "candidate_digest": digest(bundle),
+              "mapping_digest": digest(mapping), "runtime_sha256": runtime_hashes}, ensure_ascii=False, indent=2) + "\n")
+    state_path.unlink()
+    event(run, "LOCAL_REDACTION_ATTACHED", documents=len(bundle["documents"]), entities=len(global_entities),
+          backends=sorted({item["backend"] for item in redaction_runs}))
+    print(json.dumps({"status": "LOCAL_REDACTION_ATTACHED", "documents": len(bundle["documents"]),
+                      "entities": len(global_entities), "runs": redaction_runs}))
 
 
 def check_bundle(bundle: dict) -> None:
@@ -351,11 +569,33 @@ def release(args: argparse.Namespace) -> None:
     check_bundle(bundle)
     meta = read_json(run / "private" / "extraction.json")
     require(meta["candidate_digest"] == digest(bundle), "CANDIDATE_CHANGED_REPREPARE")
+    if "redaction" in meta:
+        redaction = meta["redaction"]
+        require(redaction.get("requires_local_review") is True, "REDACTION_REVIEW_REQUIRED")
+        require(redaction.get("redactor_sha256") == artifact_identity(Path(redaction["redactor"])), "REDACTOR_CHANGED")
+        require(redaction.get("pipeline_sha256") == hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "PIPELINE_CHANGED")
+        require(redaction.get("runtime_sha256") == runtime_identity(), "RUNTIME_CHANGED")
+        for key in ("model", "adapter", "policy"):
+            if redaction.get(key):
+                recorded = redaction.get(f"{key}_sha256")
+                require(recorded == optional_artifact_identity(Path(redaction[key])), f"{key.upper()}_CHANGED")
+        receipt = read_json(run / "private" / "redaction.json")
+        require(receipt.get("status") == "ATTACHED" and receipt.get("candidate_digest") == digest(bundle)
+                and receipt.get("mapping_digest") == digest(read_json(run / "private" / "mapping.json")),
+                "REDACTION_RECEIPT_MISMATCH")
+        require(receipt.get("runtime_sha256") == redaction.get("runtime_sha256"), "REDACTION_RECEIPT_MISMATCH")
     for source in meta["sources"] + ([meta["entity_source"]] if meta["entity_source"] else []):
         require(hashlib.sha256(Path(source["path"]).read_bytes()).hexdigest() == source["sha256"],
                 "SOURCE_CHANGED_REPREPARE")
+    for snapshot in meta.get("snapshots", []):
+        snapshot_path = run / "private" / snapshot["name"]
+        require(snapshot_path.is_file() and hashlib.sha256(snapshot_path.read_bytes()).hexdigest() == snapshot["sha256"],
+                "SOURCE_SNAPSHOT_CHANGED")
     require(digest(read_json(run / "private" / "mapping.json")) == meta["mapping_digest"],
             "MAPPING_CHANGED_REPREPARE")
+    state_path = run / "private" / "redaction-state.json"
+    if state_path.exists():
+        require(read_json(state_path).get("status") == "ATTACHED", "REDACTION_NOT_ATTACHED")
     require(not (run / "public").exists(), "ALREADY_RELEASED")
     # No public artifact until all fallible preparation and audit writes succeed.
     # The receipt moves atomically with the bundle and is the commit record.
@@ -659,7 +899,7 @@ def main() -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     probe = commands.add_parser("doctor", help="Read-only optional dependencies and input format check")
     probe.add_argument("--input", type=Path, action="append")
-    for name in ("prepare", "prepare-change", "release", "validate", "report", "restore"):
+    for name in ("prepare", "prepare-change", "redact-run", "release", "validate", "report", "restore"):
         sub = commands.add_parser(name)
         sub.add_argument("--run", type=Path, required=True)
         if name == "prepare":
@@ -669,6 +909,14 @@ def main() -> int:
             sub.add_argument("--before", type=Path, action="append", required=True)
             sub.add_argument("--after", type=Path, action="append", required=True)
             sub.add_argument("--entities", type=Path)
+        if name == "redact-run":
+            sub.add_argument("--redactor", type=Path, required=True)
+            sub.add_argument("--python", type=Path, default=Path(sys.executable))
+            sub.add_argument("--timeout", type=float, default=120.0)
+            sub.add_argument("--backend", choices=("auto", "local", "rules"), default="auto")
+            sub.add_argument("--model", type=Path)
+            sub.add_argument("--adapter", type=Path)
+            sub.add_argument("--policy", type=Path)
         if name == "release":
             sub.add_argument("--attest-extraction-reviewed", action="store_true")
             sub.add_argument("--attest-privacy-reviewed", action="store_true")

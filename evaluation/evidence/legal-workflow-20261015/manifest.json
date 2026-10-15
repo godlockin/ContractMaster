@@ -1,0 +1,36 @@
+{
+  "source": "synthetic",
+  "scope": "single-role limited workflow exercise; not full legal review",
+  "initial_findings": [
+    "unsupported missing-link claim",
+    "unauthorized exception to non-negotiable policy"
+  ],
+  "revision": "after root review and instruction refinement",
+  "lawyer_gold_standard": false,
+  "files": [
+    {
+      "path": "initial-internal-memo.md",
+      "sha256": "525741c4b596318b7c0b2517df16e7b2cca35411cc63422c7776045cf67ef497"
+    },
+    {
+      "path": "initial-external-replacements.md",
+      "sha256": "9285ac8b9f796e0bfb2fa3fe122e8bef5be20ae6cffc1a497ae38c81c96f9493"
+    },
+    {
+      "path": "initial-next-steps.md",
+      "sha256": "0dcce7a6b7a2301e647035801c790565e9d96bf29339ceaacd11a53103d9e72b"
+    },
+    {
+      "path": "revised-internal-memo.md",
+      "sha256": "a971fe6b146e665b75d1f15b153aee8dee16bf84d86ed7b6a4d5ba0abe383e2f"
+    },
+    {
+      "path": "revised-external-replacements.md",
+      "sha256": "65d00ea9f17c577b76b87f2aff7103488f46683d4db7b468b97f7791fe89cafb"
+    },
+    {
+      "path": "revised-next-steps.md",
+      "sha256": "62a1a1e773593a3cfcc70ff1ccc26f4f0220547c182e2fd9629df4bbe20d53d6"
+    }
+  ]
+}

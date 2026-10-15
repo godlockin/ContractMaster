@@ -1,5 +1,7 @@
 # 专家结果契约
 
+企业标准偏离、替换方案、审批和履约信息按[法务交付物](legal-deliverables.md)整理；本地 `legal_audit.py` 台账通过 `case_id`、输入/快照摘要及 `playbook_version` 关联本次审核，不能替代本文的原文引证及专家结果。台账就绪与专家审核完成状态分别呈现；待确认法源、事实或业务例外不能因为台账字段齐全而消失。
+
 合同版本比较模式另须提交 comparison_digest 和逐项 change_reviews，字段、枚举及完整性门禁见 [修改审核](change-review.md)。普通单版本审核无需这些字段。
 
 新任务按[双组协议](dual-team.md)，每份角色结果增加team和first_pass，R1声明与深度记录摘要绑定。下例为通用字段示意，不是完整的双组结果。

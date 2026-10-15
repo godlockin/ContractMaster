@@ -1,0 +1,21 @@
+{
+  "model_id": "baseline-v4",
+  "base_repo": "mlx-community/Qwen3-1.7B-4bit",
+  "base_revision": "3b1b1768f8f8cf8351c712464f906e86c2b8269e",
+  "base_weights_sha256": "0e86d9677e519323849eac1bc272caae88567a481ff188c431f70be543d9995f",
+  "adapter_sha256": "d8f0db53ab667732b0974ccd87ae44a8ab9a5d1a3429506188e404334c47d339",
+  "runtime_sha256": {
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/training/privacy/common.py": "485a76c282f5b5ab648d28a4459daf42749df19178d1745bd1e6c5cb9d67deaf",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/training/privacy/normalized_view.py": "8ae382e46d4535fc354d0203721febf1f9d4e12c85384fccaef2244f2b834165",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/training/privacy/redact_local.py": "2375110fd1492b2cb74da25f1e078108dc2d6dc140a9d0a26197f851ad00c6a0",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/training/privacy/guardrails.py": "93c1663784804a50d4f44fde11b8eb40217dd6d799e868cbaa031039abe48b99",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/training/privacy/evaluate_redteam.py": "932918890469e20cc6485538ecf8393c2b46be2e408d1105e490b8ffda05b456",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/contract-review-cn/scripts/pipeline.py": "866cdc0a75de9a83f0405c9b4fa3f6e57cda15e161861ee721727ff5796e3ac7",
+    "artifacts/privacy/experiments/p2-v6-20260915/evalrun/contract-review-cn/scripts/privacy_config.py": "d3744b477dad6b6b9e71edac8f5e4230ab1b9a869a090a1b2eeadceb8fb45f52"
+  },
+  "dataset_id": "reviewed4-dev128",
+  "dataset_role": "development evaluation only; never training",
+  "protocol": "legacy-counts-v1",
+  "dataset_sha256": "84bcfe1d4e6f5f7aa11c99e859578bfd28f0a993ae187b7c17899b76ec7eb98d",
+  "predictions_sha256": "adb2650e5d64177a9c98ed57aba8d50fc6c516c728142ca710401d57b6456cdf"
+}

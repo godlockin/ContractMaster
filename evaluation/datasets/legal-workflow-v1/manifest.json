@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "legal-workflow-v1",
+  "status": "challenge_only_unreviewed",
+  "source": "synthetic",
+  "rows": 25,
+  "negative_cases": 3,
+  "coverage": [
+    "unknown_stance", "missing_attachment", "scanned_extraction", "data_prompt_injection",
+    "annual_to_total_price", "opposing_party_versions", "price", "acceptance", "liability",
+    "ip", "data_processing", "disguised_employment", "cross_border", "group_authority",
+    "conflicting_versions", "supplement_chain", "unsigned_draft", "exception_approval",
+    "negotiation_confidentiality", "renewal_notice", "breach_evidence", "archive_isolation", "warranty",
+    "negative_no_substantive_change"
+  ],
+  "lawyer_gold_standard": false,
+  "model_run": false,
+  "cases_sha256": "ca6303c62b21ecb1bc08c79a1ddebb53af9a83c2130d038c34b1e650847a2f5f"
+}

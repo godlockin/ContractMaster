@@ -1,0 +1,17 @@
+# Supplier-facing replacement text (draft for review only)
+
+Status: prepared for negotiation review; not sent, not signed, not accepted.
+
+## Fees
+
+> “本补充协议项下服务费为人民币 **[三年总价/每年价] [金额] 元（含税）**。如为年度服务费，2026年11月1日至2029年10月31日期间三年费用合计为人民币 **[金额]** 元。付款节点、发票要求、调价机制及附件SLA服务补偿以双方确认的付款计划和签署版SLA为准；本补充协议与主合同不一致之处，仅在本补充协议明确列明的范围内修改。”
+
+## Liability
+
+> “除本协议另有明确约定外，供应商就本合同及相关订单承担的累计赔偿责任上限为本合同一个合同年度应付服务费。责任上限不适用于因故意或重大过失、保密或数据安全/数据处理义务违反、知识产权侵权、人身损害以及法律不得限制的责任。‘合同年度应付服务费’按双方确认的含税价款和实际服务期间计算。”
+
+## Data use
+
+> “供应商仅得为履行本合同、提供支持和处理客户书面指令之目的处理履约数据。供应商不得将履约数据用于模型训练、产品改进、画像、广告或向第三方提供，不得以去标识化、聚合或其他方式规避前述限制。供应商应按客户指示返还或删除数据，未经书面同意不得委托子处理者，并应在发生或疑似发生安全事件后[24]小时内通知客户并配合调查。”
+
+Open items before circulation: price basis and amount, payment plan, signed SLA, data scope and incident deadline. This text must pass internal approval before external transmission.

@@ -9,7 +9,11 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
+
+os.environ['HF_HUB_OFFLINE'] = '1'
+os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
 
 
 STATES = {"AVAILABLE", "NOT_INSTALLED", "DEPENDENCY_MISSING", "INTEGRITY_FAILED",
@@ -42,14 +46,23 @@ def check_model(model: Path, adapter: Path, self_test: bool = False) -> dict:
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         records = manifest.get("files")
-        if not isinstance(records, list) or not manifest.get("revision"):
+        if not isinstance(records, list) or not records or not manifest.get("revision"):
             raise ValueError("MANIFEST_SCHEMA")
         for record in records:
-            path = model / str(record["file"])
-            if not path.is_file() or path.stat().st_size != int(record["bytes"]):
+            if not isinstance(record, dict) or not isinstance(record.get("file"), str):
+                raise ValueError("MANIFEST_RECORD")
+            relative = Path(record["file"])
+            path = (model / relative).resolve()
+            if relative.is_absolute() or model.resolve() not in path.parents:
+                raise ValueError("MANIFEST_PATH")
+            expected_bytes, expected_sha = record.get("bytes"), record.get("sha256")
+            if (not isinstance(expected_bytes, int) or expected_bytes < 0 or
+                    not isinstance(expected_sha, str) or len(expected_sha) != 64):
+                raise ValueError("MANIFEST_RECORD")
+            if not path.is_file() or path.stat().st_size != expected_bytes:
                 result.update(status="INTEGRITY_FAILED", reason="MODEL_FILE_SIZE_MISMATCH")
                 return result
-            if _sha256(path) != record["sha256"]:
+            if _sha256(path) != expected_sha:
                 result.update(status="INTEGRITY_FAILED", reason="MODEL_FILE_CHECKSUM_MISMATCH")
                 return result
         provenance_path = adapter / "provenance.json"
@@ -63,10 +76,28 @@ def check_model(model: Path, adapter: Path, self_test: bool = False) -> dict:
         if model_info.get("revision") != manifest.get("revision"):
             result.update(status="ADAPTER_MISMATCH", reason="ADAPTER_MODEL_REVISION_MISMATCH")
             return result
-        if "adapter_sha256" in provenance and _sha256(adapter_file) != provenance["adapter_sha256"]:
+        listed_names = {record.get("file") for record in records if isinstance(record, dict)}
+        if (not {"config.json", "tokenizer.json"} <= listed_names or
+                not any(name.endswith('.safetensors') for name in listed_names)):
+            result.update(status="INTEGRITY_FAILED", reason="MODEL_REQUIRED_FILES_MISSING")
+            return result
+        adapter_sha = provenance.get("adapter_sha256")
+        if not isinstance(adapter_sha, str) or len(adapter_sha) != 64:
+            result.update(status="INTEGRITY_FAILED", reason="ADAPTER_CHECKSUM_MISSING")
+            return result
+        if _sha256(adapter_file) != adapter_sha:
             result.update(status="INTEGRITY_FAILED", reason="ADAPTER_CHECKSUM_MISMATCH")
             return result
-    except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError):
+        adapter_config = json.loads(config_file.read_text(encoding="utf-8"))
+        if (not isinstance(adapter_config, dict) or
+                adapter_config.get("fine_tune_type") != "lora"):
+            result.update(status="INTEGRITY_FAILED", reason="ADAPTER_CONFIG_INVALID")
+            return result
+        configured_model = adapter_config.get("model")
+        if not isinstance(configured_model, str) or Path(configured_model).name != model.name:
+            result.update(status="ADAPTER_MISMATCH", reason="ADAPTER_BASE_MODEL_MISMATCH")
+            return result
+    except (OSError, ValueError, TypeError, KeyError, AttributeError, json.JSONDecodeError):
         result.update(status="INTEGRITY_FAILED", reason="MODEL_METADATA_INVALID")
         return result
     if not _has_module("mlx_lm") or not _has_module("mlx.core"):

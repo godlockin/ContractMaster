@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "dataset": "contract-changes-v1",
+  "status": "challenge_only_unreviewed",
+  "source": "synthetic",
+  "rows": 28,
+  "positive_pairs": 24,
+  "negative_pairs": 4,
+  "risk_enum": ["economic_total", "tax", "liability_cap", "liability_allocation", "logic_operator", "obligation_strength", "deadline", "renewal", "jurisdiction", "acceptance", "ip_ownership", "payment_condition", "no_substantive_change"],
+  "lawyer_gold_standard": false,
+  "model_run": false,
+  "changes_sha256": "b5305a1401f7eb536c09b101b36302c59bd0750bd9ca3bd666c2cdd66ae6892f"
+}

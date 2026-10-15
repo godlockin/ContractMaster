@@ -10,6 +10,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+from privacy_policy_schema import validate_controls, SUPPORTED_TYPES
 
 
 DEFAULT = {
@@ -22,7 +23,7 @@ DEFAULT = {
         "bank_accounts": True, "contract_amounts": "ask_before_release"
     }
 }
-ALLOWED = {"PERSON", "ORG", "ADDRESS", "PROJECT", "SECRET", "PHONE", "EMAIL", "ID", "ACCOUNT", "CREDIT"}
+ALLOWED = SUPPORTED_TYPES
 
 
 def _secure_dir(path: Path) -> None:
@@ -44,9 +45,13 @@ def validate(path: Path) -> dict:
         mode = path.stat().st_mode & 0o777
         if mode != 0o600:
             return {"status": "INVALID", "reason": "CONFIG_PERMISSION_MUST_BE_600"}
+        parent_mode = path.parent.stat().st_mode & 0o777
+        if parent_mode != 0o700:
+            return {"status": "INVALID", "reason": "CONFIG_DIRECTORY_PERMISSION_MUST_BE_700"}
         value = json.loads(path.read_text(encoding="utf-8"))
         if value.get("policy_version") != 1 or not isinstance(value.get("entities"), list):
             raise ValueError("CONFIG_SCHEMA")
+        validate_controls(value)
         seen: dict[str, str] = {}
         for item in value["entities"]:
             literal, kind = item.get("value"), item.get("type")
@@ -57,7 +62,7 @@ def validate(path: Path) -> dict:
             seen[literal] = kind
         return {"status": "VALID", "entity_count": len(seen), "path": str(path)}
     except (OSError, ValueError, TypeError, AttributeError, json.JSONDecodeError) as exc:
-        reason = str(exc) if str(exc).startswith(("CONFIG_", "ENTITY_")) else "CONFIG_SCHEMA"
+        reason = str(exc) if str(exc).startswith(("CONFIG_", "ENTITY_", "POLICY_")) else "CONFIG_SCHEMA"
         return {"status": "INVALID", "reason": reason}
 
 
