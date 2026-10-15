@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "",
+  "snapshot_digest": "",
+  "playbook_version": "",
+  "review_status": "partial",
+  "input_digest": "",
+  "context": {
+    "our_position": "",
+    "jurisdiction": "",
+    "audit_stage": "",
+    "known_gaps": []
+  },
+  "playbook": [],
+  "document_chain": [],
+  "findings": [],
+  "obligations": [],
+  "evidence_disclaimer": "Approval evidence is self-reported; no signature verification or legal-effect determination."
+}

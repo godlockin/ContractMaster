@@ -1,0 +1,206 @@
+{
+  "overall": {
+    "rows": 128,
+    "blocked": 0,
+    "delivered_with_residual": 18,
+    "delivered_without_residual": 110,
+    "char_recall_counting_blocks_as_misses": 0.9620853080568721,
+    "char_precision": 0.9412673879443586,
+    "preservation_failed": 0,
+    "dropped_model_items": 0
+  },
+  "clean": {
+    "rows": 64,
+    "blocked": 0,
+    "delivered_with_residual": 8,
+    "delivered_without_residual": 56,
+    "char_recall_counting_blocks_as_misses": 0.9545454545454546,
+    "char_precision": 0.924,
+    "preservation_failed": 0,
+    "dropped_model_items": 0
+  },
+  "attack": {
+    "rows": 64,
+    "blocked": 0,
+    "delivered_with_residual": 10,
+    "delivered_without_residual": 54,
+    "char_recall_counting_blocks_as_misses": 0.9667519181585678,
+    "char_precision": 0.9521410579345088,
+    "preservation_failed": 0,
+    "dropped_model_items": 0
+  },
+  "by_attack_type": {
+    "null": {
+      "rows": 0,
+      "blocked": 0,
+      "delivered_with_residual": 0,
+      "delivered_without_residual": 0,
+      "char_recall_counting_blocks_as_misses": null,
+      "char_precision": null,
+      "preservation_failed": 0,
+      "dropped_model_items": 0
+    },
+    "fullwidth_digits": {
+      "rows": 36,
+      "blocked": 0,
+      "delivered_with_residual": 4,
+      "delivered_without_residual": 32,
+      "char_recall_counting_blocks_as_misses": 0.0,
+      "char_precision": null,
+      "preservation_failed": 0,
+      "dropped_model_items": 0
+    },
+    "person_slash": {
+      "rows": 16,
+      "blocked": 0,
+      "delivered_with_residual": 6,
+      "delivered_without_residual": 10,
+      "char_recall_counting_blocks_as_misses": 0.9602649006622517,
+      "char_precision": 0.9415584415584416,
+      "preservation_failed": 0,
+      "dropped_model_items": 0
+    },
+    "unicode_escape": {
+      "rows": 8,
+      "blocked": 0,
+      "delivered_with_residual": 0,
+      "delivered_without_residual": 8,
+      "char_recall_counting_blocks_as_misses": 1.0,
+      "char_precision": 1.0,
+      "preservation_failed": 0,
+      "dropped_model_items": 0
+    },
+    "account_grouping": {
+      "rows": 4,
+      "blocked": 0,
+      "delivered_with_residual": 0,
+      "delivered_without_residual": 4,
+      "char_recall_counting_blocks_as_misses": 1.0,
+      "char_precision": 0.7777777777777778,
+      "preservation_failed": 0,
+      "dropped_model_items": 0
+    }
+  },
+  "by_dimension": {
+    "industry": {
+      "consulting": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 0,
+        "delivered_without_residual": 8,
+        "char_recall_counting_blocks_as_misses": 1.0,
+        "char_precision": 0.9,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "education": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 0,
+        "delivered_without_residual": 8,
+        "char_recall_counting_blocks_as_misses": 1.0,
+        "char_precision": 1.0,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "engineering": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 2,
+        "delivered_without_residual": 6,
+        "char_recall_counting_blocks_as_misses": 0.9523809523809523,
+        "char_precision": 1.0,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "finance": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 4,
+        "delivered_without_residual": 4,
+        "char_recall_counting_blocks_as_misses": 0.8709677419354839,
+        "char_precision": 0.84375,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "logistics": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 0,
+        "delivered_without_residual": 8,
+        "char_recall_counting_blocks_as_misses": 1.0,
+        "char_precision": 0.7777777777777778,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "medical": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 0,
+        "delivered_without_residual": 8,
+        "char_recall_counting_blocks_as_misses": 1.0,
+        "char_precision": 1.0,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "procurement": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 4,
+        "delivered_without_residual": 4,
+        "char_recall_counting_blocks_as_misses": 0.0,
+        "char_precision": null,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      },
+      "software": {
+        "rows": 8,
+        "blocked": 0,
+        "delivered_with_residual": 0,
+        "delivered_without_residual": 8,
+        "char_recall_counting_blocks_as_misses": 1.0,
+        "char_precision": 1.0,
+        "preservation_failed": 0,
+        "dropped_model_items": 0
+      }
+    },
+    "scenario": {},
+    "layout": {},
+    "source_id": {}
+  },
+  "complete_pairs": 64,
+  "eligible_clean_sensitive_pairs": 24,
+  "attack_induced_leak_pairs": 2,
+  "conditional_attack_success_rate": 0.08333333333333333,
+  "notes": [
+    "Surface character coverage; correct entity type not required for masking safety.",
+    "Blocked outputs are separate, not declared successful redaction.",
+    "No network-isolation certification; no legal judgment accuracy claim."
+  ],
+  "backend": "local",
+  "data_digest": "bdcfe595d0d99d2151acbc5997db8e1806c6a72b87621b7817e540c5b69d4b7a",
+  "unique_texts": 128,
+  "inference_calls": 128,
+  "model_generation_calls": 80,
+  "runtime_sha256_start": {
+    "training/privacy/normalized_view.py": "8ae382e46d4535fc354d0203721febf1f9d4e12c85384fccaef2244f2b834165",
+    "training/privacy/redact_local.py": "2375110fd1492b2cb74da25f1e078108dc2d6dc140a9d0a26197f851ad00c6a0",
+    "training/privacy/guardrails.py": "93c1663784804a50d4f44fde11b8eb40217dd6d799e868cbaa031039abe48b99",
+    "training/privacy/common.py": "485a76c282f5b5ab648d28a4459daf42749df19178d1745bd1e6c5cb9d67deaf",
+    "training/privacy/evaluate_redteam.py": "932918890469e20cc6485538ecf8393c2b46be2e408d1105e490b8ffda05b456",
+    "contract-review-cn/scripts/pipeline.py": "866cdc0a75de9a83f0405c9b4fa3f6e57cda15e161861ee721727ff5796e3ac7",
+    "contract-review-cn/scripts/privacy_config.py": "d3744b477dad6b6b9e71edac8f5e4230ab1b9a869a090a1b2eeadceb8fb45f52"
+  },
+  "runtime_sha256_end": {
+    "training/privacy/normalized_view.py": "8ae382e46d4535fc354d0203721febf1f9d4e12c85384fccaef2244f2b834165",
+    "training/privacy/redact_local.py": "2375110fd1492b2cb74da25f1e078108dc2d6dc140a9d0a26197f851ad00c6a0",
+    "training/privacy/guardrails.py": "93c1663784804a50d4f44fde11b8eb40217dd6d799e868cbaa031039abe48b99",
+    "training/privacy/common.py": "485a76c282f5b5ab648d28a4459daf42749df19178d1745bd1e6c5cb9d67deaf",
+    "training/privacy/evaluate_redteam.py": "932918890469e20cc6485538ecf8393c2b46be2e408d1105e490b8ffda05b456",
+    "contract-review-cn/scripts/pipeline.py": "866cdc0a75de9a83f0405c9b4fa3f6e57cda15e161861ee721727ff5796e3ac7",
+    "contract-review-cn/scripts/privacy_config.py": "d3744b477dad6b6b9e71edac8f5e4230ab1b9a869a090a1b2eeadceb8fb45f52"
+  },
+  "runtime_code_changed": false,
+  "adapter_sha256": "732f4958ccc2ecef5d50283dd7ce91b504385fbf678b791b96d0344dacb4cc50",
+  "model_path": "/Users/chenchen/working/sourcecode/tools/law/contract_review/artifacts/privacy/models/qwen3-1.7b-4bit"
+}

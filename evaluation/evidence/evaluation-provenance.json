@@ -1,0 +1,13 @@
+{
+  "experiment": "p2-v6-20260915",
+  "data": "/Users/chenchen/working/sourcecode/tools/law/contract_review/artifacts/privacy/data/reviewed4/dev.jsonl",
+  "data_sha256": "84bcfe1d4e6f5f7aa11c99e859578bfd28f0a993ae187b7c17899b76ec7eb98d",
+  "runtime": "frozen current short-document runtime; not historical 156-test snapshot",
+  "runtime_manifest": "runtime.sha256",
+  "baseline": {"adapter": "/Users/chenchen/working/sourcecode/tools/law/contract_review/artifacts/privacy/adapters/v4-step160", "adapter_sha256": "d8f0db53ab667732b0974ccd87ae44a8ab9a5d1a3429506188e404334c47d339", "exit_code": 0, "metrics": "baseline-v4/metrics.json"},
+  "candidate": {"adapter": "/Users/chenchen/working/sourcecode/tools/law/contract_review/artifacts/privacy/experiments/p2-v6-20260915/adapter", "adapter_sha256": "732f4958ccc2ecef5d50283dd7ce91b504385fbf678b791b96d0344dacb4cc50", "exit_code": 0, "metrics": "candidate-p2/metrics.json"},
+  "generation_calls": {"baseline": 80, "candidate": 80, "rows": 128, "inference_calls": 128},
+  "classification": {"clean_residual": {"rows": 8, "industries": {"procurement": 4, "finance": 4}}, "attack_residual": {"rows": 10, "attack_types": {"fullwidth_digits": 4, "person_slash": 6}, "industries": {"procurement": 4, "finance": 4, "engineering": 2}}, "candidate_blocked": 0, "candidate_preservation_failed": 0},
+  "long_smoke": {"script_sha256": "061a235ea02562066168ef2b15cd1152a4191fd676769861dedd3a9d9418f0df", "venv": "/tmp/repro-v3-empty-venv-escalated", "adapter": "v4-step160", "exit_code": 1, "reason": "KeyError:value while restoring occurrence; current P1 pipeline occurrence lacks value field"},
+  "holdout_read": false
+}

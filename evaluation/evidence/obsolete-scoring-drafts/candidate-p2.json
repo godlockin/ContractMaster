@@ -1,0 +1,920 @@
+{
+  "rows": 128,
+  "blocked": 0,
+  "gold_chars": 2532,
+  "covered_chars": 1700,
+  "extra_chars": 736,
+  "char_recall": 0.6714060031595577,
+  "char_precision": 0.6978653530377669,
+  "records": [
+    {
+      "id": "R6-DE-000-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-000-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-000-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-000-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-001-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-001-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-001-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-001-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-002-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-002-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-002-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-002-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-003-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-003-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-003-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-003-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-004-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 16,
+      "extra_chars": 16
+    },
+    {
+      "id": "R6-DE-004-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 19
+    },
+    {
+      "id": "R6-DE-004-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-004-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-005-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 10
+    },
+    {
+      "id": "R6-DE-005-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 15
+    },
+    {
+      "id": "R6-DE-005-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-005-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-006-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-006-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-006-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-006-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-007-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-007-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-007-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-007-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-008-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-008-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-008-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-008-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-009-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-009-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-009-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-009-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-010-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-010-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-010-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-010-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-011-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-011-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-011-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-011-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-012-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 16,
+      "extra_chars": 16
+    },
+    {
+      "id": "R6-DE-012-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 19
+    },
+    {
+      "id": "R6-DE-012-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-012-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-013-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 10
+    },
+    {
+      "id": "R6-DE-013-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 15
+    },
+    {
+      "id": "R6-DE-013-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-013-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-014-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-014-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-014-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-014-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-015-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-015-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-015-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-015-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-016-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-016-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-016-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-016-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-017-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-017-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-017-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-017-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-018-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-018-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-018-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-018-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-019-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-019-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-019-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-019-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-020-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 16,
+      "extra_chars": 16
+    },
+    {
+      "id": "R6-DE-020-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 19
+    },
+    {
+      "id": "R6-DE-020-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-020-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-021-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 10
+    },
+    {
+      "id": "R6-DE-021-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 15
+    },
+    {
+      "id": "R6-DE-021-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-021-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-022-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-022-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-022-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-022-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-023-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-023-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-023-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-023-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-024-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-024-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 7,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-024-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-024-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-025-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 9,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-025-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 9
+    },
+    {
+      "id": "R6-DE-025-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-025-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-026-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-026-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 13,
+      "extra_chars": 13
+    },
+    {
+      "id": "R6-DE-026-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-026-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-027-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-027-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-027-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-027-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-028-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 16,
+      "extra_chars": 16
+    },
+    {
+      "id": "R6-DE-028-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 19
+    },
+    {
+      "id": "R6-DE-028-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-028-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-029-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 10
+    },
+    {
+      "id": "R6-DE-029-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 19,
+      "extra_chars": 15
+    },
+    {
+      "id": "R6-DE-029-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-029-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-030-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-030-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 14,
+      "extra_chars": 14
+    },
+    {
+      "id": "R6-DE-030-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-030-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-031-P-p-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-031-P-p-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 12,
+      "extra_chars": 12
+    },
+    {
+      "id": "R6-DE-031-N-n-clean",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    },
+    {
+      "id": "R6-DE-031-N-n-attack",
+      "verification_level": "legacy-counts-v1",
+      "blocked": false,
+      "missed_chars": 0,
+      "extra_chars": 0
+    }
+  ],
+  "notes": [
+    "Offline prediction scoring only; does not execute model inference.",
+    "Blocked rows are not successful coverage."
+  ],
+  "manifest": {
+    "dataset_sha256": "9a9f8321166a38c335ea1620199c61744b5996849b91fece3ba0a137641e6897",
+    "predictions_sha256": "7a49ebf8b6f62ac0d171183666ea73d1d04f057ff07e85cf5c094b3be978eefc",
+    "dataset_role": "reviewed4 dev128 only",
+    "protocol": "legacy-counts-v1",
+    "holdout_used": false
+  },
+  "dataset_sha256": "9a9f8321166a38c335ea1620199c61744b5996849b91fece3ba0a137641e6897",
+  "predictions_sha256": "7a49ebf8b6f62ac0d171183666ea73d1d04f057ff07e85cf5c094b3be978eefc"
+}

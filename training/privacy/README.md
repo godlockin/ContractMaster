@@ -96,3 +96,34 @@ python3 contract-review-cn/scripts/privacy_config.py check --config /path/to/cas
 当前模型评测对象是文本短片段；未完成整份合同、跨页表格、扫描件OCR、图片印章或组合信息重识别的模型验收。开发集64条来自8类模板，不能把这些模板上的高分解释为全面泛化。超过输入限制会记为失败，不静默截断。
 
 本阶段不修改既有发布门禁，不自动导出模型发现的内容，不调用远端法律模型。资格报告通过之前不推荐使用用户合同；后续用户合同验证必须采用本地受控流程。
+# 可复现归档与模型迁移
+
+`reproducibility.py` 保存实验重建所需的环境、配置、运行时代码、数据分割状态、模型 profile 和 SHA-256 inventory。默认只复制可验证的小文件；模型权重/adapter 只有显式使用 `--include-models` 才会复制。快照是本机副本，不是异地备份，也不包含 venv、密钥或私有目录。
+
+```bash
+python3 training/privacy/reproducibility.py snapshot \
+  --root . --output /tmp/privacy-snapshot \
+  --lock training/privacy/requirements-lock.txt \
+  --config training/privacy/configs/qlora-v7.json \
+  --data artifacts/privacy/data/v7 \
+  --model-profile public-model-profile.json --include-models
+python3 training/privacy/reproducibility.py restore-check \
+  --snapshot /tmp/privacy-snapshot/manifest.json
+```
+
+canonical 数据是唯一来源；按目标 tokenizer 生成的 `mlx/` 等目录属于 training projection，可删除后从 canonical 重建。被拒绝记录保留计数及（在明确允许的本地快照中）原内容，但准入规则禁止进入 projection 或训练集。LoRA 权重绑定基座 repo/revision、模型文件哈希和 tokenizer；更换基座必须重新训练，数据流程和 canonical 数据可复用。
+
+训练前对已有 adapter 执行 `preflight`。它逐级检查每个 `provenance.json` 的 adapter SHA-256、基座身份和父链；缺少父链或只写 revision 会失败：
+
+```bash
+python3 training/privacy/reproducibility.py preflight \
+  --adapter artifacts/privacy/adapters/v7/adapters.safetensors \
+  --model-manifest artifacts/privacy/models/qwen3-1.7b-4bit/verified-download.json
+```
+
+环境重建从 Python 版本与 `requirements-lock.txt` 开始；lock 文件必须保留哈希校验，随后重新生成目标 tokenizer projection，再从匹配基座启动训练。快照不会自动上传云端。
+# 长文受控脱敏
+
+文本超过本地模型输入预算时，`redact_local.py` 自动使用有界分区：实际完整 prompt（含 system 与 overlap）计入 `max_input`，每块输出上限计入 `max_output`，所有块累计受 `max_total` 与 `max_chunks` 约束。分区维护 canonical view 到原文的可逆 offset；候选按精确 occurrence 定点合并，公开金额与保密金额等语义冲突会阻断，避免同 literal 全文误投射。
+
+失败、预算不足、输出截断、块级模型异常或无法安全判断边界时，不产生公开候选。长文处理提供连续覆盖与定位保证，但不宣称穷尽风险；模型比较流程目前不支持，默认模型不升级。

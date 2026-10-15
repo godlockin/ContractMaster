@@ -149,6 +149,10 @@ python3 contract-review-cn/scripts/privacy_config.py check --config /你的案�
 
 ## 审核方式与适用边界
 
+契衡支持按法务工作阶段组织合同审计：受理及材料核验、企业审核标准比对、返回版修改、补充协议关系、谈判建议、签署前核查、履约和争议准备。内部风险意见与对外替换条款分开，底线及例外审批保存在本地；未知事实和未取得的批准持续列为待办。
+
+新增本地审计台账可检查版本引用、替代关系、风险处理、审批声明和履约记录，并生成私有报告。台账检查通过仅代表记录就绪；不自动判定合同生效、签约安全，也不自动发送通知或签署合同。Word 修订稿须由可用的本地文档工具生成并核对；工具不可用时提供定位明确的替换清单。
+
 流程安排两组审查角色：一组从多背景正向审核，另一组独立逆向查漏；首轮独立审阅，随后双向质询与全文回归。实际角色调用由所用大模型工作环境执行；无法完成的步骤须明确记录，不能用角色名称冒充真实独立审核。
 
 | 材料格式 | 当前处理方式 |
@@ -183,7 +187,7 @@ python3 demo.py
 .venv/bin/python scripts/verify.py
 ```
 
-当前已验证环境：Python 3.14.7、pypdf 6.18.0。**135项测试通过，零跳过**，另有6个合成案例流程检查通过。测试覆盖技能、案例管理、复核工具、隐私模型实验工具及回归检查；这些数字不表示法律准确率或敏感信息识别合格。持续集成配置覆盖 Python 3.10/3.14，实际执行结果以任务记录为准。
+当前已验证环境：Python 3.14.7、pypdf 6.18.0。2026-10-15 全量验证：**217 项测试通过，零跳过**，另有合成案例流程及审核评分检查通过。测试覆盖技能、案例管理、审计台账、复核工具、隐私模型实验工具及独立测评；这些数字不表示法律准确率或敏感信息识别合格。见[本轮升级验收记录](docs/LEGAL-WORKFLOW-UPGRADE-2026-10-15.md)。持续集成配置覆盖 Python 3.10/3.14，实际执行结果以任务记录为准。
 
 本地隐私模型已完成新一轮真实微调与泛化对比，但尚未通过推广验收；当前边界与失败案例见[泛化验收报告](docs/PRIVACY-GENERALIZATION-ROUND2.md)。
 
@@ -196,6 +200,9 @@ repair-v5 的冻结运行器、开发/holdout/历史回归结果及未推广原�
 | 内容 | 文档 |
 |---|---|
 | 技能执行入口 | [SKILL.md](contract-review-cn/SKILL.md) |
+| 法务阶段及实务场景 | [生命周期](contract-review-cn/references/legal-lifecycle.md) · [场景路由](contract-review-cn/references/scenario-routing.md) |
+| 企业标准与补充协议 | [谈判标准](contract-review-cn/references/negotiation-playbook.md) · [条款效力链](contract-review-cn/references/amendment-chain.md) |
+| 交付、审批及履约 | [法务交付物](contract-review-cn/references/legal-deliverables.md) |
 | 版本修改审核 | [修改审核流程](contract-review-cn/references/change-review.md) |
 | 多背景审查与逆向查漏 | [双组审核协议](contract-review-cn/references/dual-team.md) |
 | 全文覆盖、法源及未决事项 | [深度审核协议](contract-review-cn/references/deep-audit.md) |

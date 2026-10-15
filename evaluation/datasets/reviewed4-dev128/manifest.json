@@ -1,0 +1,7 @@
+{
+  "rows": 128,
+  "source": "artifacts/privacy/data/reviewed4/dev.jsonl",
+  "role": "development evaluation only",
+  "holdout_included": false,
+  "train_allowed": false
+}

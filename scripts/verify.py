@@ -14,14 +14,17 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SUITES = ("contract-review-cn/scripts", "research/public-contracts/tools", "tests", "training/privacy")
+SUITES = ("contract-review-cn/scripts", "research/public-contracts/tools", "tests", "training/privacy", "evaluation")
 
 
 def run_suite(relative: str) -> dict:
     folder = ROOT / relative
     sys.path.insert(0, str(ROOT))
     sys.path.insert(0, str(folder))
-    suite = unittest.TestLoader().discover(str(folder), pattern="test_*.py")
+    suite = unittest.TestLoader().discover(
+        str(folder), pattern="test_*.py",
+        top_level_dir=str(ROOT) if relative == "evaluation" else None,
+    )
     buffer = io.StringIO()
     with contextlib.redirect_stdout(buffer), contextlib.redirect_stderr(buffer):
         result = unittest.TextTestRunner(stream=buffer).run(suite)

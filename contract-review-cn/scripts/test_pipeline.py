@@ -113,6 +113,30 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("PARTIAL_AUDIT", report_text)
         self.assertIn("DEPTH_NOT_VALIDATED", report_text)
 
+    def test_local_redaction_attaches_model_result_and_mapping(self):
+        redactor = self.root / "fake_redactor.py"
+        redactor.write_text(
+            "import json, pathlib, sys\n"
+            "a=sys.argv; inp=pathlib.Path(a[a.index('--input')+1]); out=pathlib.Path(a[a.index('--output')+1]); out.mkdir()\n"
+            "text=inp.read_text(); value='模型机密'; red=text.replace(value, '⟦SECRET_0001⟧')\n"
+            "(out/'redacted.txt').write_text(red)\n"
+            "pos=text.index(value)\n"
+            "(out/'mapping.json').write_text(json.dumps({'mapping':[{'token':'⟦SECRET_0001⟧','type':'SECRET','value':value}], 'occurrences':[{'token':'⟦SECRET_0001⟧','original_start':pos,'original_end':pos+len(value)}]}))\n"
+            "print(json.dumps({'status':'LOCAL_REDACTION_COMPLETE','backend':'rules'}))\n",
+            encoding="utf-8")
+        self.source.write_text("甲方：示例星辰公司\n模型机密，金额100元。", encoding="utf-8")
+        # Rebuild a fresh run so source snapshot includes fake model entity.
+        self.run = self.root / "model-run"
+        p.prepare(argparse.Namespace(run=self.run, input=[self.source], entities=None))
+        p.redact_run(argparse.Namespace(run=self.run, redactor=redactor, backend="rules",
+                                        python=Path(__import__('sys').executable), timeout=20,
+                                        model=None, adapter=None, policy=None))
+        bundle = p.read_json(self.run / "private/candidate.json")
+        mapping = p.read_json(self.run / "private/mapping.json")
+        self.assertIn("⟦SECRET_0001⟧", bundle["documents"][0]["text"])
+        self.assertEqual(mapping["entities"][0]["value"], "模型机密")
+        self.assertEqual(p.read_json(self.run / "private/extraction.json")["redaction"]["runs"][0]["backend"], "rules")
+
     def test_longest_match_and_token_boundary(self):
         registry = {}
         text, spans = p.redact("甲公司甲公司", [("甲", "PERSON"), ("甲公司", "ORG")], registry, "D")
@@ -135,6 +159,30 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("删除内容", parts[0][1])
         self.assertIn("脚注", parts[1][1])
         self.assertTrue(any("REVISIONS" in warning for warning in warnings))
+
+    def test_redact_run_uses_text_snapshot_hash_for_docx_parts(self):
+        path = self.root / "bridge.docx"
+        prefix = '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        with zipfile.ZipFile(path, "w") as archive:
+            archive.writestr("word/document.xml", prefix + '<w:body><w:p><w:r><w:t>正文机密</w:t></w:r></w:p><w:tbl><w:tr><w:tc><w:p><w:r><w:t>表格机密</w:t></w:r></w:p></w:tc></w:tr></w:tbl></w:body></w:document>')
+        redactor = self.root / "docx_redactor.py"
+        redactor.write_text(
+            "import json, pathlib, sys\n"
+            "a=sys.argv; inp=pathlib.Path(a[a.index('--input')+1]); out=pathlib.Path(a[a.index('--output')+1]); out.mkdir()\n"
+            "text=inp.read_text(); value='正文机密'\n"
+            "red=text.replace(value, '⟦SECRET_0001⟧'); (out/'redacted.txt').write_text(red)\n"
+            "p=text.find(value); occ=[] if p < 0 else [{'token':'⟦SECRET_0001⟧','original_start':p,'original_end':p+len(value)}]\n"
+            "mapping=[] if p < 0 else [{'token':'⟦SECRET_0001⟧','type':'SECRET','value':value}]\n"
+            "(out/'mapping.json').write_text(json.dumps({'mapping':mapping,'occurrences':occ}))\n"
+            "print(json.dumps({'status':'LOCAL_REDACTION_COMPLETE','backend':'rules'}))\n",
+            encoding="utf-8")
+        run = self.root / "docx-run"
+        p.prepare(argparse.Namespace(run=run, input=[path], entities=None))
+        p.redact_run(argparse.Namespace(run=run, redactor=redactor, backend="rules",
+                                        python=Path(__import__('sys').executable), timeout=20,
+                                        model=None, adapter=None, policy=None))
+        meta = p.read_json(run / "private/extraction.json")
+        self.assertEqual(len(meta["snapshots"]), len(p.read_json(run / "private/candidate.json")["documents"]))
 
     def test_pdf_text_and_empty_page_gate(self):
         try:
